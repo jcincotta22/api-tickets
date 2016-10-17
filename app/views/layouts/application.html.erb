@@ -22,6 +22,11 @@
           </ul>
       </div>
     </nav>
+    <% flash.each do |key, value| %>
+      <div class='flash-alert'>
+        <%= value %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
