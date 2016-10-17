@@ -10,7 +10,9 @@ class Ticket extends Component {
     this.state = {
       ticket: [],
       seatGeek: [],
+      stubHub: [],
       seatGeekEvents: [],
+      tickeMasterEvent: [],
       search: '',
       date: ''
      };
@@ -18,6 +20,7 @@ class Ticket extends Component {
      this.handleChange = this.handleChange.bind(this);
      this.handleDateChange = this.handleDateChange.bind(this);
      this.handleClickGeek = this.handleClickGeek.bind(this);
+     this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
   }
 
   handleClickGeek(event) {
@@ -30,15 +33,26 @@ class Ticket extends Component {
     });
   }
 
-  handleFormSubmit(event) {
-    event.preventDefault();
-    let key = "my api key"
+  handleClickTicketMaster(event) {
     $.ajax({
-      url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.state.search}&countryCode=US&startDateTime=${this.state.date}T00:00:00Z&apikey=${key}`,
+      url: '/api/events',
+      data: { event_id: event, site: 'ticketmasterEvent' },
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ ticket: data._embedded.events });
+      this.setState({ tickeMasterEvent: data });
+    });
+  }
+
+  handleFormSubmit(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/api/events',
+      data: {keyword: this.state.search, site: 'ticketmaster', date: this.state.date},
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ ticket: data.ticketmasterData._embedded.events });
     });
 
     event.preventDefault();
@@ -49,6 +63,18 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ seatGeek: data.events });
     });
+
+    event.preventDefault();
+    $.ajax({
+      url: `https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05
+      `,
+      dataType: 'json'
+    })
+    .done(data => {
+      debugger;
+      this.setState({ stubHub: data.events });
+    });
+
 
   }
 
@@ -70,25 +96,32 @@ class Ticket extends Component {
         key={seatGeekData.id}
         id={seatGeekData.id}
         title={seatGeekData.title}
+        venue={seatGeekData.venue.name}
+        city={seatGeekData.venue.city}
         seatGeekEvent={this.state.seatGeekEvents}
         handleClickGeek={clickTarget}
         />
       );
     });
     let ticketdatas = this.state.ticket.map(ticketdata => {
+      let clickMasterTarget = () => this.handleClickTicketMaster(ticketdata.id)
       return (
         <Ticketdata
         key={ticketdata.id}
         id={ticketdata.id}
         url={ticketdata.url}
         name={ticketdata.name}
+        venueName={ticketdata._embedded.venues[0].name}
+        city={ticketdata._embedded.venues[0].city.name}
+        date={ticketdata.dates.start.localDate}
+        tickeMasterEvent={this.state.tickeMasterEvent}
+        handleClickTicketMaster={clickMasterTarget}
         />
       );
     });
     return (
       <div>
-        Your Ticket: {ticketdatas}
-        Your Geek: {seatGeekDatas}
+        <div>
         <TicketForm
         handleFormSubmit={this.handleFormSubmit}
         handleChange={this.handleChange}
@@ -98,6 +131,13 @@ class Ticket extends Component {
         date={this.state.date}
         endDate={this.state.endDate}
         />
+        </div>
+        <div>
+          SeatGeek: {seatGeekDatas}
+        </div>
+        <div>
+          Ticketmaster: {ticketdatas}
+        </div>
       </div>
     );
   }
