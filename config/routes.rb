@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'tickets#index'
 
-  resource :tickets
+  namespace :api do
+    match "/events" => 'tickets#events', via: [:post, :get]
+  end
 end
