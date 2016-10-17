@@ -9,6 +9,19 @@
   </head>
 
   <body>
+    <nav>
+
+      <div class='registration'>
+        <ul class="hmenu">
+          <%= render 'devise/menu/registration_items' %>
+        </ul>
+      </div>
+      <div class='logout'>
+          <ul class="hmenu">
+            <%= render 'devise/menu/login_items' %>
+          </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
