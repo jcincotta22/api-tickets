@@ -65,15 +65,29 @@ class Ticket extends Component {
     });
 
     event.preventDefault();
-    $.ajax({
-      url: `https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05
-      `,
-      dataType: 'json'
-    })
-    .done(data => {
+
+    var invocation = new XMLHttpRequest();
+    var url = 'https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05';
+
+    function callOtherDomain(){
       debugger;
-      this.setState({ stubHub: data.events });
-    });
+      if(invocation) {
+        invocation.open('GET', url, true);
+        debugger;
+        invocation.withCredentials = true;
+        invocation.onreadystatechange = handler;
+        invocation.send();
+      }
+    }
+    // $.ajax({
+    //   dataType: 'jsonp',
+    //   url: "https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05",
+    //   headers: {'X-Requested-With': 'XMLHttpRequest'}
+    // })
+    // .done(data => {
+    //   debugger;
+    //   this.setState({ stubHub: data.events });
+    // });
 
 
   }
