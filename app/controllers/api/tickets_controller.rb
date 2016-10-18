@@ -2,7 +2,7 @@ require 'pry'
 class Api::TicketsController < ApiController
 
   def events
-    ticket = Ticket.new(site: params[:site], keyword: params[:keyword], date: params[:date])
+    ticket = Ticket.new(site: params[:site], keyword: params[:keyword], date: params[:date], zip: params[:zip], performer_id: params[:performer_id])
     if ticket.site == 'ticketmaster'
       ticketmasterData = ticket.get_data_ticketmaster_events(ENV["TICKETMASTER_KEY"], ticket.keyword, ticket.date)
       render json: { ticketmasterData: ticketmasterData }, status: :ok
@@ -13,6 +13,9 @@ class Api::TicketsController < ApiController
       ticket.event_id = params[:event_id]
       ticketmasterEvent = ticket.get_data_ticketmaster_event(ENV["TICKETMASTER_KEY"], ticket.event_id)
       render json: { ticketmasterEvent: ticketmasterEvent }, status: :ok
+    elsif ticket.site == 'recommended'
+      recommendedEvents = ticket.get_data_recommondation(ENV["SEATGEEK_KEY"], ticket.performer_id, ticket.zip)
+      render json: { recommendedEvents: recommendedEvents }, status: :ok
     else
       render json: { errors: ticket.errors }, status: :unprocessable_entity
     end

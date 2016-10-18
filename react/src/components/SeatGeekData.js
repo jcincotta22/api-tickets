@@ -1,6 +1,7 @@
 import React from 'react';
 
 const SeatGeekData = props => {
+
   let clickedLineItem
   if (props.seatGeekEvent.length !== 0 && props.seatGeekEvent.id === props.id){
     clickedLineItem = <ul>
