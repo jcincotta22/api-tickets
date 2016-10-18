@@ -3,6 +3,7 @@ import Ticketdata from './Ticketdata';
 import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
 import BandsInTownData from './BandsInTownData';
+import RecommendedData from './RecommendedData';
 
 
 class Ticket extends Component {
@@ -13,9 +14,11 @@ class Ticket extends Component {
       seatGeek: [],
       bandsInTown: [],
       bandsInTownEvent: [],
+      recommended: [],
       seatGeekEvents: [],
       tickeMasterEvent: [],
       bandsInTownEvent: [],
+      recommendedEvent: [],
       search: '',
       date: ''
      };
@@ -25,7 +28,19 @@ class Ticket extends Component {
      this.handleClickGeek = this.handleClickGeek.bind(this);
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
+     this.handleClickRecommended = this.handleClickRecommended.bind(this);
   }
+  handleClickRecommended(event) {
+    $.ajax({
+      url: `https://api.seatgeek.com/2/events/${event}`,
+      dataType: 'json'
+    })
+    .done(data => {
+      console.log("clicked")
+      this.setState({ recommendedEvent: data });
+    });
+  }
+
   handleClickBand(event) {
     $.ajax({
       url: `http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid&date=${event}`,
@@ -76,14 +91,21 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ seatGeek: data.events });
+      $.ajax({
+        url: '/api/events',
+        data: { performer_id: data.events[0].performers[0].id, site: 'recommended', zip: '02466' },
+        dataType: 'json'
+      })
+      .done(data => {
+        this.setState({ recommended: data.recommendedEvents.recommendations });
+      });
+
     });
 
     event.preventDefault();
 
     $.ajax({
       url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid`,
-      // http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid
-      // http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid&date=2016-10-25T19:30:00
       dataType: 'jsonp'
     })
     .done(data => {
@@ -102,6 +124,20 @@ class Ticket extends Component {
   }
 
   render() {
+    let recommendedDatas = this.state.recommended.map(recommendedData => {
+      let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
+      return (
+        <RecommendedData
+        key={recommendedData.event.id}
+        id={recommendedData.event.id}
+        title={recommendedData.event.title}
+        venue={recommendedData.event.venue.name}
+        city={recommendedData.event.venue.city}
+        recommendedEvent={this.state.recommendedEvent}
+        handleClickRecommended={clickTargetRecommended}
+        />
+      );
+    });
     let bandsInTownDatas = this.state.bandsInTown.map(bandsInTownData => {
       let clickBandTarget = () => this.handleClickBand(bandsInTownData.datetime.slice(0,10))
       return (
@@ -165,10 +201,13 @@ class Ticket extends Component {
           SeatGeek: {seatGeekDatas}
         </div>
         <div>
+        Bandsintown: {bandsInTownDatas}
+        </div>
+        <div>
           Ticketmaster: {ticketdatas}
         </div>
         <div>
-          Bandsintown: {bandsInTownDatas}
+          Recommnended Events: {recommendedDatas}
         </div>
       </div>
     );

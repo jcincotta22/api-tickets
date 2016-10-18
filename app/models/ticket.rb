@@ -12,8 +12,8 @@ class Ticket < ActiveRecord::Base
     JSON.parse(response.body)
   end
 
-  def get_data_seatgeek_events(keyword)
-    uri = URI('https://api.seatgeek.com/2/events?q=#{keyword}')
+  def get_data_recommondation(key, peroformer_id, zip)
+    uri = URI("https://api.seatgeek.com/2/recommendations?performers.id=#{performer_id}&postal_code=#{zip}&client_id=#{key}")
     response = Net::HTTP.get_response(uri)
     JSON.parse(response.body)
   end
