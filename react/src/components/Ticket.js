@@ -79,6 +79,7 @@ class Ticket extends Component {
     });
 
     event.preventDefault();
+
     $.ajax({
       url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid`,
       // http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid

@@ -21,7 +21,8 @@
           </ul>
       </div>
     </nav>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://www.bandsintown.com/javascripts/bit_widget.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -34,10 +35,16 @@
     });
   });
 </script>
+
 <a href="javascript:;" id="show-widget">Click to see Lady Gaga events</a>
 
 <div id="tour-dates"></div>
 
+<% flash.each do |key, value| %>
+  <div class='flash-alert'>
+    <%= value %>
+  </div>
+<% end %>
     <%= yield %>
   </body>
 </html>
