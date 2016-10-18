@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Ticketdata from './Ticketdata';
 import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
+import BandsInTownData from './BandsInTownData';
 
 
 class Ticket extends Component {
@@ -10,9 +11,11 @@ class Ticket extends Component {
     this.state = {
       ticket: [],
       seatGeek: [],
-      stubHub: [],
+      bandsInTown: [],
+      bandsInTownEvent: [],
       seatGeekEvents: [],
       tickeMasterEvent: [],
+      bandsInTownEvent: [],
       search: '',
       date: ''
      };
@@ -21,6 +24,17 @@ class Ticket extends Component {
      this.handleDateChange = this.handleDateChange.bind(this);
      this.handleClickGeek = this.handleClickGeek.bind(this);
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
+     this.handleClickBand = this.handleClickBand.bind(this);
+  }
+  handleClickBand(event) {
+    $.ajax({
+      url: `http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid&date=${event}`,
+      dataType: 'jsonp'
+    })
+    .done(data => {
+      console.log('clicked...getting data')
+      this.setState({ bandsInTownEvent: data });
+    });
   }
 
   handleClickGeek(event) {
@@ -66,30 +80,15 @@ class Ticket extends Component {
 
     event.preventDefault();
 
-    var invocation = new XMLHttpRequest();
-    var url = 'https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05';
-
-    function callOtherDomain(){
-      debugger;
-      if(invocation) {
-        invocation.open('GET', url, true);
-        debugger;
-        invocation.withCredentials = true;
-        invocation.onreadystatechange = handler;
-        invocation.send();
-      }
-    }
-    // $.ajax({
-    //   dataType: 'jsonp',
-    //   url: "https://www.stubhub.com/listingCatalog/select?wt=json&indent=on&q=stubhubDocumentType:event%20AND%20description:new%20england%20AND%20description:patriots&event_date=2016-11-01TO%202016-12-05",
-    //   headers: {'X-Requested-With': 'XMLHttpRequest'}
-    // })
-    // .done(data => {
-    //   debugger;
-    //   this.setState({ stubHub: data.events });
-    // });
-
-
+    $.ajax({
+      url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid`,
+      // http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid
+      // http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid&date=2016-10-25T19:30:00
+      dataType: 'jsonp'
+    })
+    .done(data => {
+      this.setState({ bandsInTown: data });
+    });
   }
 
   handleChange(event) {
@@ -103,6 +102,22 @@ class Ticket extends Component {
   }
 
   render() {
+    let bandsInTownDatas = this.state.bandsInTown.map(bandsInTownData => {
+      let clickBandTarget = () => this.handleClickBand(bandsInTownData.datetime.slice(0,10))
+      return (
+        <BandsInTownData
+        key={bandsInTownData.id}
+        id={bandsInTownData.id}
+        title={bandsInTownData.title}
+        venue={bandsInTownData.venue.name}
+        city={bandsInTownData.venue.city}
+        date={bandsInTownData.datetime.slice(0,10)}
+        formatedDate={bandsInTownData.formatted_datetime}
+        bandsInTownEvent={this.state.bandsInTownEvent}
+        handleClickBand={clickBandTarget}
+        />
+      );
+    });
     let seatGeekDatas = this.state.seatGeek.map(seatGeekData => {
       let clickTarget = () => this.handleClickGeek(seatGeekData.id)
       return (
@@ -151,6 +166,9 @@ class Ticket extends Component {
         </div>
         <div>
           Ticketmaster: {ticketdatas}
+        </div>
+        <div>
+          Bandsintown: {bandsInTownDatas}
         </div>
       </div>
     );

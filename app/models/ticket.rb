@@ -1,7 +1,5 @@
 class Ticket < ActiveRecord::Base
 
-
-
   def get_data_ticketmaster_event(key, event_id)
     uri = URI("https://app.ticketmaster.com/discovery/v2/events/#{event_id}.json?apikey=#{key}")
     response = Net::HTTP.get_response(uri)

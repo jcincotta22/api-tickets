@@ -10,7 +10,6 @@
 
   <body>
     <nav>
-
       <div class='registration'>
         <ul class="hmenu">
           <%= render 'devise/menu/registration_items' %>
@@ -22,11 +21,30 @@
           </ul>
       </div>
     </nav>
-    <% flash.each do |key, value| %>
-      <div class='flash-alert'>
-        <%= value %>
-      </div>
-    <% end %>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.bandsintown.com/javascripts/bit_widget.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#show-widget").click(function() {
+      new BIT.Widget({
+        "artist":"Adele",
+        "div_id":"tour-dates",
+        "bg_color": "#FFFFFF"
+      }).insert_events();
+    });
+  });
+</script>
+
+<a href="javascript:;" id="show-widget">Click to see Lady Gaga events</a>
+
+<div id="tour-dates"></div>
+
+<% flash.each do |key, value| %>
+  <div class='flash-alert'>
+    <%= value %>
+  </div>
+<% end %>
     <%= yield %>
   </body>
 </html>
