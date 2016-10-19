@@ -16,7 +16,19 @@ const TicketForm = props => {
         value={props.date}
         onChange={props.handleDateChange}
       />
-      <input type="submit" value="Search Event"/>
+      <input
+        type="date"
+        placeholder="yyyy-mm-dd"
+        value={props.endDate}
+        onChange={props.handleEndDateChange}
+      />
+      <input
+        type="text"
+        placeholder="Zip"
+        value={props.zip}
+        onChange={props.handleZipChange}
+      />
+    <input type="submit" className='btn btn-info' value="Search Event"/>
     </form>
   </div>
   );
