@@ -7,21 +7,22 @@
     <!-- set page the size of the device -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <nav>
-      <div class='registration'>
-        <ul class="hmenu">
-          <%= render 'devise/menu/registration_items' %>
-        </ul>
-      </div>
-      <div class='logout'>
+      <div class='container'>
+        <div class='page-header'>
+          <ul class="hmenu">
+            <%= render 'devise/menu/registration_items' %>
+          </ul>
           <ul class="hmenu">
             <%= render 'devise/menu/login_items' %>
           </ul>
+        </div>
       </div>
     </nav>
     <% flash.each do |key, value| %>

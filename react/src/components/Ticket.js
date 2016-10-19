@@ -20,11 +20,15 @@ class Ticket extends Component {
       bandsInTownEvent: [],
       recommendedEvent: [],
       search: '',
-      date: ''
+      date: '',
+      endDate: '',
+      zip: ''
      };
      this.handleFormSubmit = this.handleFormSubmit.bind(this);
      this.handleChange = this.handleChange.bind(this);
      this.handleDateChange = this.handleDateChange.bind(this);
+     this.handleEndDateChange = this.handleEndDateChange.bind(this);
+     this.handleZipChange = this.handleZipChange.bind(this);
      this.handleClickGeek = this.handleClickGeek.bind(this);
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
@@ -63,9 +67,10 @@ class Ticket extends Component {
   }
 
   handleClickTicketMaster(event) {
+    debugger;
     $.ajax({
       url: '/api/events',
-      data: { event_id: event, site: 'ticketmasterEvent' },
+      data: { ticket: { event_id: event, site: 'ticketmasterEvent' } },
       dataType: 'json'
     })
     .done(data => {
@@ -77,7 +82,7 @@ class Ticket extends Component {
     event.preventDefault();
     $.ajax({
       url: '/api/events',
-      data: {keyword: this.state.search, site: 'ticketmaster', date: this.state.date},
+      data: { ticket: { keyword: this.state.search, site: 'ticketmaster', date: this.state.date, end_date: this.state.endDate, zip: this.state.zip } },
       dataType: 'json'
     })
     .done(data => {
@@ -86,14 +91,14 @@ class Ticket extends Component {
 
     event.preventDefault();
     $.ajax({
-      url: `https://api.seatgeek.com/2/events?q=${this.state.search}`,
+      url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
       dataType: 'json'
     })
     .done(data => {
       this.setState({ seatGeek: data.events });
       $.ajax({
         url: '/api/events',
-        data: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: '02466' },
+        data: { ticket: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
         dataType: 'json'
       })
       .done(data => {
@@ -105,7 +110,7 @@ class Ticket extends Component {
     event.preventDefault();
 
     $.ajax({
-      url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid`,
+      url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
       dataType: 'jsonp'
     })
     .done(data => {
@@ -121,6 +126,16 @@ class Ticket extends Component {
   handleDateChange(event) {
     let newDate = event.target.value;
     this.setState({ date: newDate });
+  }
+
+  handleEndDateChange(event) {
+    let newEndDate = event.target.value;
+    this.setState({ endDate: newEndDate });
+  }
+
+  handleZipChange(event) {
+    let newZip = event.target.value;
+    this.setState({ zip: newZip });
   }
 
   render() {
@@ -185,29 +200,41 @@ class Ticket extends Component {
       );
     });
     return (
-      <div>
-        <div>
-        <TicketForm
-        handleFormSubmit={this.handleFormSubmit}
-        handleChange={this.handleChange}
-        handleDateChange={this.handleDateChange}
-        handleEndDateChange={this.handleEndDateChange}
-        search={this.state.search}
-        date={this.state.date}
-        endDate={this.state.endDate}
-        />
+      <div className='jumbotron'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+              <TicketForm
+              handleFormSubmit={this.handleFormSubmit}
+              handleChange={this.handleChange}
+              handleDateChange={this.handleDateChange}
+              handleEndDateChange={this.handleEndDateChange}
+              handleZipChange={this.handleZipChange}
+              search={this.state.search}
+              date={this.state.date}
+              endDate={this.state.endDate}
+              zip={this.state.zip}
+              />
+            </div>
+          </div>
         </div>
-        <div>
-          SeatGeek: {seatGeekDatas}
-        </div>
-        <div>
-        Bandsintown: {bandsInTownDatas}
-        </div>
-        <div>
-          Ticketmaster: {ticketdatas}
-        </div>
-        <div>
-          Recommnended Events: {recommendedDatas}
+        <div className='container'>
+          <div className='row'>
+            <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+              <div>
+                SeatGeek: {seatGeekDatas}
+              </div>
+              <div>
+              Bandsintown: {bandsInTownDatas}
+              </div>
+              <div>
+                Ticketmaster: {ticketdatas}
+              </div>
+              <div>
+                Recommnended Events: {recommendedDatas}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

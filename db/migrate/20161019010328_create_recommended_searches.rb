@@ -7,7 +7,7 @@ class CreateRecommendedSearches < ActiveRecord::Migration[5.0]
       t.string :end_date
       t.string :zip, null: false
       t.string :performer_id, null: false
-      t.belongs_to :user
+      t.belongs_to :user, null: false
       t.belongs_to :search_history
       t.timestamps
     end

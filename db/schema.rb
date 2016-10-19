@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019010328) do
+ActiveRecord::Schema.define(version: 20161019183733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20161019010328) do
     t.string   "end_date"
     t.string   "zip",               null: false
     t.string   "performer_id",      null: false
-    t.integer  "user_id"
+    t.integer  "user_id",           null: false
     t.integer  "search_history_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -31,21 +31,22 @@ ActiveRecord::Schema.define(version: 20161019010328) do
   end
 
   create_table "saved_events", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "search_history_id"
+    t.integer  "user_id",           null: false
+    t.integer  "search_history_id", null: false
     t.string   "site",              null: false
     t.string   "keyword",           null: false
     t.string   "date"
     t.string   "end_date"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "event_id"
     t.index ["search_history_id"], name: "index_saved_events_on_search_history_id", using: :btree
     t.index ["user_id"], name: "index_saved_events_on_user_id", using: :btree
   end
 
   create_table "search_histories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "ticket_id"
+    t.integer  "user_id",    null: false
+    t.integer  "ticket_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_search_histories_on_ticket_id", using: :btree
@@ -53,12 +54,13 @@ ActiveRecord::Schema.define(version: 20161019010328) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string  "site"
-    t.string  "keyword",      null: false
-    t.string  "date"
-    t.string  "event_id"
-    t.string  "zip"
-    t.integer "performer_id"
+    t.string "site"
+    t.string "keyword",      null: false
+    t.string "date"
+    t.string "event_id"
+    t.string "zip"
+    t.string "performer_id"
+    t.string "end_date",     null: false
   end
 
   create_table "users", force: :cascade do |t|

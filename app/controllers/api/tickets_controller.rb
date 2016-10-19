@@ -1,16 +1,21 @@
-require 'pry'
 class Api::TicketsController < ApiController
 
   def events
-    ticket = Ticket.new(site: params[:site], keyword: params[:keyword], date: params[:date], zip: params[:zip], performer_id: params[:performer_id])
+    ticket = Ticket.new(ticket_params)
+    user = current_user
     if ticket.site == 'ticketmaster'
-      ticketmasterData = ticket.get_data_ticketmaster_events(ENV["TICKETMASTER_KEY"], ticket.keyword, ticket.date)
+      if user
+        binding.pry
+        ticket.save
+        SearchHistory.create(user_id: user.id, ticket_id: ticket.id)
+      end
+      ticketmasterData = ticket.get_data_ticketmaster_events(ENV["TICKETMASTER_KEY"], ticket.keyword, ticket.date, ticket.end_date)
       render json: { ticketmasterData: ticketmasterData }, status: :ok
     elsif ticket.site == 'seatgeek'
       seatgeekData = ticket.get_data_seatgeek_events(ticket.keyword)
       render json: { seatgeekData: seatgeekData }, status: :ok
     elsif ticket.site == 'ticketmasterEvent'
-      ticket.event_id = params[:event_id]
+      ticket.event_id = params[:ticket][:event_id]
       ticketmasterEvent = ticket.get_data_ticketmaster_event(ENV["TICKETMASTER_KEY"], ticket.event_id)
       render json: { ticketmasterEvent: ticketmasterEvent }, status: :ok
     elsif ticket.site == 'recommended'
@@ -23,7 +28,7 @@ class Api::TicketsController < ApiController
 
   private
 
-  # def event_params
-  #   params.require(:ticket).permit(:keyword, :date)
-  # end
+  def ticket_params
+    params.require(:ticket).permit(:keyword, :site, :date, :zip, :performer_id, :end_date, :performer_id, :event_id)
+  end
 end
