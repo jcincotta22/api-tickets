@@ -10,9 +10,11 @@ end
 FactoryGirl.define do
   factory :ticket do
     keyword "adele"
+    site "ticketmaster"
     date "2016-10-30"
     end_date "2016-12-30"
     zip "02456"
+    event_id "123456"
   end
 end
 
