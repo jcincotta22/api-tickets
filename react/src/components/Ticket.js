@@ -19,6 +19,7 @@ class Ticket extends Component {
       tickeMasterEvent: [],
       bandsInTownEvent: [],
       recommendedEvent: [],
+      savedEvent: [],
       search: '',
       date: '',
       endDate: '',
@@ -33,6 +34,17 @@ class Ticket extends Component {
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
      this.handleClickRecommended = this.handleClickRecommended.bind(this);
+  }
+
+  handleClickSavedEvent(event) {
+    $.ajax({
+      url: '/api/events',
+      data: { ticket: { event_id: event, site: 'savedEvent' } },
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ tickeMasterEvent: data });
+    });
   }
   handleClickRecommended(event) {
     $.ajax({
@@ -51,7 +63,6 @@ class Ticket extends Component {
       dataType: 'jsonp'
     })
     .done(data => {
-      console.log('clicked...getting data')
       this.setState({ bandsInTownEvent: data });
     });
   }
@@ -233,6 +244,9 @@ class Ticket extends Component {
               </div>
               <div>
                 Recommnended Events: {recommendedDatas}
+              </div>
+              <div>
+                Saved Events
               </div>
             </div>
           </div>
