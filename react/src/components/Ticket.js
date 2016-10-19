@@ -93,7 +93,7 @@ class Ticket extends Component {
       this.setState({ seatGeek: data.events });
       $.ajax({
         url: '/api/events',
-        data: { performer_id: data.events[0].performers[0].id, site: 'recommended', zip: '02466' },
+        data: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: '02466' },
         dataType: 'json'
       })
       .done(data => {

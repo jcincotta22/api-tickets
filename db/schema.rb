@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018192142) do
+ActiveRecord::Schema.define(version: 20161019010328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "recommended_searches", force: :cascade do |t|
+    t.string   "site",              null: false
+    t.string   "keyword",           null: false
+    t.string   "date"
+    t.string   "end_date"
+    t.string   "zip",               null: false
+    t.string   "performer_id",      null: false
+    t.integer  "user_id"
+    t.integer  "search_history_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["search_history_id"], name: "index_recommended_searches_on_search_history_id", using: :btree
+    t.index ["user_id"], name: "index_recommended_searches_on_user_id", using: :btree
+  end
+
+  create_table "saved_events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "search_history_id"
+    t.string   "site",              null: false
+    t.string   "keyword",           null: false
+    t.string   "date"
+    t.string   "end_date"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["search_history_id"], name: "index_saved_events_on_search_history_id", using: :btree
+    t.index ["user_id"], name: "index_saved_events_on_user_id", using: :btree
+  end
+
+  create_table "search_histories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_search_histories_on_ticket_id", using: :btree
+    t.index ["user_id"], name: "index_search_histories_on_user_id", using: :btree
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.string  "site"
