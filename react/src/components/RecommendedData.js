@@ -9,6 +9,7 @@ const RecommendedData = props => {
         <li>{props.recommendedEvent.venue.name}</li>
         <li>{props.recommendedEvent.venue.display_location}</li>
         <li><img src={props.recommendedEvent.performers[0].image}/></li>
+        <li>Date: {props.recommendedEvent.datetime_local.slice(0,10)}</li>
         <li>Highest Price: ${props.recommendedEvent.stats.highest_price}</li>
         <li>Lowest Price: ${props.recommendedEvent.stats.lowest_price}</li>
       </ul>
@@ -18,7 +19,7 @@ const RecommendedData = props => {
   return (
   <div className='showDiv'>
     <ul onClick={props.handleClickRecommended} className='data'>
-    Event: {props.title}, Venue: {props.venue}, {props.city} Event ID: {props.id}
+    {props.title}, Venue: {props.venue}, {props.city} Date: {props.date}
       {clickedLineItem}
     </ul>
   </div>
