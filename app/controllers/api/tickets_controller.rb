@@ -5,7 +5,6 @@ class Api::TicketsController < ApiController
     user = current_user
     if ticket.site == 'ticketmaster'
       if user
-        binding.pry
         ticket.save
         SearchHistory.create(user_id: user.id, ticket_id: ticket.id)
       end

@@ -17,7 +17,7 @@ const BandsInTownData = props => {
   return (
   <div className='showDiv'>
     <ul onClick={props.handleClickBand} className='data'>
-    Event: {props.title}, City: {props.city} Date: {props.formatedDate}
+    {props.title}, City: {props.city} Date: {props.formatedDate} Venue: {props.venue}, {props.city}
     {clickedLineItem}
     </ul>
   </div>

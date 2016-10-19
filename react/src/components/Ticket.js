@@ -67,7 +67,6 @@ class Ticket extends Component {
   }
 
   handleClickTicketMaster(event) {
-    debugger;
     $.ajax({
       url: '/api/events',
       data: { ticket: { event_id: event, site: 'ticketmasterEvent' } },
@@ -147,6 +146,7 @@ class Ticket extends Component {
         id={recommendedData.event.id}
         title={recommendedData.event.title}
         venue={recommendedData.event.venue.name}
+        date={recommendedData.event.datetime_local.slice(0,10)}
         city={recommendedData.event.venue.city}
         recommendedEvent={this.state.recommendedEvent}
         handleClickRecommended={clickTargetRecommended}
@@ -176,6 +176,7 @@ class Ticket extends Component {
         key={seatGeekData.id}
         id={seatGeekData.id}
         title={seatGeekData.title}
+        date={seatGeekData.datetime_local.slice(0,10)}
         venue={seatGeekData.venue.name}
         city={seatGeekData.venue.city}
         seatGeekEvent={this.state.seatGeekEvents}

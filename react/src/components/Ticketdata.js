@@ -29,7 +29,7 @@ const Ticketdata = props => {
   return (
   <div>
     <ul onClick={props.handleClickTicketMaster}>
-      Event: {props.name}, Location: {props.venueName}, {props.city}, Date: {props.date} Event ID: {props.id}
+      {props.name}, Location: {props.venueName}, {props.city}, Date: {props.date}
       {clickedLineItem}
     </ul>
   </div>
