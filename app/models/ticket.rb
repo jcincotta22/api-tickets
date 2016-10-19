@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
   validates :zip, length: { is: 5 }, numericality: true
   validates :date, presence: true
   validates :end_date, presence: true
+  validates :keyword, presence: true
 
   def get_data_ticketmaster_event(key, event_id)
     uri = URI("https://app.ticketmaster.com/discovery/v2/events/#{event_id}.json?apikey=#{key}")
