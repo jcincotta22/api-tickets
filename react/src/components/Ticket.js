@@ -43,7 +43,7 @@ class Ticket extends Component {
 
   handleClickBand(event) {
     $.ajax({
-      url: `http://api.bandsintown.com/artists/adele/events.json?api_version=2.0&app_id=myid&date=${event}`,
+      url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&date=${event}`,
       dataType: 'jsonp'
     })
     .done(data => {
