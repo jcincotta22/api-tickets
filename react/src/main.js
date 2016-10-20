@@ -5,7 +5,7 @@ import Ticket from './components/Ticket';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 $(function() {
-  ReactDOM.render(
+  let componentInstance = ReactDOM.render(
     <Router history={hashHistory}>
       <Route path='/' component={Ticket}>
         <IndexRoute component={Ticket}></IndexRoute>

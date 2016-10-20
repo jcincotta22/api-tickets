@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import Ticketdata from './Ticketdata';
 import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
 import BandsInTownData from './BandsInTownData';
 import RecommendedData from './RecommendedData';
+
+import Sortable from 'sortablejs'
+
 
 
 class Ticket extends Component {
@@ -34,6 +38,19 @@ class Ticket extends Component {
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
      this.handleClickRecommended = this.handleClickRecommended.bind(this);
+  }
+
+  componentDidMount() {
+    let recommended = document.getElementById("recommended");
+    Sortable.create(recommended, { group: "omega" });
+    let ticketmaster = document.getElementById("ticketmaster");
+    Sortable.create(ticketmaster, { group: "omega" });
+    let seatGeek = document.getElementById("seatGeek");
+    Sortable.create(seatGeek, { group: "omega" });
+    let bandsInTown = document.getElementById("bandsInTown");
+    Sortable.create(bandsInTown, { group: "omega" });
+    let saved = document.getElementById("saved");
+    Sortable.create(saved, { group: "omega" });
   }
 
   handleClickSavedEvent(event) {
@@ -211,6 +228,7 @@ class Ticket extends Component {
         />
       );
     });
+
     return (
       <div className='jumbotron'>
         <div className='container'>
@@ -233,20 +251,29 @@ class Ticket extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-              <div>
+              <div id='seatGeek'>
                 SeatGeek: {seatGeekDatas}
               </div>
-              <div>
+              <div id='bandsInTown'>
               Bandsintown: {bandsInTownDatas}
               </div>
-              <div>
+              <div id='ticketmaster'>
                 Ticketmaster: {ticketdatas}
               </div>
-              <div>
+              <div id='recommended'>
                 Recommnended Events: {recommendedDatas}
               </div>
+
               <div>
-                Saved Events
+                <ul id='saved'>
+                  <li>Swap me around</li>
+                  <li>Swap her around</li>
+                  <li>Swap him around</li>
+                  <li>Swap them around</li>
+                  <li>Swap us around</li>
+                  <li>Swap things around</li>
+                  <li>Swap everything around</li>
+                </ul>
               </div>
             </div>
           </div>
