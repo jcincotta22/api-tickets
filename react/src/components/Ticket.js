@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import Ticketdata from './Ticketdata';
 import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
@@ -248,6 +248,12 @@ class Ticket extends Component {
             </div>
           </div>
         </div>
+        <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'>
+          <h4>Saved Events</h4>
+          <ul id='saved'>
+            <li>Place Me Here:</li>
+          </ul>
+        </div>
         <div className='container'>
           <div className='row'>
             <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
@@ -262,18 +268,6 @@ class Ticket extends Component {
               </div>
               <div id='recommended'>
                 Recommnended Events: {recommendedDatas}
-              </div>
-
-              <div>
-                <ul id='saved'>
-                  <li>Swap me around</li>
-                  <li>Swap her around</li>
-                  <li>Swap him around</li>
-                  <li>Swap them around</li>
-                  <li>Swap us around</li>
-                  <li>Swap things around</li>
-                  <li>Swap everything around</li>
-                </ul>
               </div>
             </div>
           </div>

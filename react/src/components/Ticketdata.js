@@ -13,7 +13,7 @@ const Ticketdata = props => {
       min = `Min Price: $${props.tickeMasterEvent.ticketmasterEvent.priceRanges[0].min}`;
       max = `Max Price: $${props.tickeMasterEvent.ticketmasterEvent.priceRanges[0].max}`;
     }
-    clickedLineItem = <ul>
+    clickedLineItem = <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'><ul>
         <li>{props.name}</li>
         <li><a href={props.url} target="_blank">Visit Ticketmaster to See Tickets for This Event</a></li>
         <li><img src={props.tickeMasterEvent.ticketmasterEvent.images[0].url}/></li>
@@ -21,7 +21,7 @@ const Ticketdata = props => {
         <li>{props.tickeMasterEvent.ticketmasterEvent._embedded.venues[0].city.name}</li>
         <li>{max}</li>
         <li>{min}</li>
-      </ul>
+      </ul></div>
 
   }else {
     clickedLineItem = null;
@@ -30,8 +30,8 @@ const Ticketdata = props => {
   <div>
     <ul onClick={props.handleClickTicketMaster}>
       {props.name}, Location: {props.venueName}, {props.city}, Date: {props.date}
-      {clickedLineItem}
     </ul>
+    {clickedLineItem}
   </div>
   );
 };
