@@ -3,7 +3,7 @@ import React from 'react';
 const RecommendedData = props => {
   let clickedLineItem
   if (props.recommendedEvent.length !== 0 && props.recommendedEvent.id === props.id){
-    clickedLineItem = <ul>
+    clickedLineItem = <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'><ul>
         <li>{props.recommendedEvent.title}</li>
         <li><a href={props.recommendedEvent.url} target="_blank">Visit SeatGeek to See Tickets for This Event</a></li>
         <li>{props.recommendedEvent.venue.name}</li>
@@ -12,7 +12,7 @@ const RecommendedData = props => {
         <li>Date: {props.recommendedEvent.datetime_local.slice(0,10)}</li>
         <li>Highest Price: ${props.recommendedEvent.stats.highest_price}</li>
         <li>Lowest Price: ${props.recommendedEvent.stats.lowest_price}</li>
-      </ul>
+      </ul></div>
   }else {
     clickedLineItem = null;
   }
