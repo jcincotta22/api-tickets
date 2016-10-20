@@ -18,7 +18,7 @@ const SeatGeekData = props => {
   }
   return (
   <div className='showDiv'>
-    <ul onClick={props.handleClickGeek} className='data'>
+    <ul onClick={props.handleClickGeek} className='data' onDrop={props.handleAdd}>
     {props.title}, Venue: {props.venue}, {props.city} Date: {props.date}
       {clickedLineItem}
     </ul>

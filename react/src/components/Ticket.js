@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import Ticketdata from './Ticketdata';
 import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
@@ -23,7 +23,8 @@ class Ticket extends Component {
       tickeMasterEvent: [],
       bandsInTownEvent: [],
       recommendedEvent: [],
-      savedEvent: [],
+      elementValue: [],
+      message: '',
       search: '',
       date: '',
       endDate: '',
@@ -38,6 +39,7 @@ class Ticket extends Component {
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
      this.handleClickRecommended = this.handleClickRecommended.bind(this);
+     this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -53,16 +55,6 @@ class Ticket extends Component {
     Sortable.create(saved, { group: "omega" });
   }
 
-  handleClickSavedEvent(event) {
-    $.ajax({
-      url: '/api/events',
-      data: { ticket: { event_id: event, site: 'savedEvent' } },
-      dataType: 'json'
-    })
-    .done(data => {
-      this.setState({ tickeMasterEvent: data });
-    });
-  }
   handleClickRecommended(event) {
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
@@ -165,6 +157,18 @@ class Ticket extends Component {
     this.setState({ zip: newZip });
   }
 
+  handleAdd(event) {
+    $.ajax({
+      type: "POST",
+      url: '/api/tickets',
+      data: { ticket: { event_id: event, site: 'seatGeek' } },
+      dataType: 'json',
+    })
+    .done(data => {
+      this.setState({ message: data.error_message })
+    });
+  };
+
   render() {
     let recommendedDatas = this.state.recommended.map(recommendedData => {
       let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
@@ -199,6 +203,7 @@ class Ticket extends Component {
     });
     let seatGeekDatas = this.state.seatGeek.map(seatGeekData => {
       let clickTarget = () => this.handleClickGeek(seatGeekData.id)
+      let addTarget = () => this.handleAdd(seatGeekData.id)
       return (
         <SeatGeekData
         key={seatGeekData.id}
@@ -209,6 +214,7 @@ class Ticket extends Component {
         city={seatGeekData.venue.city}
         seatGeekEvent={this.state.seatGeekEvents}
         handleClickGeek={clickTarget}
+        handleAdd={addTarget}
         />
       );
     });
@@ -232,6 +238,7 @@ class Ticket extends Component {
     return (
       <div className='jumbotron'>
         <div className='container'>
+        <div className='messages'>{this.state.message}</div>
           <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
               <TicketForm
@@ -249,9 +256,9 @@ class Ticket extends Component {
           </div>
         </div>
         <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'>
-          <h4>Saved Events</h4>
+          <h4>Saved Event Bucket</h4>
           <ul id='saved'>
-            <li>Place Me Here:</li>
+            <li></li>
           </ul>
         </div>
         <div className='container'>

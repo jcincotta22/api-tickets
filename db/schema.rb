@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20161019183733) do
     t.integer  "user_id",           null: false
     t.integer  "search_history_id", null: false
     t.string   "site",              null: false
-    t.string   "keyword",           null: false
+    t.string   "keyword"
     t.string   "date"
     t.string   "end_date"
     t.datetime "created_at",        null: false

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api do
+    resources :tickets, only: [:create]
     match "/events" => 'tickets#events', via: [:post, :get]
   end
 end

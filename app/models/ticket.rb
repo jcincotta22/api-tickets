@@ -23,4 +23,10 @@ class Ticket < ActiveRecord::Base
     JSON.parse(response.body)
   end
 
+  # def get_data_saved_seatgeek_event(event_id)
+  #   uri = URI("https://api.seatgeek.com/2/events/#{event_id}")
+  #   response = Net::HTTP.get_response(uri)
+  #   JSON.parse(response.body)
+  # end
+
 end
