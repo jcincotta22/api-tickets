@@ -4,7 +4,7 @@ class CreateSavedEvents < ActiveRecord::Migration[5.0]
       t.belongs_to :user, null: false
       t.belongs_to :search_history, null: false
       t.string :site, null: false
-      t.string :keyword, null: false
+      t.string :keyword
       t.string :date
       t.string :end_date
       t.timestamps

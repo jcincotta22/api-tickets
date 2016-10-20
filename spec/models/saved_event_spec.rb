@@ -29,15 +29,11 @@ describe SavedEvent do
   it { should_not have_valid(:site).when(nil, '') }
 
   it { should have_valid(:keyword).when("adele", "kanye") }
-  it { should_not have_valid(:keyword).when(nil, '') }
 
   it { should have_valid(:date).when('2016-10-20', '2016-12-20') }
-  it { should_not have_valid(:date).when(nil, '') }
 
   it { should have_valid(:event_id).when(1, 12) }
-  it { should_not have_valid(:event_id).when(nil, '') }
 
   it { should have_valid(:end_date).when('2016-10-20', '2016-12-20') }
-  it { should_not have_valid(:end_date).when(nil, '') }
 
 end
