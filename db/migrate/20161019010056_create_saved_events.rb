@@ -2,7 +2,6 @@ class CreateSavedEvents < ActiveRecord::Migration[5.0]
   def change
     create_table :saved_events do |t|
       t.belongs_to :user, null: false
-      t.belongs_to :search_history, null: false
       t.string :site, null: false
       t.string :keyword
       t.string :date
