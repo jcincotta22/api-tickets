@@ -44,7 +44,6 @@ class Ticket extends Component {
 
   }
   handleButtonClick(event) {
-    debugger;
     $.ajax({
       type: "POST",
       url: '/api/tickets',
@@ -58,7 +57,6 @@ class Ticket extends Component {
   }
 
   handleButtonClickTicket(event) {
-    debugger;
     $.ajax({
       type: "POST",
       url: '/api/tickets',
@@ -71,7 +69,6 @@ class Ticket extends Component {
   }
 
   handleButtonClickBand(event) {
-    debugger;
     $.ajax({
       type: "POST",
       url: '/api/tickets',
@@ -130,6 +127,10 @@ class Ticket extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
+
+    this.setState({ message: '' });
+    debugger;
+
     $.ajax({
       url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
       dataType: 'json'
@@ -147,7 +148,6 @@ class Ticket extends Component {
 
     });
 
-    event.preventDefault();
     $.ajax({
       url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
       dataType: 'jsonp'
@@ -156,7 +156,6 @@ class Ticket extends Component {
       this.setState({ bandsInTown: data });
     });
 
-    event.preventDefault();
     $.ajax({
       url: '/api/events',
       data: { ticket: { keyword: this.state.search, site: 'ticketmaster', date: this.state.date, end_date: this.state.endDate, zip: this.state.zip } },
