@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ClickedTicketMasterData = props => {
-  debugger;
   let clickedLineItem
     clickedLineItem = <ul>
         <li>{props.title}</li>
@@ -13,6 +12,7 @@ const ClickedTicketMasterData = props => {
         <li>Highest Price: ${props.highest_price}</li>
         <li>Lowest Price: ${props.lowest_price}</li>
         <li><img src={props.image}/></li>
+        <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
       </ul>
 
 

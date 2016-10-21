@@ -31,16 +31,14 @@ ActiveRecord::Schema.define(version: 20161019183733) do
   end
 
   create_table "saved_events", force: :cascade do |t|
-    t.integer  "user_id",           null: false
-    t.integer  "search_history_id", null: false
-    t.string   "site",              null: false
+    t.integer  "user_id",    null: false
+    t.string   "site",       null: false
     t.string   "keyword"
     t.string   "date"
     t.string   "end_date"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "event_id"
-    t.index ["search_history_id"], name: "index_saved_events_on_search_history_id", using: :btree
     t.index ["user_id"], name: "index_saved_events_on_user_id", using: :btree
   end
 

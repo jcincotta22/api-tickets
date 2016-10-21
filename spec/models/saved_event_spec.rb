@@ -1,29 +1,23 @@
 require 'rails_helper'
 
 describe SavedEvent do
-  let(:search_history) { FactoryGirl.create(:search_history)}
+  let(:user) { FactoryGirl.create(:user) }
   let(:saved_event) do
-    SavedEvent.create(user_id: search_history.user.id, site: search_history.ticket.site,
-    search_history_id: search_history.id, keyword: search_history.ticket.keyword,
-    date: search_history.ticket.date, end_date: search_history.ticket.end_date,
-    event_id: search_history.ticket.event_id)
+    SavedEvent.create(user_id: user.id, site: "seatGeek",
+      keyword: "adele", date: "2016-10-30", end_date: "2016-10-30", event_id: '123456')
   end
 
   it 'has the expected properties' do
-    expect(saved_event.user_id).to eq(search_history.user.id)
-    expect(saved_event.search_history_id).to eq(search_history.id)
-    expect(saved_event.site).to eq(search_history.ticket.site)
-    expect(saved_event.keyword).to eq(search_history.ticket.keyword)
-    expect(saved_event.date).to eq(search_history.ticket.date)
-    expect(saved_event.end_date).to eq(search_history.ticket.end_date)
-    expect(saved_event.event_id).to eq(search_history.ticket.event_id)
+    expect(saved_event.user_id).to eq(user.id)
+    expect(saved_event.site).to eq("seatGeek")
+    expect(saved_event.keyword).to eq("adele")
+    expect(saved_event.date).to eq("2016-10-30")
+    expect(saved_event.end_date).to eq("2016-10-30")
+    expect(saved_event.event_id).to eq('123456')
   end
 
   it { should have_valid(:user_id).when(1, 12) }
   it { should_not have_valid(:user_id).when(nil, '', 'word') }
-
-  it { should have_valid(:search_history_id).when(1, 12) }
-  it { should_not have_valid(:search_history_id).when(nil, '', 'word') }
 
   it { should have_valid(:site).when("ticketmaster", "seatgeek") }
   it { should_not have_valid(:site).when(nil, '') }

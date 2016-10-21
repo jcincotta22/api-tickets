@@ -23,8 +23,6 @@ class Ticket extends Component {
       ticketMasterEvent: [],
       bandsInTownEvent: [],
       recommendedEvent: [],
-      elementValue: [],
-      savedEvents: [],
       clickedEvent: '',
       message: '',
       search: '',
@@ -40,8 +38,51 @@ class Ticket extends Component {
      this.handleClickGeek = this.handleClickGeek.bind(this);
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
      this.handleClickBand = this.handleClickBand.bind(this);
+     this.handleButtonClick = this.handleButtonClick.bind(this);
+     this.handleButtonClickTicket = this.handleButtonClickTicket.bind(this);
+     this.handleButtonClickBand = this.handleButtonClickBand.bind(this);
 
   }
+  handleButtonClick(event) {
+    debugger;
+    $.ajax({
+      type: "POST",
+      url: '/api/tickets',
+      data: { ticket: { event_id: event, site: 'seatGeek' } },
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ message: data.message })
+    });
+    console.log(event);
+  }
+
+  handleButtonClickTicket(event) {
+    debugger;
+    $.ajax({
+      type: "POST",
+      url: '/api/tickets',
+      data: { ticket: { event_id: event, site: 'ticketmaster' } },
+      dataType: 'json',
+    })
+    .done(data => {
+      this.setState({ message: data.message })
+    });
+  }
+
+  handleButtonClickBand(event) {
+    debugger;
+    $.ajax({
+      type: "POST",
+      url: '/api/tickets',
+      data: { ticket: { date: event, site: 'bandsInTown', keyword: this.state.search } },
+      dataType: 'json',
+    })
+    .done(data => {
+      this.setState({ message: data.message })
+    });
+  }
+
 
 
   handleClickGeek(event) {
@@ -122,7 +163,6 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      debugger;
       this.setState({ ticket: data.ticketmasterData._embedded.events });
     });
   }
@@ -147,10 +187,9 @@ class Ticket extends Component {
     this.setState({ zip: newZip });
   }
 
-
-
   render() {
     let clickedRecommendedDatas = this.state.recommendedEvent.map(clickedRecommendedDatas => {
+      let handleClick = () => this.handleButtonClick(clickedRecommendedDatas.id)
       return (
         <ClickedRecommendedData
         key={clickedRecommendedDatas.id}
@@ -164,11 +203,13 @@ class Ticket extends Component {
         display_location={clickedRecommendedDatas.venue.display_location}
         highest_price={clickedRecommendedDatas.stats.highest_price}
         lowest_price={clickedRecommendedDatas.stats.lowest_price}
+        handleClick={handleClick}
         />
       );
     });
 
     let clickedBandsInTownDatas = this.state.bandsInTownEvent.map(clickedBandsInTownData => {
+      let handleClick = () => this.handleButtonClickBand(clickedBandsInTownData.datetime.slice(0,10))
       return (
         <ClickedBandsInTownData
         key={clickedBandsInTownData.id}
@@ -178,11 +219,13 @@ class Ticket extends Component {
         image={clickedBandsInTownData.artists[0].image_url}
         date={clickedBandsInTownData.formatted_datetime}
         venue={clickedBandsInTownData.venue.name}
+        handleClick={handleClick}
         />
       );
     });
 
     let clickedTicketMasterDatas = this.state.ticketMasterEvent.map(clickedTicketMasterData => {
+      let handleClick = () => this.handleButtonClickTicket(clickedTicketMasterData.id)
       return (
         <ClickedTicketMasterData
         key={clickedTicketMasterData.id}
@@ -195,11 +238,13 @@ class Ticket extends Component {
         image={clickedTicketMasterData.images[0].url}
         highest_price={clickedTicketMasterData.priceRanges.max}
         lowest_price={clickedTicketMasterData.priceRanges.min}
+        handleClick={handleClick}
         />
       );
     });
 
       let clickedGeekDatas = this.state.seatGeekEvents.map(clickedGeekData => {
+        let handleClick = () => this.handleButtonClick(clickedGeekData.id)
         return (
           <ClickedGeekData
           key={clickedGeekData.id}
@@ -213,13 +258,13 @@ class Ticket extends Component {
           display_location={clickedGeekData.venue.display_location}
           highest_price={clickedGeekData.stats.highest_price}
           lowest_price={clickedGeekData.stats.lowest_price}
+          handleClick={handleClick}
           />
         );
       });
 
     let recommendedDatas = this.state.recommended.map(recommendedData => {
       let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
-
       return (
         <RecommendedData
         key={recommendedData.event.id}
@@ -279,7 +324,6 @@ class Ticket extends Component {
         />
       );
     });
-
     return (
       <div className='jumbotron'>
         <div className='container'>

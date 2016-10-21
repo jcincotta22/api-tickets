@@ -9,9 +9,10 @@ const ClickedBandsInTownData = props => {
         <li>{props.venue}</li>
         <li>{props.location}</li>
         <li>{props.date}</li>
-        <li>Artist Webisite: ${props.artist_website}</li>
-        <li>Ticket Status: ${props.ticket_status}</li>
+        <li><a href={props.artist_website}>{props.artist_website}</a></li>
+        <li>Ticket Status: {props.ticket_status}</li>
         <li><img src={props.image}/></li>
+        <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
       </ul>
 
 

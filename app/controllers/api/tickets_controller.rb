@@ -9,6 +9,7 @@ class Api::TicketsController < ApiController
         ticket.save
         SearchHistory.create(user_id: user.id, ticket_id: ticket.id)
       end
+
       ticketmasterData = ticket.get_data_ticketmaster_events(ENV["TICKETMASTER_KEY"], ticket.keyword, ticket.date, ticket.end_date)
       render json: { ticketmasterData: ticketmasterData }, status: :ok
     elsif ticket.site == 'seatgeek'
@@ -29,49 +30,37 @@ class Api::TicketsController < ApiController
   def create
     ticket = Ticket.new(ticket_params)
     user = current_user
-    if ticket.site == 'seatGeek'
+    if ticket.site == 'ticketmaster'
       if user
-        search_history = user.search_histories.last
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, search_history_id: search_history.id, event_id: ticket.event_id)
+        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, event_id: ticket.event_id)
         saved_event.save
-        success = "Event was saved to your Event Bucket"
-        render json: { success: success }, status: :ok
+        message = "Event was saved to your Event Bucket"
+        render json: { message: message }, status: :ok
       else
-        error_message = "User must be signed in to save this event"
-        render json: { error_message: error_message }, status: :ok
+        message = "User must be signed in to save this event"
+        render json: { message: message }, status: :ok
       end
-    elsif ticket.site == 'ticketmaster'
-      if user
-        search_history = user.search_histories.last
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, search_history_id: search_history.id, event_id: ticket.event_id)
-        saved_event.save
-        success = "Event was saved to your Event Bucket"
-        render json: { success: success }, status: :ok
-      else
-        error_message = "User must be signed in to save this event"
-        render json: { error_message: error_message }, status: :ok
-      end
+
     elsif ticket.site == 'bandsInTown'
       if user
-        search_history = user.search_histories.last
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, search_history_id: search_history.id, event_id: ticket.date, keyword: ticket.keyword)
+        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, date: ticket.date, keyword: ticket.keyword)
         saved_event.save
-        success = "Event was saved to your Event Bucket"
-        render json: { success: success }, status: :ok
+        message = "Event was saved to your Event Bucket"
+        render json: { message: message }, status: :ok
       else
-        error_message = "User must be signed in to save this event"
-        render json: { error_message: error_message }, status: :ok
+        message = "User must be signed in to save this event"
+        render json: { message: message }, status: :ok
       end
-    elsif ticket.site == 'recommended'
+
+    elsif ticket.site == 'seatGeek'
       if user
-        search_history = user.search_histories.last
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, search_history_id: search_history.id, event_id: ticket.event_id)
+        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, event_id: ticket.event_id)
         saved_event.save
-        success = "Event was saved to your Event Bucket"
-        render json: { success: success }, status: :ok
+        message = "Event was saved to your Event Bucket"
+        render json: { message: message }, status: :ok
       else
-        error_message = "User must be signed in to save this event"
-        render json: { error_message: error_message }, status: :ok
+        message = "User must be signed in to save this event"
+        render json: { message: message }, status: :ok
       end
     end
   end
