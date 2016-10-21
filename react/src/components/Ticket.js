@@ -9,6 +9,7 @@ import ClickedGeekData from './ClickedGeekData';
 import ClickedTicketMasterData from './ClickedTicketMasterData';
 import ClickedBandsInTownData from './ClickedBandsInTownData';
 import ClickedRecommendedData from './ClickedRecommendedData';
+import SavedEventsData from './SavedEventsData';
 
 class Ticket extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Ticket extends Component {
       ticketMasterEvent: [],
       bandsInTownEvent: [],
       recommendedEvent: [],
+      savedEvents:[],
       clickedEvent: '',
       message: '',
       search: '',
@@ -43,11 +45,24 @@ class Ticket extends Component {
      this.handleButtonClickBand = this.handleButtonClickBand.bind(this);
 
   }
+
+  componentDidMount() {
+    $.ajax({
+      url: '/api/saved_events',
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ savedEvents: data.savedEvents });
+    });
+
+  }
+
+
   handleButtonClick(event) {
     $.ajax({
       type: "POST",
-      url: '/api/tickets',
-      data: { ticket: { event_id: event, site: 'seatGeek' } },
+      url: '/api/saved_events',
+      data: { saved_event: { event_id: event.id, site: 'seatGeek', title: event.title } },
       dataType: 'json'
     })
     .done(data => {
@@ -59,8 +74,8 @@ class Ticket extends Component {
   handleButtonClickTicket(event) {
     $.ajax({
       type: "POST",
-      url: '/api/tickets',
-      data: { ticket: { event_id: event, site: 'ticketmaster' } },
+      url: '/api/saved_events',
+      data: { saved_event: { event_id: event.id, site: 'ticketmaster', title: event.name } },
       dataType: 'json',
     })
     .done(data => {
@@ -71,8 +86,8 @@ class Ticket extends Component {
   handleButtonClickBand(event) {
     $.ajax({
       type: "POST",
-      url: '/api/tickets',
-      data: { ticket: { date: event, site: 'bandsInTown', keyword: this.state.search } },
+      url: '/api/saved_events',
+      data: { saved_event: { date: event.datetime.slice(0,10), site: 'bandsInTown', keyword: this.state.search, title: event.title } },
       dataType: 'json',
     })
     .done(data => {
@@ -190,8 +205,10 @@ class Ticket extends Component {
   }
 
   render() {
+
+
     let clickedRecommendedDatas = this.state.recommendedEvent.map(clickedRecommendedDatas => {
-      let handleClick = () => this.handleButtonClick(clickedRecommendedDatas.id)
+      let handleClick = () => this.handleButtonClick(clickedRecommendedDatas)
       return (
         <ClickedRecommendedData
         key={clickedRecommendedDatas.id}
@@ -211,7 +228,7 @@ class Ticket extends Component {
     });
 
     let clickedBandsInTownDatas = this.state.bandsInTownEvent.map(clickedBandsInTownData => {
-      let handleClick = () => this.handleButtonClickBand(clickedBandsInTownData.datetime.slice(0,10))
+      let handleClick = () => this.handleButtonClickBand(clickedBandsInTownData)
       return (
         <ClickedBandsInTownData
         key={clickedBandsInTownData.id}
@@ -229,7 +246,7 @@ class Ticket extends Component {
     });
 
     let clickedTicketMasterDatas = this.state.ticketMasterEvent.map(clickedTicketMasterData => {
-      let handleClick = () => this.handleButtonClickTicket(clickedTicketMasterData.id)
+      let handleClick = () => this.handleButtonClickTicket(clickedTicketMasterData)
       return (
         <ClickedTicketMasterData
         key={clickedTicketMasterData.id}
@@ -248,7 +265,7 @@ class Ticket extends Component {
     });
 
       let clickedGeekDatas = this.state.seatGeekEvents.map(clickedGeekData => {
-        let handleClick = () => this.handleButtonClick(clickedGeekData.id)
+        let handleClick = () => this.handleButtonClick(clickedGeekData)
         return (
           <ClickedGeekData
           key={clickedGeekData.id}
@@ -328,6 +345,22 @@ class Ticket extends Component {
         />
       );
     });
+
+    let savedEventsDatas
+    if (this.state.savedEvents.length === 0){
+      savedEventsDatas = null
+    }else{
+      savedEventsDatas = this.state.savedEvents.map(savedEventsData => {
+        return (
+          <SavedEventsData
+          key={savedEventsData.id}
+          title={savedEventsData.title}
+          site={savedEventsData.site}
+          />
+        );
+      });
+
+    }
     return (
       <div className='jumbotron'>
         <div className='container'>
@@ -349,7 +382,10 @@ class Ticket extends Component {
           </div>
         </div>
         <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'>
-          <h4>Saved Event Bucket</h4>
+          <div>
+            <h4>Saved Event Bucket</h4>
+            {savedEventsDatas}
+          </div>
           <div id='main-div'>
             {clickedGeekDatas}
             {clickedTicketMasterDatas}

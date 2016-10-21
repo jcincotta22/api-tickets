@@ -27,47 +27,11 @@ class Api::TicketsController < ApiController
     end
   end
 
-  def create
-    ticket = Ticket.new(ticket_params)
-    user = current_user
-    if ticket.site == 'ticketmaster'
-      if user
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, event_id: ticket.event_id)
-        saved_event.save
-        message = "Event was saved to your Event Bucket"
-        render json: { message: message }, status: :ok
-      else
-        message = "User must be signed in to save this event"
-        render json: { message: message }, status: :ok
-      end
-
-    elsif ticket.site == 'bandsInTown'
-      if user
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, date: ticket.date, keyword: ticket.keyword)
-        saved_event.save
-        message = "Event was saved to your Event Bucket"
-        render json: { message: message }, status: :ok
-      else
-        message = "User must be signed in to save this event"
-        render json: { message: message }, status: :ok
-      end
-
-    elsif ticket.site == 'seatGeek'
-      if user
-        saved_event = SavedEvent.new(site: ticket.site, user_id: user.id, event_id: ticket.event_id)
-        saved_event.save
-        message = "Event was saved to your Event Bucket"
-        render json: { message: message }, status: :ok
-      else
-        message = "User must be signed in to save this event"
-        render json: { message: message }, status: :ok
-      end
-    end
-  end
 
   private
 
   def ticket_params
-    params.require(:ticket).permit(:keyword, :site, :date, :zip, :performer_id, :end_date, :performer_id, :event_id)
+    params.require(:ticket).permit(:keyword, :site, :date, :zip, :performer_id, :end_date, :event_id)
   end
+
 end
