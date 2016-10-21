@@ -5,10 +5,10 @@ import TicketForm from './TicketForm';
 import SeatGeekData from './SeatGeekData';
 import BandsInTownData from './BandsInTownData';
 import RecommendedData from './RecommendedData';
-
-import Sortable from 'sortablejs'
-
-
+import ClickedGeekData from './ClickedGeekData';
+import ClickedTicketMasterData from './ClickedTicketMasterData';
+import ClickedBandsInTownData from './ClickedBandsInTownData';
+import ClickedRecommendedData from './ClickedRecommendedData';
 
 class Ticket extends Component {
   constructor(props) {
@@ -20,11 +20,12 @@ class Ticket extends Component {
       bandsInTownEvent: [],
       recommended: [],
       seatGeekEvents: [],
-      tickeMasterEvent: [],
+      ticketMasterEvent: [],
       bandsInTownEvent: [],
       recommendedEvent: [],
       elementValue: [],
       savedEvents: [],
+      clickedEvent: '',
       message: '',
       search: '',
       date: '',
@@ -38,10 +39,20 @@ class Ticket extends Component {
      this.handleZipChange = this.handleZipChange.bind(this);
      this.handleClickGeek = this.handleClickGeek.bind(this);
      this.handleClickTicketMaster = this.handleClickTicketMaster.bind(this);
+     this.handleClickBand = this.handleClickBand.bind(this);
 
   }
 
 
+  handleClickGeek(event) {
+    $.ajax({
+      url: `https://api.seatgeek.com/2/events/${event}`,
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ seatGeekEvents: [data] });
+    });
+  }
 
   handleClickRecommended(event) {
     $.ajax({
@@ -50,7 +61,7 @@ class Ticket extends Component {
     })
     .done(data => {
       console.log("clicked")
-      this.setState({ recommendedEvent: data });
+      this.setState({ recommendedEvent: [data] });
     });
   }
 
@@ -64,15 +75,6 @@ class Ticket extends Component {
     });
   }
 
-  handleClickGeek(event) {
-    $.ajax({
-      url: `https://api.seatgeek.com/2/events/${event}`,
-      dataType: 'json'
-    })
-    .done(data => {
-      this.setState({ seatGeekEvents: data });
-    });
-  }
 
   handleClickTicketMaster(event) {
     $.ajax({
@@ -81,7 +83,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ tickeMasterEvent: data });
+      this.setState({ ticketMasterEvent: [data.ticketmasterEvent] });
     });
   }
 
@@ -120,6 +122,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
+      debugger;
       this.setState({ ticket: data.ticketmasterData._embedded.events });
     });
   }
@@ -147,6 +150,73 @@ class Ticket extends Component {
 
 
   render() {
+    let clickedRecommendedDatas = this.state.recommendedEvent.map(clickedRecommendedDatas => {
+      return (
+        <ClickedRecommendedData
+        key={clickedRecommendedDatas.id}
+        id={clickedRecommendedDatas.id}
+        title={clickedRecommendedDatas.title}
+        venue={clickedRecommendedDatas.venue.name}
+        date={clickedRecommendedDatas.datetime_local.slice(0,10)}
+        city={clickedRecommendedDatas.venue.city}
+        url={clickedRecommendedDatas.url}
+        image={clickedRecommendedDatas.performers[0].image}
+        display_location={clickedRecommendedDatas.venue.display_location}
+        highest_price={clickedRecommendedDatas.stats.highest_price}
+        lowest_price={clickedRecommendedDatas.stats.lowest_price}
+        />
+      );
+    });
+
+    let clickedBandsInTownDatas = this.state.bandsInTownEvent.map(clickedBandsInTownData => {
+      return (
+        <ClickedBandsInTownData
+        key={clickedBandsInTownData.id}
+        title={clickedBandsInTownData.id}
+        ticket_status={clickedBandsInTownData.ticket_status}
+        artist_website={clickedBandsInTownData.artists[0].website}
+        image={clickedBandsInTownData.artists[0].image_url}
+        date={clickedBandsInTownData.formatted_datetime}
+        venue={clickedBandsInTownData.venue.name}
+        />
+      );
+    });
+
+    let clickedTicketMasterDatas = this.state.ticketMasterEvent.map(clickedTicketMasterData => {
+      return (
+        <ClickedTicketMasterData
+        key={clickedTicketMasterData.id}
+        id={clickedTicketMasterData.id}
+        title={clickedTicketMasterData.name}
+        venue={clickedTicketMasterData._embedded.venues[0].name}
+        date={clickedTicketMasterData.dates.start.localDate}
+        city={clickedTicketMasterData._embedded.venues[0].city.name}
+        url={clickedTicketMasterData.url}
+        image={clickedTicketMasterData.images[0].url}
+        highest_price={clickedTicketMasterData.priceRanges.max}
+        lowest_price={clickedTicketMasterData.priceRanges.min}
+        />
+      );
+    });
+
+      let clickedGeekDatas = this.state.seatGeekEvents.map(clickedGeekData => {
+        return (
+          <ClickedGeekData
+          key={clickedGeekData.id}
+          id={clickedGeekData.id}
+          title={clickedGeekData.title}
+          venue={clickedGeekData.venue.name}
+          date={clickedGeekData.datetime_local.slice(0,10)}
+          city={clickedGeekData.venue.city}
+          url={clickedGeekData.url}
+          image={clickedGeekData.performers[0].image}
+          display_location={clickedGeekData.venue.display_location}
+          highest_price={clickedGeekData.stats.highest_price}
+          lowest_price={clickedGeekData.stats.lowest_price}
+          />
+        );
+      });
+
     let recommendedDatas = this.state.recommended.map(recommendedData => {
       let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
 
@@ -158,7 +228,6 @@ class Ticket extends Component {
         venue={recommendedData.event.venue.name}
         date={recommendedData.event.datetime_local.slice(0,10)}
         city={recommendedData.event.venue.city}
-        recommendedEvent={this.state.recommendedEvent}
         handleClickRecommended={clickTargetRecommended}
         />
       );
@@ -175,7 +244,6 @@ class Ticket extends Component {
         city={bandsInTownData.venue.city}
         date={bandsInTownData.datetime.slice(0,10)}
         formatedDate={bandsInTownData.formatted_datetime}
-        bandsInTownEvent={this.state.bandsInTownEvent}
         handleClickBand={clickBandTarget}
         />
       );
@@ -191,7 +259,6 @@ class Ticket extends Component {
         date={seatGeekData.datetime_local.slice(0,10)}
         venue={seatGeekData.venue.name}
         city={seatGeekData.venue.city}
-        seatGeekEvent={this.state.seatGeekEvents}
         handleClickGeek={clickTarget}
         />
       );
@@ -208,7 +275,6 @@ class Ticket extends Component {
         venueName={ticketdata._embedded.venues[0].name}
         city={ticketdata._embedded.venues[0].city.name}
         date={ticketdata.dates.start.localDate}
-        tickeMasterEvent={this.state.tickeMasterEvent}
         handleClickTicketMaster={clickMasterTarget}
         />
       );
@@ -236,8 +302,11 @@ class Ticket extends Component {
         </div>
         <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'>
           <h4>Saved Event Bucket</h4>
-          <div id='saved'>
-            <li></li>
+          <div id='main-div'>
+            {clickedGeekDatas}
+            {clickedTicketMasterDatas}
+            {clickedBandsInTownDatas}
+            {clickedRecommendedDatas}
           </div>
         </div>
         <div className='container'>
