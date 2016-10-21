@@ -6,6 +6,7 @@ class CreateSavedEvents < ActiveRecord::Migration[5.0]
       t.string :keyword
       t.string :date
       t.string :end_date
+      t.string :title, null: false
       t.timestamps
     end
   end
