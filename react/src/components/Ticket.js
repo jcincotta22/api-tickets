@@ -83,6 +83,7 @@ class Ticket extends Component {
 
 
   handleClickGeek(event) {
+    this.setState({ message: '' });
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
       dataType: 'json'
@@ -93,6 +94,7 @@ class Ticket extends Component {
   }
 
   handleClickRecommended(event) {
+    this.setState({ message: '' });
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
       dataType: 'json'
@@ -104,6 +106,7 @@ class Ticket extends Component {
   }
 
   handleClickBand(event) {
+    this.setState({ message: '' });
     $.ajax({
       url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&date=${event}`,
       dataType: 'jsonp'
@@ -115,6 +118,7 @@ class Ticket extends Component {
 
 
   handleClickTicketMaster(event) {
+    this.setState({ message: '' });
     $.ajax({
       url: '/api/events',
       data: { ticket: { event_id: event, site: 'ticketmasterEvent' } },
@@ -129,7 +133,6 @@ class Ticket extends Component {
     event.preventDefault();
 
     this.setState({ message: '' });
-    debugger;
 
     $.ajax({
       url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
@@ -212,7 +215,9 @@ class Ticket extends Component {
       return (
         <ClickedBandsInTownData
         key={clickedBandsInTownData.id}
-        title={clickedBandsInTownData.id}
+        id={clickedBandsInTownData.id}
+        title={clickedBandsInTownData.title}
+        location={clickedBandsInTownData.venue.city}
         ticket_status={clickedBandsInTownData.ticket_status}
         artist_website={clickedBandsInTownData.artists[0].website}
         image={clickedBandsInTownData.artists[0].image_url}
@@ -235,8 +240,8 @@ class Ticket extends Component {
         city={clickedTicketMasterData._embedded.venues[0].city.name}
         url={clickedTicketMasterData.url}
         image={clickedTicketMasterData.images[0].url}
-        highest_price={clickedTicketMasterData.priceRanges.max}
-        lowest_price={clickedTicketMasterData.priceRanges.min}
+        highest_price={clickedTicketMasterData.priceRanges[0].max}
+        lowest_price={clickedTicketMasterData.priceRanges[0].min}
         handleClick={handleClick}
         />
       );

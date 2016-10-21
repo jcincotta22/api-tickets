@@ -5,8 +5,7 @@ const ClickedGeekData = props => {
     clickedLineItem = <ul>
         <li>{props.title}</li>
         <li><a href={props.url} target="_blank">Visit SeatGeek to See Tickets for This Event</a></li>
-        <li>{props.name}</li>
-        <li>{props.city}</li>
+        <li>{props.venue}</li>
         <li>{props.display_location}</li>
         <li>{props.date}</li>
         <li>Highest Price: ${props.highest_price}</li>
