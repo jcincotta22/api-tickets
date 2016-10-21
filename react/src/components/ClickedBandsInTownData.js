@@ -1,11 +1,10 @@
 import React from 'react';
 
 const ClickedBandsInTownData = props => {
-  debugger;
   let clickedLineItem
     clickedLineItem = <ul>
         <li>{props.title}</li>
-        <li><a href={props.url} target="_blank">Visit SeatGeek to See Tickets for This Event</a></li>
+        <li><a href={props.url} target="_blank">Visit BandsInTown to See Tickets for This Event</a></li>
         <li>{props.venue}</li>
         <li>{props.location}</li>
         <li>{props.date}</li>

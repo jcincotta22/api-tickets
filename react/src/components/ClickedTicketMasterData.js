@@ -7,7 +7,6 @@ const ClickedTicketMasterData = props => {
         <li><a href={props.url} target="_blank">Visit Ticketmaster to See Tickets for This Event</a></li>
         <li>{props.venue}</li>
         <li>{props.city}</li>
-        <li>{props.display_location}</li>
         <li>{props.date}</li>
         <li>Highest Price: ${props.highest_price}</li>
         <li>Lowest Price: ${props.lowest_price}</li>
