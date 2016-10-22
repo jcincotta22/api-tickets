@@ -44,7 +44,20 @@ class Ticket extends Component {
      this.handleButtonClickTicket = this.handleButtonClickTicket.bind(this);
      this.handleButtonClickBand = this.handleButtonClickBand.bind(this);
      this.getSavedEvents = this.getSavedEvents.bind(this);
+     this.formValidation = this.formValidation.bind(this);
 
+  }
+
+  formValidation() {
+    let regex = /^(?:\d{5})$/;
+    let inpObj = document.getElementById("zip");
+    if ( regex.test(inpObj.value) ) {
+      document.getElementById("formMessage").innerHTML = null;
+      return true;
+    }else {
+      document.getElementById("formMessage").innerHTML = 'Zip must be 5 digits';
+      return false;
+    }
   }
 
   getSavedEvents() {
@@ -148,42 +161,47 @@ class Ticket extends Component {
   }
 
   handleFormSubmit(event) {
+    let formValidity
     event.preventDefault();
 
     this.setState({ message: '' });
+    formValidity = this.formValidation();
+    debugger;
+    if (formValidity === true) {
 
-    $.ajax({
-      url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
-      dataType: 'json'
-    })
-    .done(data => {
-      this.setState({ seatGeek: data.events });
       $.ajax({
-        url: '/api/events',
-        data: { ticket: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
+        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lt=#{this.state.endDate}`,
         dataType: 'json'
       })
       .done(data => {
-        this.setState({ recommended: data.recommendedEvents.recommendations });
+        this.setState({ seatGeek: data.events });
+        $.ajax({
+          url: '/api/events',
+          data: { ticket: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
+          dataType: 'json'
+        })
+        .done(data => {
+          this.setState({ recommended: data.recommendedEvents.recommendations });
+        });
       });
-    });
 
-    $.ajax({
-      url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
-      dataType: 'jsonp'
-    })
-    .done(data => {
-      this.setState({ bandsInTown: data });
-    });
+      $.ajax({
+        url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
+        dataType: 'jsonp'
+      })
+      .done(data => {
+        this.setState({ bandsInTown: data });
+      });
 
-    $.ajax({
-      url: '/api/events',
-      data: { ticket: { keyword: this.state.search, site: 'ticketmaster', date: this.state.date, end_date: this.state.endDate, zip: this.state.zip } },
-      dataType: 'json'
-    })
-    .done(data => {
-      this.setState({ ticket: data.ticketmasterData._embedded.events });
-    });
+      $.ajax({
+        url: '/api/events',
+        data: { ticket: { keyword: this.state.search, site: 'ticketmaster', date: this.state.date, end_date: this.state.endDate, zip: this.state.zip } },
+        dataType: 'json'
+      })
+      .done(data => {
+        this.setState({ ticket: data.ticketmasterData._embedded.events });
+      });
+    }
   }
 
   handleChange(event) {
