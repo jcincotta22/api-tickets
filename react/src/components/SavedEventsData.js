@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SavedEventsData = props => {
-  debugger;
   return (
   <ul>
     <li>Event Title: {props.title}</li>
