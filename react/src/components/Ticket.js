@@ -43,10 +43,11 @@ class Ticket extends Component {
      this.handleButtonClick = this.handleButtonClick.bind(this);
      this.handleButtonClickTicket = this.handleButtonClickTicket.bind(this);
      this.handleButtonClickBand = this.handleButtonClickBand.bind(this);
+     this.getSavedEvents = this.getSavedEvents.bind(this);
 
   }
 
-  componentDidMount() {
+  getSavedEvents() {
     $.ajax({
       url: '/api/saved_events',
       dataType: 'json'
@@ -54,9 +55,11 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ savedEvents: data.savedEvents });
     });
-
   }
 
+  componentDidMount() {
+    this.getSavedEvents();
+  }
 
   handleButtonClick(event) {
     $.ajax({
@@ -67,8 +70,8 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ message: data.message })
+      this.getSavedEvents();
     });
-    console.log(event);
   }
 
   handleButtonClickTicket(event) {
@@ -115,7 +118,6 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      console.log("clicked")
       this.setState({ recommendedEvent: [data] });
     });
   }
