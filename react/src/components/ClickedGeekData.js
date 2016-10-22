@@ -14,10 +14,9 @@ const ClickedGeekData = props => {
         <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
       </ul>
 
-
   return (
     <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 saved-events'>
-      {clickedLineItem}
+      { clickedLineItem }
     </div>
 
   );
