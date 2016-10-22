@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161019183733) do
     t.string   "date"
     t.string   "end_date"
     t.string   "title",      null: false
+    t.string   "url",        null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "event_id"
