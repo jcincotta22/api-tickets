@@ -166,7 +166,6 @@ class Ticket extends Component {
 
     this.setState({ message: '' });
     formValidity = this.formValidation();
-    debugger;
     if (formValidity === true) {
 
       $.ajax({
