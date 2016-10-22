@@ -57,7 +57,7 @@ class Api::SavedEventsController < ApiController
   private
 
   def event_params
-    params.require(:saved_event).permit(:keyword, :site, :date, :end_date, :title)
+    params.require(:saved_event).permit(:keyword, :site, :date, :end_date, :title, :url)
   end
 
 end

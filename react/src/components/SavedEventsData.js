@@ -1,10 +1,12 @@
 import React from 'react';
 
 const SavedEventsData = props => {
+  debugger;
   return (
   <ul>
-    <li>{props.title}</li>
-    <li>{props.site}</li>
+    <li>Event Title: {props.title}</li>
+    <li>Site: {props.site}</li>
+    <li><a href={props.url}>{props.url}</a></li>
   </ul>
   );
 };

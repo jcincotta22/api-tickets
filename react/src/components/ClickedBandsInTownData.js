@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ClickedBandsInTownData = props => {
+  debugger;
   let clickedLineItem
     clickedLineItem = <ul>
         <li>{props.title}</li>

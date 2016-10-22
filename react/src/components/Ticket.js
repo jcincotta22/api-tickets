@@ -65,7 +65,7 @@ class Ticket extends Component {
     $.ajax({
       type: "POST",
       url: '/api/saved_events',
-      data: { saved_event: { event_id: event.id, site: 'seatGeek', title: event.title } },
+      data: { saved_event: { event_id: event.id, site: 'seatGeek', title: event.title, url: event.url } },
       dataType: 'json'
     })
     .done(data => {
@@ -78,11 +78,12 @@ class Ticket extends Component {
     $.ajax({
       type: "POST",
       url: '/api/saved_events',
-      data: { saved_event: { event_id: event.id, site: 'ticketmaster', title: event.name } },
+      data: { saved_event: { event_id: event.id, site: 'ticketmaster', title: event.name, url: event.url } },
       dataType: 'json',
     })
     .done(data => {
       this.setState({ message: data.message })
+      this.getSavedEvents();
     });
   }
 
@@ -90,14 +91,14 @@ class Ticket extends Component {
     $.ajax({
       type: "POST",
       url: '/api/saved_events',
-      data: { saved_event: { date: event.datetime.slice(0,10), site: 'bandsInTown', keyword: this.state.search, title: event.title } },
+      data: { saved_event: { date: event.datetime.slice(0,10), site: 'bandsInTown', keyword: this.state.search, title: event.title, url: event.ticket_url } },
       dataType: 'json',
     })
     .done(data => {
       this.setState({ message: data.message })
+      this.getSavedEvents();
     });
   }
-
 
 
   handleClickGeek(event) {
@@ -165,7 +166,6 @@ class Ticket extends Component {
       .done(data => {
         this.setState({ recommended: data.recommendedEvents.recommendations });
       });
-
     });
 
     $.ajax({
@@ -208,7 +208,6 @@ class Ticket extends Component {
 
   render() {
 
-
     let clickedRecommendedDatas = this.state.recommendedEvent.map(clickedRecommendedDatas => {
       let handleClick = () => this.handleButtonClick(clickedRecommendedDatas)
       return (
@@ -236,6 +235,7 @@ class Ticket extends Component {
         key={clickedBandsInTownData.id}
         id={clickedBandsInTownData.id}
         title={clickedBandsInTownData.title}
+        url={clickedBandsInTownData.ticket_url}
         location={clickedBandsInTownData.venue.city}
         ticket_status={clickedBandsInTownData.ticket_status}
         artist_website={clickedBandsInTownData.artists[0].website}
@@ -302,7 +302,6 @@ class Ticket extends Component {
     });
     let bandsInTownDatas = this.state.bandsInTown.map(bandsInTownData => {
       let clickBandTarget = () => this.handleClickBand(bandsInTownData.datetime.slice(0,10))
-
       return (
         <BandsInTownData
         key={bandsInTownData.id}
@@ -318,7 +317,6 @@ class Ticket extends Component {
     });
     let seatGeekDatas = this.state.seatGeek.map(seatGeekData => {
       let clickTarget = () => this.handleClickGeek(seatGeekData.id)
-
       return (
         <SeatGeekData
         key={seatGeekData.id}
@@ -333,7 +331,6 @@ class Ticket extends Component {
     });
     let ticketdatas = this.state.ticket.map(ticketdata => {
       let clickMasterTarget = () => this.handleClickTicketMaster(ticketdata.id)
-
       return (
         <Ticketdata
         key={ticketdata.id}
@@ -358,6 +355,7 @@ class Ticket extends Component {
           key={savedEventsData.id}
           title={savedEventsData.title}
           site={savedEventsData.site}
+          url={savedEventsData.url}
           />
         );
       });
