@@ -1,0 +1,26 @@
+/* line 8, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.results {
+  max-height: 20em;
+  overflow: scroll;
+}
+
+/* line 13, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.heading-img {
+  max-height: 50px;
+}
+
+/* line 17, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.clicked-image {
+  width: 38em;
+}
+
+/* line 22, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.container {
+  width: 95%;
+}
+
+/* line 26, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+form {
+  margin-left: 20%;
+  margin-right: 20%;
+}
