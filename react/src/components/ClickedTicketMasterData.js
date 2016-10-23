@@ -10,7 +10,7 @@ const ClickedTicketMasterData = props => {
         <li>{props.date}</li>
         <li>Highest Price: ${props.highest_price}</li>
         <li>Lowest Price: ${props.lowest_price}</li>
-        <li><img src={props.image}/></li>
+        <li><img src={props.image} className="clicked-image"/></li>
         <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
       </ul>
 

@@ -116,7 +116,6 @@ class Ticket extends Component {
 
   handleClickGeek(event) {
     this.setState({ message: '' });
-    debugger;
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
       dataType: 'json'
@@ -399,53 +398,54 @@ class Ticket extends Component {
             </div>
           </div>
         </div>
-        <div className='col-lg-3 col-md-3 col-sm-3 col-xs-12 saved-events'>
-          <div>
-            <h4>Saved Event Bucket</h4>
-            {savedEventsDatas}
-          </div>
-        </div>
         <div className='container'>
           <div className='row'>
-            <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-              <div id='main-div'>
-                {clickedGeekDatas}
-                {clickedTicketMasterDatas}
-                {clickedBandsInTownDatas}
-                {clickedRecommendedDatas}
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
-              <div className="panel panel-info">
+            <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+              <div className="panel panel-info results">
                 <div className="panel-heading"><img src="https://upload.wikimedia.org/wikipedia/en/1/1b/SeatGeek.png" className="heading-img"/></div>
                 <div id='seatGeek' className='results'>
                   {seatGeekDatas}
                 </div>
               </div>
-              <div className="panel panel-info">
+              <div className="panel panel-info results">
                 <div className="panel-heading"><img src="http://bespokemusicgroup.com/img/tools/bandsintown.png" className="heading-img"/></div>
                 <div id='bandsInTown' className='results'>
                   {bandsInTownDatas}
                 </div>
               </div>
-              <div className="panel panel-info">
+              <div className="panel panel-info results">
                 <div className="panel-heading"><img src="http://b2b.ticketmaster.nl/sites/default/files/downloads/tmlogo_grey.png" className="heading-img"/></div>
                 <div id='ticketmaster' className='results'>
                   {ticketdatas}
                 </div>
               </div>
-              <div className="panel panel-info">
+              <div className="panel panel-info results">
                 <div className="panel-heading"><h4>Recommended By Us</h4></div>
                 <div id='recommended' className='results'>
                   {recommendedDatas}
                 </div>
               </div>
             </div>
+
+            <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+              <div className='container'>
+                <div id='main-div row'>
+                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedGeekDatas}</div>
+                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedTicketMasterDatas}</div>
+                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedBandsInTownDatas}</div>
+                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedRecommendedDatas}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+              <div className="panel panel-info">
+                <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
+                <div className="panel-info saved-events">{savedEventsDatas}</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

@@ -54,13 +54,15 @@ ActiveRecord::Schema.define(version: 20161019183733) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string "site"
-    t.string "keyword",      null: false
-    t.string "date"
-    t.string "event_id"
-    t.string "zip"
-    t.string "performer_id"
-    t.string "end_date",     null: false
+    t.string   "site"
+    t.string   "keyword",      null: false
+    t.string   "date"
+    t.string   "event_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "zip"
+    t.string   "performer_id"
+    t.string   "end_date",     null: false
   end
 
   create_table "users", force: :cascade do |t|

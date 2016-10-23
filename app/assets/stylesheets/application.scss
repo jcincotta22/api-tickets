@@ -1,16 +1,29 @@
 // @import "*";
 
-.saved-events {
- float: right;
- max-height: 30em;
- overflow: scroll;
-}
+// .saved-events {
+//  max-height: 30em;
+//  overflow: scroll;
+// }
 
 .results {
- max-height: 15em;
+ max-height: 20em;
  overflow: scroll;
 }
 
 .heading-img {
   max-height: 50px;
+}
+
+.clicked-image {
+ width: 38em;
+
+}
+
+.container {
+ width: 95%;
+}
+
+form {
+  margin-left: 20%;
+  margin-right: 20%;
 }
