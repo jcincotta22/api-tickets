@@ -2,4 +2,15 @@
 
 .saved-events {
  float: right;
+ max-height: 30em;
+ overflow: scroll;
+}
+
+.results {
+ max-height: 15em;
+ overflow: scroll;
+}
+
+.heading-img {
+  max-height: 50px;
 }
