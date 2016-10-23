@@ -24,3 +24,8 @@ form {
   margin-left: 20%;
   margin-right: 20%;
 }
+
+/* line 31, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.form-container {
+  margin-bottom: 3em;
+}
