@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ClickedBandsInTownData = props => {
-  debugger;
   let clickedLineItem
     clickedLineItem = <ul>
         <li>{props.title}</li>
@@ -11,7 +10,7 @@ const ClickedBandsInTownData = props => {
         <li>{props.date}</li>
         <li><a href={props.artist_website}>{props.artist_website}</a></li>
         <li>Ticket Status: {props.ticket_status}</li>
-        <li><img src={props.image}/></li>
+        <li><img src={props.image} className="clicked-image"/></li>
         <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
       </ul>
 

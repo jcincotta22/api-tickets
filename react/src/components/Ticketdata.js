@@ -4,7 +4,9 @@ const Ticketdata = props => {
   return (
   <div>
     <ul onClick={props.handleClickTicketMaster}>
-      {props.name}, Location: {props.venueName}, {props.city}, Date: {props.date}
+      <li>{props.name}</li>
+      <li> Location: {props.venueName}, {props.city}</li>
+      <li>Date: {props.date}</li>
     </ul>
   </div>
   );

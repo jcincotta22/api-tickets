@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.string :keyword, null: false
       t.string :date
       t.integer :event_id
+      t.timestamps
     end
   end
 end
