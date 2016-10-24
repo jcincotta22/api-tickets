@@ -23,6 +23,10 @@ nav {
   background-color: $stone;
 }
 
+.data:hover {
+  color: $coral;
+}
+
 .col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
   float: right;
 }
@@ -72,4 +76,19 @@ form {
 
 .panel-info > .panel-heading {
   background-color: $green;
+}
+
+.messages {
+  color:#555;
+  border-radius:10px;
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+  font-size:11px;
+  padding:10px 10px 10px 36px;
+  margin:10px;
+  font-weight:bold;
+  text-transform:uppercase;
+  background:#ffecec no-repeat 10px 50%;
+  border:1px solid #f5aca6;
+  width: 20em;
+  float: right;
 }

@@ -4,7 +4,9 @@ const BandsInTownData = props => {
   return (
   <div className='showDiv'>
     <ul onClick={props.handleClickBand} className='data'>
-    {props.title}, City: {props.city} Date: {props.formatedDate} Venue: {props.venue}, {props.city}
+      <li>{props.title}</li>
+      <li>Location: {props.venue}, {props.city}</li>
+      <li>Date: {props.formatedDate}</li> 
     </ul>
   </div>
   );
