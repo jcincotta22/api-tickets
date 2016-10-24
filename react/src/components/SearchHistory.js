@@ -3,10 +3,10 @@ import React from 'react';
 const SearchHistory = props => {
   return (
   <ul>
-    <li>Keyword: {props.keyword}</li>
-    <li>Start Date: {props.startDate}</li>
-    <li>Start Date: {props.endDate}</li>
-    <li>Zip: {props.zip}</li>
+    <li>You searched for: {props.keyword} on {props.createdAt}</li>
+    <li>With a start date of: {props.startDate}</li>
+    <li>An end date of: {props.endDate}</li>
+    <li>With a zip code of: {props.zip}</li>
   </ul>
   );
 };

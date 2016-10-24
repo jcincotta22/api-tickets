@@ -12,18 +12,18 @@ class Api::SearchHistoriesController < ApiController
       end
 
       if !search_history.nil?
-        render json: { searchHistory: tickets }, status: :ok
+        render json: { searchHistory: tickets, message: '' }, status: :ok
       else
-        render json: { searchHistory: [] }, status: :ok
+        render json: { searchHistory: [], message: "You do not have a search history" }, status: :ok
       end
     else
-      render json: { searchHistory: [] }, status: :ok
+      render json: { searchHistory: [], message: "You must sign in to view your search history" }, status: :ok
     end
   end
 
   def delete_all
     user = current_user
-    if user || !user.search_histories.empty?
+    if user && !user.search_histories.empty?
       SearchHistory.delete_all(user_id: user.id)
       message = "Your Search History Has Been Deleted"
       render json: { message: message }, status: :ok

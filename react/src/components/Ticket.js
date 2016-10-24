@@ -69,8 +69,6 @@ class Ticket extends Component {
     }
   }
 
-
-
   getSavedEvents() {
     $.ajax({
       url: '/api/saved_events',
@@ -88,11 +86,15 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ searchHistory: data.searchHistory });
+      if(data.message !== '' ){
+        this.setState({ message: <div className='messages'>{data.message}</div> })
+      }
       this.setState({ clickedEvent: 'searchHistory' })
     });
   }
 
   handleClickSearch(){
+    this.setState({ message: '' });
     this.getSearchHistory();
   }
 
@@ -177,6 +179,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ seatGeekEvents: [data] });
       this.setState({ clickedEvent: 'seatGeek' })
+      $(window).scrollTop(0);
     });
   }
 
@@ -189,6 +192,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ recommendedEvent: [data] });
       this.setState({ clickedEvent: 'recommended' })
+      $(window).scrollTop(0);
     });
   }
 
@@ -201,6 +205,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ bandsInTownEvent: data });
       this.setState({ clickedEvent: 'bandsInTown' })
+      $(window).scrollTop(0);
     });
   }
 
@@ -215,6 +220,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ ticketMasterEvent: [data.ticketmasterEvent] });
       this.setState({ clickedEvent: 'ticketMaster' })
+      $(window).scrollTop(0);
     });
   }
 
@@ -291,8 +297,9 @@ class Ticket extends Component {
           site={clickedSearchHistoriesData.site}
           keyword={clickedSearchHistoriesData.keyword}
           startDate={clickedSearchHistoriesData.date}
-          startDate={clickedSearchHistoriesData.end_date}
+          endDate={clickedSearchHistoriesData.end_date}
           zip={clickedSearchHistoriesData.zip}
+          createdAt={clickedSearchHistoriesData.created_at}
           />
       );
     });
@@ -462,8 +469,8 @@ class Ticket extends Component {
     }else if (this.state.clickedEvent === 'recommended'){
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedRecommendedDatas}</div>
     }else if (this.state.clickedEvent === 'searchHistory'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedSearchHistoriesDatas}
-      <a href="#" onClick={this.handleDeleteSearch}>Clear History</a></div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a>{clickedSearchHistoriesDatas}
+      </div>
     }else{
       clickedOutput = null;
     }
@@ -532,7 +539,7 @@ class Ticket extends Component {
             </div>
 
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
-              <a href="#" onClick={this.handleClickSearch}>Search History</a>
+              <a href="#" onClick={this.handleClickSearch} className='link'>Search History</a>
               <div className="panel panel-info">
                 <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
                 <div className="panel-info">{savedEventsDatas}</div>

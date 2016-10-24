@@ -16,15 +16,15 @@
       <div class='container-fluid'>
         <div class='row'>
           <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-            <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12'><h2>Event Aggregator</h2></div>
-            <div class="user_login col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <ul class="user">
-                <%= render 'devise/menu/registration_items' %>
-              </ul>
-              <ul class="user">
-                <%= render 'devise/menu/login_items' %>
-              </ul>
-            </div>
+              <div class='col-lg-8 col-md-8 col-sm-12 col-xs-12'><h2 class='title'>Event Aggregator</h2></div>
+              <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12 user-info'>
+                <div class='navbar-text navbar-right link'>
+                  <%= render 'devise/menu/registration_items' %>
+                </div>
+                <div class='navbar-text navbar-right link'>
+                  <%= render 'devise/menu/login_items' %>
+                </div>
+          </div>
           </div>
         </div>
       </div>
