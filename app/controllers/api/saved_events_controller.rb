@@ -54,6 +54,12 @@ class Api::SavedEventsController < ApiController
     end
   end
 
+  def destroy
+    SavedEvent.destroy(params[:id])
+    message = "Event has been deleted"
+    render json: { message: message }, status: :ok
+  end
+
   private
 
   def event_params

@@ -45,6 +45,7 @@ class Ticket extends Component {
      this.handleButtonClickBand = this.handleButtonClickBand.bind(this);
      this.getSavedEvents = this.getSavedEvents.bind(this);
      this.formValidation = this.formValidation.bind(this);
+     this.handleDelete = this.handleDelete.bind(this);
 
   }
 
@@ -105,12 +106,25 @@ class Ticket extends Component {
       type: "POST",
       url: '/api/saved_events',
       data: { saved_event: { date: event.datetime.slice(0,10), site: 'bandsInTown', keyword: this.state.search, title: event.title, url: event.ticket_url } },
-      dataType: 'json',
+      dataType: 'json'
     })
     .done(data => {
       this.setState({ message: data.message })
       this.getSavedEvents();
     });
+  }
+
+  handleDelete(event) {
+      $.ajax({
+        type: "DELETE",
+        url: `/api/saved_events/${event}`,
+        dataType: 'json',
+        data: { saved_event: { id: event } }
+      })
+      .done(data => {
+        this.setState({ message: data.message })
+        this.getSavedEvents();
+      });
   }
 
 
@@ -367,12 +381,14 @@ class Ticket extends Component {
       savedEventsDatas = null
     }else{
       savedEventsDatas = this.state.savedEvents.map(savedEventsData => {
+        let handleClick = () => this.handleDelete(savedEventsData.id)
         return (
           <SavedEventsData
           key={savedEventsData.id}
           title={savedEventsData.title}
           site={savedEventsData.site}
           url={savedEventsData.url}
+          handleClick={handleClick}
           />
         );
       });
