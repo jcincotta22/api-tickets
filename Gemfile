@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'bootstrap_form'
 
 group :development, :test do
   gem 'capybara'
