@@ -25,6 +25,7 @@ body {
 
 nav {
   background-color: $stone;
+  height: 15%;
 }
 
 .form-div {
@@ -72,6 +73,11 @@ input {
 
 }
 
+.message-container {
+  height: 6em;
+  padding-right: 8%;
+}
+
 .container {
  width: 95%;
 }
@@ -82,12 +88,13 @@ form {
 }
 
 .form-container {
-  margin-bottom: 3em;
+  margin-bottom: 6em;
+  margin-top: 0;
 }
 
 .jumbotron {
   background-color: $ghost;
-  padding-top: 10em;
+  padding-top: 14em;
 }
 
 .panel-info > .panel-heading {
