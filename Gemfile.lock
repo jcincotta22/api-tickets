@@ -41,6 +41,7 @@ GEM
     addressable (2.4.0)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bootstrap_form (2.5.2)
     builder (3.2.2)
     capybara (2.10.1)
       addressable
@@ -219,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_form
   capybara
   coveralls
   devise

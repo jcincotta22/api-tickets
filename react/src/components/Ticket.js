@@ -30,7 +30,8 @@ class Ticket extends Component {
       search: '',
       date: '',
       endDate: '',
-      zip: ''
+      zip: '',
+      clickedEvent: '',
      };
      this.handleFormSubmit = this.handleFormSubmit.bind(this);
      this.handleChange = this.handleChange.bind(this);
@@ -48,6 +49,8 @@ class Ticket extends Component {
      this.handleDelete = this.handleDelete.bind(this);
 
   }
+
+
 
   formValidation() {
     let regex = /^(?:\d{5})$/;
@@ -85,6 +88,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
+      $(window).scrollTop(0);
     });
   }
 
@@ -98,6 +102,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
+      $(window).scrollTop(0);
     });
   }
 
@@ -111,6 +116,7 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
+      $(window).scrollTop(0);
     });
   }
 
@@ -136,6 +142,7 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ seatGeekEvents: [data] });
+      this.setState({ clickedEvent: 'seatGeek' })
     });
   }
 
@@ -147,6 +154,7 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ recommendedEvent: [data] });
+      this.setState({ clickedEvent: 'recommended' })
     });
   }
 
@@ -158,6 +166,7 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ bandsInTownEvent: data });
+      this.setState({ clickedEvent: 'bandsInTown' })
     });
   }
 
@@ -171,6 +180,7 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ ticketMasterEvent: [data.ticketmasterEvent] });
+      this.setState({ clickedEvent: 'ticketMaster' })
     });
   }
 
@@ -394,11 +404,23 @@ class Ticket extends Component {
       });
 
     }
+    let clickedOutput
+    if(this.state.clickedEvent === 'seatGeek'){
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedGeekDatas}</div>
+    }else if (this.state.clickedEvent === 'ticketMaster'){
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedTicketMasterDatas}</div>
+    }else if (this.state.clickedEvent === 'bandsInTown'){
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedBandsInTownDatas}</div>
+    }else if (this.state.clickedEvent === 'recommended'){
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedRecommendedDatas}</div>
+    }else{
+      clickedOutput = null;
+    }
     return (
       <div className='jumbotron'>
+        <div className='message-container'>{this.state.message}</div>
         <div className='container'>
-          {this.state.message}
-          <div className='row'>
+          <div className='row form-div'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
               <TicketForm
               handleFormSubmit={this.handleFormSubmit}
@@ -418,25 +440,25 @@ class Ticket extends Component {
           <div className='row'>
 
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
-              <div className="panel panel-info results">
+              <div className="panel panel-info">
                 <div className="panel-heading"><img src="https://upload.wikimedia.org/wikipedia/en/1/1b/SeatGeek.png" className="heading-img"/></div>
                 <div id='seatGeek' className='results'>
                   {seatGeekDatas}
                 </div>
               </div>
-              <div className="panel panel-info results">
+              <div className="panel panel-info">
                 <div className="panel-heading"><img src="http://bespokemusicgroup.com/img/tools/bandsintown.png" className="heading-img"/></div>
                 <div id='bandsInTown' className='results'>
                   {bandsInTownDatas}
                 </div>
               </div>
-              <div className="panel panel-info results">
+              <div className="panel panel-info">
                 <div className="panel-heading"><img src="http://b2b.ticketmaster.nl/sites/default/files/downloads/tmlogo_grey.png" className="heading-img"/></div>
                 <div id='ticketmaster' className='results'>
                   {ticketdatas}
                 </div>
               </div>
-              <div className="panel panel-info results">
+              <div className="panel panel-info">
                 <div className="panel-heading"><h4>Recommended By Us</h4></div>
                 <div id='recommended' className='results'>
                   {recommendedDatas}
@@ -447,10 +469,7 @@ class Ticket extends Component {
             <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <div className='container'>
                 <div id='main-div row'>
-                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedGeekDatas}</div>
-                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedTicketMasterDatas}</div>
-                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedBandsInTownDatas}</div>
-                  <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12 clicked">{clickedRecommendedDatas}</div>
+                  {clickedOutput}
                 </div>
               </div>
             </div>
@@ -458,7 +477,7 @@ class Ticket extends Component {
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
               <div className="panel panel-info">
                 <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
-                <div className="panel-info saved-events">{savedEventsDatas}</div>
+                <div className="panel-info">{savedEventsDatas}</div>
               </div>
             </div>
 

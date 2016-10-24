@@ -1,5 +1,9 @@
 // @import "*";
 
+/*
+ *= require rails_bootstrap_forms
+ */
+
 
 /* HSL */
 $coral: hsla(354%, 100%, 71%, 1);
@@ -21,6 +25,15 @@ body {
 
 nav {
   background-color: $stone;
+  height: 15%;
+}
+
+.form-div {
+  text-align: center;
+}
+
+.clicked {
+  width: 100%
 }
 
 .data:hover {
@@ -31,10 +44,6 @@ nav {
   float: right;
 }
 
-.jumbotron {
-  margin-top: 5em;
-}
-
 input {
  height: 33px;
 }
@@ -42,6 +51,11 @@ input {
 .btn {
   background-color: $purple;
 }
+
+.btn:hover {
+  background-color: $green;
+}
+
 
 .results {
  max-height: 20em;
@@ -53,8 +67,15 @@ input {
 }
 
 .clicked-image {
- width: 38em;
+ width: 100%;
+ height: 100%;
+ border-radius: 10px;
 
+}
+
+.message-container {
+  height: 6em;
+  padding-right: 8%;
 }
 
 .container {
@@ -67,11 +88,13 @@ form {
 }
 
 .form-container {
-  margin-bottom: 3em;
+  margin-bottom: 6em;
+  margin-top: 0;
 }
 
 .jumbotron {
   background-color: $ghost;
+  padding-top: 14em;
 }
 
 .panel-info > .panel-heading {
@@ -91,4 +114,5 @@ form {
   border:1px solid #f5aca6;
   width: 20em;
   float: right;
+  box-shadow: 10px 10px 5px grey;
 }
