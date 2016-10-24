@@ -156,14 +156,12 @@ class Ticket extends Component {
   }
 
   handleDeleteSearch() {
-    debugger;
     $.ajax({
       type: "DELETE",
       url: `/api/delete_all`,
       dataType: 'json'
     })
     .done(data => {
-      debugger;
       this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSearchHistory();
     });
@@ -465,7 +463,7 @@ class Ticket extends Component {
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedRecommendedDatas}</div>
     }else if (this.state.clickedEvent === 'searchHistory'){
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedSearchHistoriesDatas}
-      <a href="#" onClick={this.handleDeleteSearch()}>Clear History</a></div>
+      <a href="#" onClick={this.handleDeleteSearch}>Clear History</a></div>
     }else{
       clickedOutput = null;
     }

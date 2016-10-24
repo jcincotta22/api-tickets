@@ -23,7 +23,6 @@ class Api::SearchHistoriesController < ApiController
 
   def delete_all
     user = current_user
-    binding.pry
     if user || !user.search_histories.empty?
       SearchHistory.delete_all(user_id: user.id)
       message = "Your Search History Has Been Deleted"
