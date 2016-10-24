@@ -418,7 +418,13 @@ class Ticket extends Component {
     }
     return (
       <div className='jumbotron'>
-        <div className='message-container'>{this.state.message}</div>
+        <div className='message-container'>
+          <div className='row'>
+              <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                {this.state.message}
+              </div>
+            </div>
+          </div>
         <div className='container'>
           <div className='row form-div'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
