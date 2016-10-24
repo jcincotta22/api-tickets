@@ -84,7 +84,7 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ message: <div className='messages'>{data.message}</div> })
-      this.getSavedEvents();
+      this.getSavedEvents(); 
     });
   }
 
