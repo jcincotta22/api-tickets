@@ -11,7 +11,7 @@ const ClickedBandsInTownData = props => {
         <li><a href={props.artist_website}>{props.artist_website}</a></li>
         <li>Ticket Status: {props.ticket_status}</li>
         <li><img src={props.image} className="clicked-image"/></li>
-        <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
+        <button type="button" className="btn btn-info" onClick={props.handleClick}>Save Event</button>
       </ul>
 
 

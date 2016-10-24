@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TicketForm = props => {
+
   return (
 
   <div className='container'>
@@ -44,7 +45,7 @@ const TicketForm = props => {
               onChange={props.handleZipChange}
             />
           </div>
-            <input type="submit" className='btn btn-info' value="Search Event"/>
+            <input type="submit" className='btn btn-info' data-loading-text = "Searching..." value="Search Event"/>
         </form>
       </div>
     </div>

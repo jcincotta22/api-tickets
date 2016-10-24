@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ApiTickets</title>
+    <title>Event Aggregator</title>
     <%= csrf_meta_tags %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- set page the size of the device -->
@@ -12,15 +12,20 @@
   </head>
 
   <body>
-    <nav>
-      <div class='container'>
-        <div class='page-header'>
-          <ul class="hmenu">
-            <%= render 'devise/menu/registration_items' %>
-          </ul>
-          <ul class="hmenu">
-            <%= render 'devise/menu/login_items' %>
-          </ul>
+    <nav class='navbar-fixed-top'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12'><h2>Event Aggregator</h2></div>
+            <div class="user_login col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <ul class="user">
+                <%= render 'devise/menu/registration_items' %>
+              </ul>
+              <ul class="user">
+                <%= render 'devise/menu/login_items' %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

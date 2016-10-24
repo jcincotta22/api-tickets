@@ -115,16 +115,16 @@ class Ticket extends Component {
   }
 
   handleDelete(event) {
-      $.ajax({
-        type: "DELETE",
-        url: `/api/saved_events/${event}`,
-        dataType: 'json',
-        data: { saved_event: { id: event } }
-      })
-      .done(data => {
-        this.setState({ message: data.message })
-        this.getSavedEvents();
-      });
+    $.ajax({
+      type: "DELETE",
+      url: `/api/saved_events/${event}`,
+      dataType: 'json',
+      data: { saved_event: { id: event } }
+    })
+    .done(data => {
+      this.setState({ message: data.message })
+      this.getSavedEvents();
+    });
   }
 
 

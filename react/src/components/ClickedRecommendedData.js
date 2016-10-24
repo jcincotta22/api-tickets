@@ -10,7 +10,7 @@ const ClickedRecommendedData = props => {
       <li>Highest Price: ${props.highest_price}</li>
       <li>Lowest Price: ${props.lowest_price}</li>
       <li><img src={props.image} className="clicked-image"/></li>
-      <button type="button" className="btn btn-default" onClick={props.handleClick}>Save Event</button>
+      <button type="button" className="btn btn-info" onClick={props.handleClick}>Save Event</button>
     </ul>
 
   return (
