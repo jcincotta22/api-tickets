@@ -21,7 +21,7 @@ body {
 /* line 27, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
 nav {
   background-color: #30343f;
-  height: 15%;
+  height: 120px;
 }
 
 /* line 32, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
@@ -103,7 +103,7 @@ form {
 /* line 96, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
 .jumbotron {
   background-color: #fafaff;
-  padding-top: 14em;
+  padding-top: 9em;
 }
 
 /* line 101, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
