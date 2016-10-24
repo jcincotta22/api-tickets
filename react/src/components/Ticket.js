@@ -83,7 +83,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ message: data.message })
+      this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
     });
   }
@@ -96,7 +96,7 @@ class Ticket extends Component {
       dataType: 'json',
     })
     .done(data => {
-      this.setState({ message: data.message })
+      this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
     });
   }
@@ -109,7 +109,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ message: data.message })
+      this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
     });
   }
@@ -122,7 +122,7 @@ class Ticket extends Component {
       data: { saved_event: { id: event } }
     })
     .done(data => {
-      this.setState({ message: data.message })
+      this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
     });
   }
@@ -397,7 +397,7 @@ class Ticket extends Component {
     return (
       <div className='jumbotron'>
         <div className='container'>
-        <div className='messages'>{this.state.message}</div>
+          {this.state.message}
           <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
               <TicketForm
