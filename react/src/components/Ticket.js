@@ -10,6 +10,7 @@ import ClickedTicketMasterData from './ClickedTicketMasterData';
 import ClickedBandsInTownData from './ClickedBandsInTownData';
 import ClickedRecommendedData from './ClickedRecommendedData';
 import SavedEventsData from './SavedEventsData';
+import SearchHistory from './SearchHistory'
 
 class Ticket extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Ticket extends Component {
       endDate: '',
       zip: '',
       clickedEvent: '',
+      searchHistory: []
      };
      this.handleFormSubmit = this.handleFormSubmit.bind(this);
      this.handleChange = this.handleChange.bind(this);
@@ -47,6 +49,9 @@ class Ticket extends Component {
      this.getSavedEvents = this.getSavedEvents.bind(this);
      this.formValidation = this.formValidation.bind(this);
      this.handleDelete = this.handleDelete.bind(this);
+     this.getSearchHistory = this.getSearchHistory.bind(this);
+     this.handleClickSearch = this.handleClickSearch.bind(this);
+     this.handleDeleteSearch = this.handleDeleteSearch.bind(this);
 
   }
 
@@ -64,6 +69,8 @@ class Ticket extends Component {
     }
   }
 
+
+
   getSavedEvents() {
     $.ajax({
       url: '/api/saved_events',
@@ -72,6 +79,21 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ savedEvents: data.savedEvents });
     });
+  }
+
+  getSearchHistory() {
+    $.ajax({
+      url: '/api/search_histories',
+      dataType: 'json'
+    })
+    .done(data => {
+      this.setState({ searchHistory: data.searchHistory });
+      this.setState({ clickedEvent: 'searchHistory' })
+    });
+  }
+
+  handleClickSearch(){
+    this.getSearchHistory();
   }
 
   componentDidMount() {
@@ -130,6 +152,20 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ message: <div className='messages'>{data.message}</div> })
       this.getSavedEvents();
+    });
+  }
+
+  handleDeleteSearch() {
+    debugger;
+    $.ajax({
+      type: "DELETE",
+      url: `/api/delete_all`,
+      dataType: 'json'
+    })
+    .done(data => {
+      debugger;
+      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.getSearchHistory();
     });
   }
 
@@ -248,6 +284,20 @@ class Ticket extends Component {
   }
 
   render() {
+
+    let clickedSearchHistoriesDatas = this.state.searchHistory.map(clickedSearchHistoriesData => {
+        return (
+          <SearchHistory
+          key={clickedSearchHistoriesData.id}
+          id={clickedSearchHistoriesData.id}
+          site={clickedSearchHistoriesData.site}
+          keyword={clickedSearchHistoriesData.keyword}
+          startDate={clickedSearchHistoriesData.date}
+          startDate={clickedSearchHistoriesData.end_date}
+          zip={clickedSearchHistoriesData.zip}
+          />
+      );
+    });
 
     let clickedRecommendedDatas = this.state.recommendedEvent.map(clickedRecommendedDatas => {
       let handleClick = () => this.handleButtonClick(clickedRecommendedDatas)
@@ -413,6 +463,9 @@ class Ticket extends Component {
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedBandsInTownDatas}</div>
     }else if (this.state.clickedEvent === 'recommended'){
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedRecommendedDatas}</div>
+    }else if (this.state.clickedEvent === 'searchHistory'){
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedSearchHistoriesDatas}
+      <a href="#" onClick={this.handleDeleteSearch()}>Clear History</a></div>
     }else{
       clickedOutput = null;
     }
@@ -481,6 +534,7 @@ class Ticket extends Component {
             </div>
 
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+              <a href="#" onClick={this.handleClickSearch}>Search History</a>
               <div className="panel panel-info">
                 <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
                 <div className="panel-info">{savedEventsDatas}</div>
