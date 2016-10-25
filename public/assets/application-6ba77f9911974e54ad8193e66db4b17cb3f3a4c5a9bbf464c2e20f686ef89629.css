@@ -1,0 +1,179 @@
+.rails-bootstrap-forms-date-select select,
+.rails-bootstrap-forms-time-select select,
+.rails-bootstrap-forms-datetime-select select {
+  display: inline-block;
+  width: auto;
+}
+
+.rails-bootstrap-forms-error-summary {
+  margin-top: 10px;
+}
+/*
+
+ */
+/* HSL */
+/* RGB */
+/* line 24, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+body {
+  color: #30343f;
+  padding-top: 10em;
+}
+
+/* line 29, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+nav {
+  background-color: #30343f;
+  height: 13em;
+}
+
+/* line 34, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.title {
+  color: #fafaff;
+  font-size: 40px;
+  margin-bottom: -5px;
+}
+
+/* line 40, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.user-info {
+  float: right;
+  text-align: right;
+}
+
+/* line 47, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+li {
+  list-style: none;
+}
+
+/* line 51, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.form-div {
+  text-align: center;
+}
+
+/* line 55, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.clicked {
+  width: 100%;
+}
+
+/* line 59, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.data:hover {
+  color: #ff6978;
+  background-color: #b1ede8;
+  cursor: pointer;
+}
+
+/* line 65, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
+  float: right;
+}
+
+/* line 69, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+input {
+  height: 50px;
+  width: 180px;
+}
+
+/* line 74, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.link {
+  font-size: 20px;
+}
+
+/* line 78, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.submit-button {
+  width: 120px;
+}
+
+/* line 82, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.form-input {
+  font-size: 20px;
+}
+
+/* line 86, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.btn {
+  background-color: #4c2a85;
+}
+
+/* line 90, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.btn:hover {
+  background-color: #b1ede8;
+}
+
+/* line 94, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.data {
+  border-width: 3px;
+  border-bottom-style: ridge;
+  border-color: #d3d3d3;
+}
+
+/* line 100, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.saved-data {
+  border-width: 3px;
+  border-bottom-style: ridge;
+  border-color: #d3d3d3;
+}
+
+/* line 106, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.results {
+  max-height: 20em;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* line 112, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.heading-img {
+  max-height: 50px;
+}
+
+/* line 116, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.clicked-image {
+  width: 90%;
+  border-radius: 10px;
+}
+
+/* line 122, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.message-container {
+  height: 6em;
+  padding-right: 8%;
+}
+
+/* line 127, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.container {
+  width: 95%;
+}
+
+/* line 131, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 136, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.form-container {
+  margin-bottom: 6em;
+  margin-top: 0;
+}
+
+/* line 141, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.jumbotron {
+  background-color: #fafaff;
+}
+
+/* line 146, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.panel-info > .panel-heading {
+  background-color: #b1ede8;
+}
+
+/* line 150, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/application.scss */
+.messages {
+  color: #555;
+  border-radius: 10px;
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+  font-size: 11px;
+  padding: 10px 10px 10px 36px;
+  margin: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #ffecec no-repeat 10px 50%;
+  border: 1px solid #f5aca6;
+  width: 20em;
+  float: right;
+  box-shadow: 10px 10px 5px grey;
+}
