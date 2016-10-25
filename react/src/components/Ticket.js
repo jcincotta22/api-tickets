@@ -496,8 +496,8 @@ class Ticket extends Component {
     }else if (this.state.clickedEvent === 'recommended'){
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12" id='clickRec'>{clickedRecommendedDatas}</div>
     }else if (this.state.clickedEvent === 'searchHistory'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a>{clickedSearchHistoriesDatas}
-      </div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div className='search-history-div'><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a></div>{clickedSearchHistoriesDatas}</div>
     }else{
       clickedOutput = null;
     }
@@ -566,7 +566,7 @@ class Ticket extends Component {
             </div>
 
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
-              <a href="#" onClick={this.handleClickSearch} className='link'>Search History</a>
+              <div className='search-history-div'><a href="#" onClick={this.handleClickSearch} className='link'>Search History</a></div>
               <div className="panel panel-info">
                 <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
                 <div className="panel-info">{savedEventsDatas}</div>

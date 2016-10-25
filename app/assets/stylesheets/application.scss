@@ -31,7 +31,7 @@ nav {
 }
 
 .edit-profile {
-  width: 109px;
+  width: 140px;
 }
 
 .login {
@@ -60,15 +60,26 @@ input[type="date"]:valid::before {
   color: $ghost;
   font-size: 40px;
   margin-bottom: 0;
+  font-family: 'Shrikhand', cursive;
 }
 
 .user-info {
   float: right;
   text-align: right;
+  font-family: 'Shrikhand', cursive;
 }
 
 .user-link {
   font-size: 16px;
+  font-family: 'Shrikhand', cursive;
+}
+
+.saved-data > li {
+  font-family: 'Noto Serif', serif;
+}
+
+.click-data > li {
+  font-family: 'Noto Serif', serif;
 }
 
 
@@ -99,8 +110,14 @@ input {
  width: 180px;
 }
 
+.search-history-div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .link {
   font-size: 20px;
+  font-family: 'Shrikhand', cursive;
 }
 
 .submit-button {
@@ -119,10 +136,22 @@ input {
   background-color: $green;
 }
 
+h2 {
+  font-family: 'Noto Serif', serif;
+}
+
 .data {
   border-width:3px;
   border-bottom-style:ridge;
   border-color: $light-grey;
+}
+
+ul.data, li.saved-data {
+  font-family: 'Noto Serif', serif;
+}
+
+h5.search-heading {
+  font-size: 17px;
 }
 
 .saved-data {

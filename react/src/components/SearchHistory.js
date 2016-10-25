@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchHistory = props => {
   return (
-  <ul>
+  <ul className='saved-data'>
     <li>You searched for: {props.keyword} on {props.createdAt}</li>
     <li>With a start date of: {props.startDate}</li>
     <li>An end date of: {props.endDate}</li>

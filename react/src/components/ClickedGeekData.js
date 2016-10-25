@@ -2,7 +2,7 @@ import React from 'react';
 
 const ClickedGeekData = props => {
   let clickedLineItem
-    clickedLineItem = <ul><h2>{props.title}</h2>
+    clickedLineItem = <ul className='clicked-data'><h2>{props.title}</h2>
         <li><img src={props.image} className="clicked-image"/></li>
         <li><a href={props.url} target="_blank">Visit SeatGeek to See Tickets for This Event</a></li>
         <li>{props.venue}</li>
