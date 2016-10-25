@@ -31,7 +31,7 @@ nav {
 }
 
 input[type="date"]::before {
-	color: #999;
+	color: #A9A9A9;
 	content: attr(placeholder);
   font-size: 20px;
 }
@@ -40,7 +40,7 @@ input[type="date"] {
 }
 input[type="date"]:focus,
 input[type="date"]:valid {
-	color: #999;
+	color: #A9A9A9;
   font-size: 20px;
 }
 input[type="date"]:focus::before,
