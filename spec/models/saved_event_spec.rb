@@ -3,7 +3,7 @@ require 'rails_helper'
 describe SavedEvent do
   let(:user) { FactoryGirl.create(:user) }
   let(:saved_event) do
-    SavedEvent.create(user_id: user.id, site: "seatGeek", title: 'Adele',
+    SavedEvent.create(user_id: user.id, site: "seatGeek", title: 'Adele', url: 'www.yahoo.com',
       keyword: "adele", date: "2016-10-30", end_date: "2016-10-30", event_id: '123456')
   end
 
@@ -15,6 +15,7 @@ describe SavedEvent do
     expect(saved_event.end_date).to eq("2016-10-30")
     expect(saved_event.event_id).to eq('123456')
     expect(saved_event.title).to eq('Adele')
+    expect(saved_event.url).to eq('www.yahoo.com')
   end
 
   it { should have_valid(:user_id).when(1, 12) }
@@ -24,6 +25,9 @@ describe SavedEvent do
   it { should_not have_valid(:user_id).when(nil, '') }
 
   it { should have_valid(:site).when("ticketmaster", "seatgeek") }
+  it { should_not have_valid(:site).when(nil, '') }
+
+  it { should have_valid(:site).when("www.yahoo.com", "www.seatgeek.com") }
   it { should_not have_valid(:site).when(nil, '') }
 
   it { should have_valid(:keyword).when("adele", "kanye") }

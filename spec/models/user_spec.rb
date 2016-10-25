@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 describe User do
+  let(:user) {User.create(first_name: 'jeff', last_name: 'Cee', email: 'jc@yahoo.com', password: 'password', sign_in_count: 1) }
+  it 'has the expected properties' do
+    expect(user.first_name).to eq('jeff')
+    expect(user.last_name).to eq("Cee")
+    expect(user.email).to eq("jc@yahoo.com")
+    expect(user.password).to eq("password")
+    expect(user.sign_in_count).to eq(1)
+  end
+
   it { should have_valid(:first_name).when('John', 'Sally') }
   it { should_not have_valid(:first_name).when(nil, '') }
 

@@ -22,12 +22,20 @@ $light-grey: #d3d3d3;
 
 body {
   color: $stone;
-  padding-top: 10em;
+  padding-top: 7.5em;
 }
 
 nav {
   background-color: $stone;
-  height: 13em;
+  height: 9.5em;
+}
+
+.edit-profile {
+  width: 109px;
+}
+
+.login {
+  width: 45px;
 }
 
 input[type="date"]::before {
@@ -51,6 +59,7 @@ input[type="date"]:valid::before {
 .title {
   color: $ghost;
   font-size: 40px;
+  margin-bottom: 0;
 }
 
 .user-info {
@@ -180,4 +189,5 @@ form {
   width: 20em;
   float: right;
   box-shadow: 10px 10px 5px grey;
+  margin-top: 20px;
 }
