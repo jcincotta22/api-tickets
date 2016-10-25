@@ -18,14 +18,30 @@ $stone: rgba(48, 52, 63, 1);
 $green: rgba(177, 237, 232, 1);
 $ghost: rgba(250, 250, 255, 1);
 $purple: rgba(76, 42, 133, 1);
+$light-grey: #d3d3d3;
 
 body {
   color: $stone;
+  padding-top: 13em;
 }
 
 nav {
   background-color: $stone;
-  height: 120px;
+  height: 14em;
+}
+
+.title {
+  color: $ghost;
+  font-size: 40px;
+}
+
+.user-info {
+  float: right;
+  text-align: right;
+}
+
+li {
+  list-style: none;
 }
 
 .form-div {
@@ -38,6 +54,8 @@ nav {
 
 .data:hover {
   color: $coral;
+  background-color: $green;
+  cursor:pointer;
 }
 
 .col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
@@ -45,7 +63,20 @@ nav {
 }
 
 input {
- height: 33px;
+ height: 50px;
+ width: 180px;
+}
+
+.link {
+  font-size: 20px;
+}
+
+.submit-button {
+  width: 120px;
+}
+
+.form-input {
+  font-size: 20px;
 }
 
 .btn {
@@ -56,10 +87,22 @@ input {
   background-color: $green;
 }
 
+.data {
+  border-width:3px;
+  border-bottom-style:ridge;
+  border-color: $light-grey;
+}
+
+.saved-data {
+  border-width:3px;
+  border-bottom-style:ridge;
+  border-color: $light-grey;
+}
 
 .results {
  max-height: 20em;
  overflow: scroll;
+ overflow-x: hidden;
 }
 
 .heading-img {
@@ -67,8 +110,7 @@ input {
 }
 
 .clicked-image {
- width: 100%;
- height: 100%;
+ width: 90%;
  border-radius: 10px;
 
 }
@@ -94,7 +136,7 @@ form {
 
 .jumbotron {
   background-color: $ghost;
-  padding-top: 9em;
+
 }
 
 .panel-info > .panel-heading {

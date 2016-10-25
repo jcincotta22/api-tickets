@@ -5,7 +5,7 @@ const SeatGeekData = props => {
   return (
   <div className='showDiv'>
     <ul onClick={props.handleClickGeek} className='data'>
-      <li>{props.title}</li>
+      <h5 className='search-heading'>{props.title}</h5>
       <li>Location: {props.venue}, {props.city}</li>
       <li>Date: {props.date}</li>
     </ul>

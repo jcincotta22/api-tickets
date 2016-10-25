@@ -4,7 +4,7 @@ const Ticketdata = props => {
   return (
   <div>
     <ul onClick={props.handleClickTicketMaster} className='data'>
-      <li>{props.name}</li>
+      <h5 className='search-heading'>{props.name}</h5>
       <li>Location: {props.venueName}, {props.city}</li>
       <li>Date: {props.date}</li>
     </ul>
