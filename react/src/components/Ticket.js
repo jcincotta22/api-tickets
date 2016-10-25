@@ -179,7 +179,9 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ seatGeekEvents: [data] });
       this.setState({ clickedEvent: 'seatGeek' })
-      $(window).scrollTop(0);
+      $('html, body').animate({
+          scrollTop: $("#clickGeek").offset().top - 200
+      }, 1000) ;
     });
   }
 
@@ -192,7 +194,9 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ recommendedEvent: [data] });
       this.setState({ clickedEvent: 'recommended' })
-      $(window).scrollTop(0);
+      $('html, body').animate({
+          scrollTop: $("#clickRec").offset().top - 200
+      }, 1000) ;
     });
   }
 
@@ -205,7 +209,9 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ bandsInTownEvent: data });
       this.setState({ clickedEvent: 'bandsInTown' })
-      $(window).scrollTop(0);
+      $('html, body').animate({
+          scrollTop: $("#clickBand").offset().top - 200
+      }, 1000) ;
     });
   }
 
@@ -220,7 +226,9 @@ class Ticket extends Component {
     .done(data => {
       this.setState({ ticketMasterEvent: [data.ticketmasterEvent] });
       this.setState({ clickedEvent: 'ticketMaster' })
-      $(window).scrollTop(0);
+      $('html, body').animate({
+          scrollTop: $("#clickTicket").offset().top - 200
+      }, 1000) ;
     });
   }
 
@@ -461,13 +469,13 @@ class Ticket extends Component {
     }
     let clickedOutput
     if(this.state.clickedEvent === 'seatGeek'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedGeekDatas}</div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12" id='clickGeek'>{clickedGeekDatas}</div>
     }else if (this.state.clickedEvent === 'ticketMaster'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedTicketMasterDatas}</div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12" id='clickTicket'>{clickedTicketMasterDatas}</div>
     }else if (this.state.clickedEvent === 'bandsInTown'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedBandsInTownDatas}</div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12" id='clickBand'>{clickedBandsInTownDatas}</div>
     }else if (this.state.clickedEvent === 'recommended'){
-      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">{clickedRecommendedDatas}</div>
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12" id='clickRec'>{clickedRecommendedDatas}</div>
     }else if (this.state.clickedEvent === 'searchHistory'){
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12"><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a>{clickedSearchHistoriesDatas}
       </div>
