@@ -30,10 +30,27 @@ nav {
   height: 13em;
 }
 
+input[type="date"]::before {
+	color: #999;
+	content: attr(placeholder);
+  font-size: 20px;
+}
+input[type="date"] {
+	color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: #999;
+  font-size: 20px;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+	content: "" !important;
+}
+
 .title {
   color: $ghost;
   font-size: 40px;
-  margin-bottom: -5px;
 }
 
 .user-info {
