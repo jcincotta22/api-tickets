@@ -1,10 +1,10 @@
 
-import SeatGeekData from 'components/SeatGeekData';
+import Ticketdata from 'components/Ticketdata';
 import { shallow } from 'enzyme';
 import React from 'react';
 import jasmineEnzyme from 'jasmine-enzyme';
 
-describe('SeatGeekData', () => {
+describe('Ticketdata', () => {
   let ticketFrom,
       onClick,
       text,
@@ -14,12 +14,12 @@ describe('SeatGeekData', () => {
     jasmineEnzyme();
     onClick = jasmine.createSpy('onClick spy');
     wrapper = shallow(
-      <SeatGeekData
+      <Ticketdata
       key='1'
       id='1'
-      title='Adele'
+      name='Adele'
       date='2016-10-15'
-      venue='The Garden'
+      venueName='The Garden'
       city='Boston'
       onClick={onClick}
       />
@@ -27,13 +27,13 @@ describe('SeatGeekData', () => {
   });
 
   it('should have props'), () => {
-    expect(wrapper.find(SeatGeekData)).toHaveProp('key', '1');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('id', '1');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('title', 'Adele');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('date', '2016-10-15');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('venue', 'The Garden');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('city', 'Boston');
-    expect(wrapper.find(SeatGeekData)).toHaveProp('onClick', {onClick});
+    expect(wrapper.find(Ticketdata)).toHaveProp('key', '1');
+    expect(wrapper.find(Ticketdata)).toHaveProp('id', '1');
+    expect(wrapper.find(Ticketdata)).toHaveProp('name', 'Adele');
+    expect(wrapper.find(Ticketdata)).toHaveProp('date', '2016-10-15');
+    expect(wrapper.find(Ticketdata)).toHaveProp('venueName', 'The Garden');
+    expect(wrapper.find(Ticketdata)).toHaveProp('city', 'Boston');
+    expect(wrapper.find(Ticketdata)).toHaveProp('onClick', {onClick});
   }
 
   it('should render an h5 tag', () => {
@@ -53,12 +53,12 @@ describe('SeatGeekData', () => {
 
   it('should render an li tag with the text property value', () => {
     let firstLiItem = wrapper.find('li').at(0);
-    expect(firstLiItem.text()).toMatch('Location: The Garden, Boston');
+    expect(firstLiItem.text()).toMatch('The Garden, Boston');
   });
 
   it('should render an li tag with the text property value', () => {
     let secondLineItem = wrapper.find('li').at(1);
-    expect(secondLineItem.text()).toMatch('Date: 2016-10-15');
+    expect(secondLineItem.text()).toMatch('2016-10-15');
   });
 
   // it('should invoke the onClick function from props when clicked', () => {
