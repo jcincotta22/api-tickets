@@ -180,8 +180,7 @@ class Ticket extends Component {
       this.setState({ seatGeekEvents: [data] });
       this.setState({ clickedEvent: 'seatGeek' })
       $('html, body').animate({
-          scrollTop: $("#clickGeek").offset().top - 200
-      }, 1000) ;
+        scrollTop: $("#clickGeek").offset().top - 200}, 1000);
     });
   }
 
