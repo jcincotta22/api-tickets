@@ -238,9 +238,8 @@ class Ticket extends Component {
     this.setState({ message: '' });
     formValidity = this.formValidation();
     if (formValidity === true) {
-
       $.ajax({
-        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
+        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=${this.state.date}&datetime_utc.lte=${this.state.endDate}`,
         dataType: 'json'
       })
       .done(data => {
