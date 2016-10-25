@@ -240,7 +240,7 @@ class Ticket extends Component {
     if (formValidity === true) {
 
       $.ajax({
-        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lt=#{this.state.endDate}`,
+        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=#{this.state.date}&datetime_utc.lte=#{this.state.endDate}`,
         dataType: 'json'
       })
       .done(data => {
