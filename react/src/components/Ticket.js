@@ -244,7 +244,7 @@ class Ticket extends Component {
         dataType: 'json'
       })
       .done(data => {
-        this.setState({ seatGeek: data.events });
+          this.setState({ seatGeek: data.events });
         $.ajax({
           url: '/api/events',
           data: { ticket: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
@@ -269,7 +269,9 @@ class Ticket extends Component {
         dataType: 'json'
       })
       .done(data => {
-        this.setState({ ticket: data.ticketmasterData._embedded.events });
+        if(data.ticketmasterData._embedded !== undefined){
+          this.setState({ ticket: data.ticketmasterData._embedded.events });
+        }
       });
     }
   }
@@ -388,66 +390,85 @@ class Ticket extends Component {
           />
         );
       });
+      let recommendedDatas
+      if (this.state.recommended.length !== 0) {
+        recommendedDatas = this.state.recommended.map(recommendedData => {
+        let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
+        return (
+          <RecommendedData
+          key={recommendedData.event.id}
+          id={recommendedData.event.id}
+          title={recommendedData.event.title}
+          venue={recommendedData.event.venue.name}
+          date={recommendedData.event.datetime_local.slice(0,10)}
+          city={recommendedData.event.venue.city}
+          handleClickRecommended={clickTargetRecommended}
+          />
+        );
+      });
+    }else {
+      recommendedDatas = '';
+    }
+      let bandsInTownDatas
+    if((this.state.bandsInTown.length !== 0) && (this.state.bandsInTown.errors === undefined)) {
+      bandsInTownDatas = this.state.bandsInTown.map(bandsInTownData => {
+        let clickBandTarget = () => this.handleClickBand(bandsInTownData.datetime.slice(0,10))
+        return (
+          <BandsInTownData
+          key={bandsInTownData.id}
+          id={bandsInTownData.id}
+          title={bandsInTownData.title}
+          venue={bandsInTownData.venue.name}
+          city={bandsInTownData.venue.city}
+          date={bandsInTownData.datetime.slice(0,10)}
+          formatedDate={bandsInTownData.formatted_datetime}
+          handleClickBand={clickBandTarget}
+          />
+        );
+      });
+    }else {
+      bandsInTownDatas = '';
+    }
+    let seatGeekDatas
+    if(this.state.seatGeek.length !== 0) {
 
-    let recommendedDatas = this.state.recommended.map(recommendedData => {
-      let clickTargetRecommended = () => this.handleClickRecommended(recommendedData.event.id)
-      return (
-        <RecommendedData
-        key={recommendedData.event.id}
-        id={recommendedData.event.id}
-        title={recommendedData.event.title}
-        venue={recommendedData.event.venue.name}
-        date={recommendedData.event.datetime_local.slice(0,10)}
-        city={recommendedData.event.venue.city}
-        handleClickRecommended={clickTargetRecommended}
-        />
-      );
-    });
-    let bandsInTownDatas = this.state.bandsInTown.map(bandsInTownData => {
-      let clickBandTarget = () => this.handleClickBand(bandsInTownData.datetime.slice(0,10))
-      return (
-        <BandsInTownData
-        key={bandsInTownData.id}
-        id={bandsInTownData.id}
-        title={bandsInTownData.title}
-        venue={bandsInTownData.venue.name}
-        city={bandsInTownData.venue.city}
-        date={bandsInTownData.datetime.slice(0,10)}
-        formatedDate={bandsInTownData.formatted_datetime}
-        handleClickBand={clickBandTarget}
-        />
-      );
-    });
-    let seatGeekDatas = this.state.seatGeek.map(seatGeekData => {
-      let clickTarget = () => this.handleClickGeek(seatGeekData.id)
-      return (
-        <SeatGeekData
-        key={seatGeekData.id}
-        id={seatGeekData.id}
-        title={seatGeekData.title}
-        date={seatGeekData.datetime_local.slice(0,10)}
-        venue={seatGeekData.venue.name}
-        city={seatGeekData.venue.city}
-        handleClickGeek={clickTarget}
-        />
-      );
-    });
-    let ticketdatas = this.state.ticket.map(ticketdata => {
-      let clickMasterTarget = () => this.handleClickTicketMaster(ticketdata.id)
-      return (
-        <Ticketdata
-        key={ticketdata.id}
-        id={ticketdata.id}
-        url={ticketdata.url}
-        name={ticketdata.name}
-        venueName={ticketdata._embedded.venues[0].name}
-        city={ticketdata._embedded.venues[0].city.name}
-        date={ticketdata.dates.start.localDate}
-        handleClickTicketMaster={clickMasterTarget}
-        />
-      );
-    });
-
+      seatGeekDatas = this.state.seatGeek.map(seatGeekData => {
+        let clickTarget = () => this.handleClickGeek(seatGeekData.id)
+        return (
+          <SeatGeekData
+          key={seatGeekData.id}
+          id={seatGeekData.id}
+          title={seatGeekData.title}
+          date={seatGeekData.datetime_local.slice(0,10)}
+          venue={seatGeekData.venue.name}
+          city={seatGeekData.venue.city}
+          handleClickGeek={clickTarget}
+          />
+        );
+      });
+    }else {
+      seatGeekDatas = '';
+    }
+    let ticketdatas
+      if(this.state.ticket.length !== 0) {
+        ticketdatas = this.state.ticket.map(ticketdata => {
+          let clickMasterTarget = () => this.handleClickTicketMaster(ticketdata.id)
+          return (
+            <Ticketdata
+            key={ticketdata.id}
+            id={ticketdata.id}
+            url={ticketdata.url}
+            name={ticketdata.name}
+            venueName={ticketdata._embedded.venues[0].name}
+            city={ticketdata._embedded.venues[0].city.name}
+            date={ticketdata.dates.start.localDate}
+            handleClickTicketMaster={clickMasterTarget}
+            />
+          );
+        });
+      }else{
+        ticketdatas = '';
+      }
     let savedEventsDatas
     if (this.state.savedEvents.length === 0){
       savedEventsDatas = null
