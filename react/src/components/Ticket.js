@@ -255,7 +255,7 @@ class Ticket extends Component {
       });
 
       $.ajax({
-        url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
+        url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},${this.state.endDate}`,
         dataType: 'jsonp'
       })
       .done(data => {
@@ -499,7 +499,10 @@ class Ticket extends Component {
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div className='search-history-div'><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a></div>{clickedSearchHistoriesDatas}</div>
     }else{
-      clickedOutput = null;
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p>Search for you favorite artist above. Enter a date range you would like to search. Entering a zip code will retrieve recommended events near you!</p>
+      <img src='http://www.whitneypeakhotel.com/images/scrollilax/frame7_i2.png?' className='main-img'/>
+      </div>
     }
     return (
       <div className='jumbotron'>
