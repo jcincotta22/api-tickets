@@ -42,6 +42,26 @@ nav {
   font-family: 'Shrikhand', cursive;
 }
 
+@media only screen and (max-width : 690px) {
+  /* only size 'xs' and below */
+  nav {
+    height: 6em;
+  }
+  .navbar-fixed-top {
+    text-align: left;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .nav-links {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+  }
+}
+
 @media only screen and (max-width : 480px) {
   /* only size 'xs' and below */
   nav {

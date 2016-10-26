@@ -10,6 +10,21 @@ p.copyright {
   margin-top: 25px;
 }
 
+@media only screen and (max-width : 690px) {
+  /* only size 'xs' and below */
+  .footer {
+    height: 20px;
+  }
+  p.copyright {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+}
 @media only screen and (max-width : 480px) {
     /* only size 'xs' and below */
   .footer {
