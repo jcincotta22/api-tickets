@@ -1,0 +1,341 @@
+/* HSL */
+/* RGB */
+/* line 2, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+body {
+  color: #30343f;
+  padding-top: 10.5em;
+}
+
+/* line 7, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+nav {
+  background-color: #30343f;
+  height: 9.5em;
+}
+
+/* line 12, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.edit-profile {
+  width: 140px;
+}
+
+/* line 16, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.login {
+  width: 45px;
+}
+
+/* line 24, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.title {
+  color: #fafaff;
+  font-size: 40px;
+  margin-bottom: 0;
+  font-family: 'Shrikhand', cursive;
+}
+
+/* line 31, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.user-info {
+  float: right;
+  text-align: right;
+  font-family: 'Shrikhand', cursive;
+}
+
+/* line 37, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.user-link {
+  font-size: 16px;
+  font-family: 'Shrikhand', cursive;
+}
+
+/* line 42, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.saved-data > li {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 46, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.click-data > li {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 51, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+li {
+  list-style: none;
+}
+
+/* line 55, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.form-div {
+  text-align: center;
+}
+
+/* line 59, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.clicked {
+  width: 100%;
+}
+
+/* line 63, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.data:hover {
+  color: #ff6978;
+  background-color: #b1ede8;
+  cursor: pointer;
+}
+
+/* line 69, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
+  float: right;
+}
+
+/* line 73, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+input {
+  height: 50px;
+  width: 180px;
+}
+
+/* line 78, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.search-history-div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* line 83, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.link {
+  font-size: 20px;
+  font-family: 'Shrikhand', cursive;
+}
+
+/* line 88, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.btn {
+  background-color: #4c2a85;
+}
+
+/* line 92, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.btn:hover {
+  background-color: #b1ede8;
+}
+
+/* line 96, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+h2 {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 100, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.data {
+  border-width: 3px;
+  border-bottom-style: ridge;
+  border-color: #d3d3d3;
+}
+
+/* line 106, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+ul.data, li.saved-data {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 110, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+h5.search-heading {
+  font-size: 17px;
+}
+
+/* line 114, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.saved-data {
+  border-width: 3px;
+  border-bottom-style: ridge;
+  border-color: #d3d3d3;
+}
+
+/* line 120, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.results {
+  max-height: 20em;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+/* line 126, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.heading-img {
+  max-height: 50px;
+}
+
+/* line 130, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.clicked-image {
+  width: 90%;
+  border-radius: 10px;
+}
+
+/* line 136, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.message-container {
+  height: 6em;
+  padding-right: 8%;
+}
+
+/* line 141, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.container {
+  width: 95%;
+}
+
+/* line 146, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.form-container {
+  margin-bottom: 6em;
+  margin-top: 0;
+}
+
+/* line 151, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.jumbotron {
+  background-color: #fafaff;
+}
+
+/* line 156, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.panel-info > .panel-heading {
+  background-color: #b1ede8;
+}
+
+/* line 160, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.messages {
+  color: #555;
+  border-radius: 10px;
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+  font-size: 11px;
+  padding: 10px 10px 10px 36px;
+  margin: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #ffecec no-repeat 10px 50%;
+  border: 1px solid #f5aca6;
+  width: 20em;
+  float: right;
+  box-shadow: 10px 10px 5px grey;
+  margin-top: 20px;
+}
+
+/* line 177, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.main-img {
+  width: 85%;
+  filter: brightness(33%);
+}
+
+/* line 1, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.hint {
+  margin-left: 10px;
+}
+
+/* line 5, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.sign-up {
+  margin-left: 200px;
+  margin-bottom: 15px;
+}
+
+/* line 9, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_password_confirmation {
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 14, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_password {
+  margin-left: 90px;
+  height: 40px;
+}
+
+/* line 20, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_email {
+  margin-left: 119px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 26, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_last_name {
+  margin-left: 85px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 32, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_first_name {
+  margin-left: 84px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 38, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.user_button {
+  margin-left: 167px;
+  height: 40px;
+}
+
+/* line 44, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.log-in-user-button {
+  margin-left: 157px;
+  margin-top: 15px;
+}
+
+/* line 50, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.signup-password {
+  margin-left: 144px;
+}
+
+/* line 55, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.log-in-user-password {
+  height: 40px;
+  margin-left: 35px;
+  margin-bottom: 15px;
+}
+
+/* line 61, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#log-in-user-email {
+  margin-left: 105px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 1, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
+.footer {
+  height: 6em;
+  background-color: #30343f;
+  text-align: center;
+}
+
+/* line 7, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
+.copyright {
+  font-size: 18px;
+  color: #fafaff;
+  margin-top: 25px;
+}
+
+/* line 2, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+input[type="date"]::before {
+  color: #A9A9A9;
+  content: attr(placeholder);
+  font-size: 20px;
+}
+
+/* line 7, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+input[type="date"] {
+  color: #ffffff;
+}
+
+/* line 10, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+input[type="date"]:focus,
+input[type="date"]:valid {
+  color: #A9A9A9;
+  font-size: 20px;
+}
+
+/* line 15, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  content: "" !important;
+}
+
+/* line 21, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+.submit-button {
+  width: 120px;
+}
+
+/* line 25, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+.form-input {
+  font-size: 20px;
+}
+
+/* line 30, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+ *= require rails_bootstrap_forms
+ */
