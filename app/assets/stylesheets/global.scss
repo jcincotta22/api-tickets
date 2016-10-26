@@ -1,7 +1,7 @@
 
 body {
   color: $stone;
-  padding-top: 7.5em;
+  padding-top: 10.5em;
 }
 
 nav {
@@ -15,6 +15,10 @@ nav {
 
 .login {
   width: 45px;
+}
+
+.login-devise {
+
 }
 
 .title {
@@ -172,4 +176,5 @@ h5.search-heading {
 
 .main-img {
   width: 85%;
+  filter: brightness(33%);
 }

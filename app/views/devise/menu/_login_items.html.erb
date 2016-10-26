@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <li class="title-li">
+  <li class="title-li logout-devise">
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   </li>
 <% else %>
-  <li class="title-li">
+  <li class="title-li login-devise">
   <%= link_to('Login', new_user_session_path)  %>
   </li>
 <% end %>
