@@ -11,7 +11,7 @@ p.intro {
   font-size: 18px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 690px) {
   /* only size 'xs' and below */
   /* line 13, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
   p.intro {
@@ -284,7 +284,7 @@ p.copyright {
   margin-top: 25px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 690px) {
   /* only size 'xs' and below */
   /* line 15, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
   .footer {
@@ -298,6 +298,24 @@ p.copyright {
   }
 
   /* line 23, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
+  p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /* only size 'xs' and below */
+  /* line 30, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
+  .footer {
+    height: 20px;
+  }
+
+  /* line 33, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
+  p.copyright {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  /* line 38, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
   p {
     font-size: 12px;
   }
@@ -394,7 +412,7 @@ nav {
   font-family: 'Shrikhand', cursive;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 690px) {
   /* only size 'xs' and below */
   /* line 47, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   nav {
@@ -412,6 +430,30 @@ nav {
   }
 
   /* line 58, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  .nav-links {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /* only size 'xs' and below */
+  /* line 67, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  nav {
+    height: 6em;
+  }
+
+  /* line 70, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  .navbar-fixed-top {
+    text-align: left;
+  }
+
+  /* line 74, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  .title {
+    font-size: 25px;
+  }
+
+  /* line 78, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .nav-links {
     font-size: 12px;
     margin-top: 5px;
