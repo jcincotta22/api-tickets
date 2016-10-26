@@ -1,0 +1,63 @@
+
+nav {
+  background-color: $stone;
+  height: 9.5em;
+}
+
+.log-item {
+  text-align: right;
+  display: inline-block;
+  font-family: 'Shrikhand', cursive;
+}
+
+.reg-item {
+  text-align: right;
+  display: inline-block;
+  font-family: 'Shrikhand', cursive;
+  margin-right: 10px;
+}
+
+.nav-links {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.edit-profile {
+  width: 140px;
+}
+
+.login {
+  width: 45px;
+}
+
+.title {
+  color: $ghost;
+  font-size: 40px;
+  margin-bottom: 0;
+  font-family: 'Shrikhand', cursive;
+}
+
+.link {
+  font-size: 20px;
+  font-family: 'Shrikhand', cursive;
+}
+
+@media only screen and (max-width : 480px) {
+  /* only size 'xs' and below */
+  nav {
+    height: 6em;
+  }
+  .navbar-fixed-top {
+    text-align: left;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .nav-links {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+  }
+}
