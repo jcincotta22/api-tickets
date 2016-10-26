@@ -1,6 +1,10 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/Jscincotta/challenges/api-tickets/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
       "/Users/Jscincotta/challenges/api-tickets/app/models/user.rb": [
         1,
         1,
@@ -21,8 +25,23 @@
         1,
         null
       ],
-      "/Users/Jscincotta/challenges/api-tickets/app/helpers/application_helper.rb": [
+      "/Users/Jscincotta/challenges/api-tickets/app/controllers/tickets_controller.rb": [
         1,
+        null,
+        null
+      ],
+      "/Users/Jscincotta/challenges/api-tickets/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        10,
+        10,
+        null,
         null
       ],
       "/Users/Jscincotta/challenges/api-tickets/app/models/saved_event.rb": [
@@ -70,25 +89,6 @@
         0,
         0,
         0,
-        null,
-        null
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/controllers/tickets_controller.rb": [
-        1,
-        null,
-        null
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/controllers/application_controller.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        10,
-        10,
         null,
         null
       ],
@@ -275,6 +275,6 @@
         0
       ]
     },
-    "timestamp": 1477442274
+    "timestamp": 1477501954
   }
 }

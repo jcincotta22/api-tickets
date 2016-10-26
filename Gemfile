@@ -19,6 +19,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem "dotenv-rails"
+  gem 'rails-controller-testing'
 end
 
 group :test do

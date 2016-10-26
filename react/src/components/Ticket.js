@@ -27,7 +27,6 @@ class Ticket extends Component {
       recommendedEvent: [],
       savedEvents:[],
       clickedEvent: '',
-      message: '',
       search: '',
       date: '',
       endDate: '',
@@ -52,19 +51,64 @@ class Ticket extends Component {
      this.getSearchHistory = this.getSearchHistory.bind(this);
      this.handleClickSearch = this.handleClickSearch.bind(this);
      this.handleDeleteSearch = this.handleDeleteSearch.bind(this);
-
+     this.toastrOptions = this.toastrOptions.bind(this);
+     this.toastrValidSave = this.toastrValidSave.bind(this);
+     this.toastrValidDelete = this.toastrValidDelete.bind(this);
+     this.toastrValidSearchHistory = this.toastrValidSearchHistory.bind(this);
+     this.toastrValidDeleteSearch = this.toastrValidDeleteSearch.bind(this);
   }
 
+  toastrValidSearchHistory(message) {
+    if(message !== '' ){
+      this.toastrOptions();
+      toastr.error(data.message);
+    }
+  }
+
+  toastrValidDelete(message){
+    this.toastrOptions();
+    if(message === 'Event has been deleted'){
+      toastr.success(message);
+    }else{
+      toastr.error(message);
+    }
+  }
+
+  toastrValidDeleteSearch(message){
+    this.toastrOptions();
+    if(message === 'Your Search History Has Been Deleted'){
+      toastr.success(message);
+    }else{
+      toastr.error(message);
+    }
+  }
+
+  toastrValidSave(message){
+    this.toastrOptions();
+    if(message === 'Event was saved to your Event Bucket'){
+      toastr.success(message, {timeOut: 1500});
+    }else{
+      toastr.error(message, {timeOut: 1500});
+    }
+  }
+
+  toastrOptions(){
+    toastr.options.extendedTimeOut = 60;
+    toastr.options.timeOut = 1500;
+    toastr.options.showMethod = 'slideDown';
+    toastr.options.hideMethod = 'slideUp';
+    toastr.options.closeButton = true;
+  }
 
 
   formValidation() {
     let regex = /^(?:\d{5})$/;
     let inpObj = document.getElementById("zip");
     if ( regex.test(inpObj.value) ) {
-      document.getElementById("formMessage").innerHTML = null;
       return true;
     }else {
-      document.getElementById("formMessage").innerHTML = 'Zip must be 5 digits';
+      this.toastrOptions();
+      toastr.error('Zip must be 5 digits', 'Invalid Entry', {timeOut: 1500})
       return false;
     }
   }
@@ -86,15 +130,12 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ searchHistory: data.searchHistory });
-      if(data.message !== '' ){
-        this.setState({ message: <div className='messages'>{data.message}</div> })
-      }
+      this.toastrValidSearchHistory(data.message);
       this.setState({ clickedEvent: 'searchHistory' })
     });
   }
 
   handleClickSearch(){
-    this.setState({ message: '' });
     this.getSearchHistory();
   }
 
@@ -110,7 +151,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.toastrValidSave(data.message);
       this.getSavedEvents();
       $(window).scrollTop(0);
     });
@@ -124,7 +165,7 @@ class Ticket extends Component {
       dataType: 'json',
     })
     .done(data => {
-      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.toastrValidSave(data.message);
       this.getSavedEvents();
       $(window).scrollTop(0);
     });
@@ -138,7 +179,7 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.toastrValidSave(data.message);
       this.getSavedEvents();
       $(window).scrollTop(0);
     });
@@ -152,7 +193,7 @@ class Ticket extends Component {
       data: { saved_event: { id: event } }
     })
     .done(data => {
-      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.toastrValidDelete(data.message);
       this.getSavedEvents();
     });
   }
@@ -164,14 +205,13 @@ class Ticket extends Component {
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ message: <div className='messages'>{data.message}</div> })
+      this.toastrValidDeleteSearch(data.message)
       this.getSearchHistory();
     });
   }
 
 
   handleClickGeek(event) {
-    this.setState({ message: '' });
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
       dataType: 'json'
@@ -185,7 +225,6 @@ class Ticket extends Component {
   }
 
   handleClickRecommended(event) {
-    this.setState({ message: '' });
     $.ajax({
       url: `https://api.seatgeek.com/2/events/${event}`,
       dataType: 'json'
@@ -194,13 +233,12 @@ class Ticket extends Component {
       this.setState({ recommendedEvent: [data] });
       this.setState({ clickedEvent: 'recommended' })
       $('html, body').animate({
-          scrollTop: $("#clickRec").offset().top - 200
+        scrollTop: $("#clickRec").offset().top - 200
       }, 1000) ;
     });
   }
 
   handleClickBand(event) {
-    this.setState({ message: '' });
     $.ajax({
       url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&date=${event}`,
       dataType: 'jsonp'
@@ -209,14 +247,13 @@ class Ticket extends Component {
       this.setState({ bandsInTownEvent: data });
       this.setState({ clickedEvent: 'bandsInTown' })
       $('html, body').animate({
-          scrollTop: $("#clickBand").offset().top - 200
+        scrollTop: $("#clickBand").offset().top - 200
       }, 1000) ;
     });
   }
 
 
   handleClickTicketMaster(event) {
-    this.setState({ message: '' });
     $.ajax({
       url: '/api/events',
       data: { ticket: { event_id: event, site: 'ticketmasterEvent' } },
@@ -226,7 +263,7 @@ class Ticket extends Component {
       this.setState({ ticketMasterEvent: [data.ticketmasterEvent] });
       this.setState({ clickedEvent: 'ticketMaster' })
       $('html, body').animate({
-          scrollTop: $("#clickTicket").offset().top - 200
+        scrollTop: $("#clickTicket").offset().top - 200
       }, 1000) ;
     });
   }
@@ -235,7 +272,6 @@ class Ticket extends Component {
     let formValidity
     event.preventDefault();
 
-    this.setState({ message: '' });
     formValidity = this.formValidation();
     if (formValidity === true) {
       $.ajax({
@@ -255,7 +291,7 @@ class Ticket extends Component {
       });
 
       $.ajax({
-        url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},{this.state.endDate}`,
+        url: `http://api.bandsintown.com/artists/${this.state.search}/events.json?api_version=2.0&app_id=myid&${this.state.date},${this.state.endDate}`,
         dataType: 'jsonp'
       })
       .done(data => {
@@ -298,17 +334,17 @@ class Ticket extends Component {
   render() {
 
     let clickedSearchHistoriesDatas = this.state.searchHistory.map(clickedSearchHistoriesData => {
-        return (
-          <SearchHistory
-          key={clickedSearchHistoriesData.id}
-          id={clickedSearchHistoriesData.id}
-          site={clickedSearchHistoriesData.site}
-          keyword={clickedSearchHistoriesData.keyword}
-          startDate={clickedSearchHistoriesData.date}
-          endDate={clickedSearchHistoriesData.end_date}
-          zip={clickedSearchHistoriesData.zip}
-          createdAt={clickedSearchHistoriesData.created_at}
-          />
+      return (
+        <SearchHistory
+        key={clickedSearchHistoriesData.id}
+        id={clickedSearchHistoriesData.id}
+        site={clickedSearchHistoriesData.site}
+        keyword={clickedSearchHistoriesData.keyword}
+        startDate={clickedSearchHistoriesData.date}
+        endDate={clickedSearchHistoriesData.end_date}
+        zip={clickedSearchHistoriesData.zip}
+        createdAt={clickedSearchHistoriesData.created_at}
+        />
       );
     });
 
@@ -484,7 +520,6 @@ class Ticket extends Component {
           />
         );
       });
-
     }
     let clickedOutput
     if(this.state.clickedEvent === 'seatGeek'){
@@ -499,17 +534,13 @@ class Ticket extends Component {
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div className='search-history-div'><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a></div>{clickedSearchHistoriesDatas}</div>
     }else{
-      clickedOutput = null;
+      clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p>Search for your favorite artist above. Enter a date range for the event.<br/>Entering a zip code will retrieve recommended events near you!</p>
+      <img src='http://www.whitneypeakhotel.com/images/scrollilax/frame7_i2.png?' className='main-img'/>
+      </div>
     }
     return (
       <div className='jumbotron'>
-        <div className='message-container'>
-          <div className='row'>
-              <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                {this.state.message}
-              </div>
-            </div>
-          </div>
         <div className='container'>
           <div className='row form-div'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -556,7 +587,6 @@ class Ticket extends Component {
                 </div>
               </div>
             </div>
-
             <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
               <div className='container'>
                 <div id='main-div row'>
@@ -564,7 +594,6 @@ class Ticket extends Component {
                 </div>
               </div>
             </div>
-
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
               <div className='search-history-div'><a href="#" onClick={this.handleClickSearch} className='link'>Search History</a></div>
               <div className="panel panel-info">
@@ -572,7 +601,6 @@ class Ticket extends Component {
                 <div className="panel-info">{savedEventsDatas}</div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
