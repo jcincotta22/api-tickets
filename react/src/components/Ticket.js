@@ -61,7 +61,7 @@ class Ticket extends Component {
   toastrValidSearchHistory(message) {
     if(message !== '' ){
       this.toastrOptions();
-      toastr.error(data.message);
+      toastr.error(message);
     }
   }
 
