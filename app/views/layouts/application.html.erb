@@ -15,19 +15,19 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body class='jumbotron'>
     <nav class='navbar-fixed-top'>
       <div class='container-fluid'>
         <div class='row'>
           <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
             <div class='col-lg-4 col-md-6 col-sm-8 col-xs-12'><h2 class='title'>eventTrackr</h2></div>
-            <div class='col-lg-3 col-md-3 col-sm-4 col-xs-12 user-info user-link'>
-              <div class='navbar-text navbar-right col-lg-5 col-md-5 col-sm-5 col-xs-5 edit-profile'>
-                <%= render 'devise/menu/registration_items' %>
-              </div>
-              <div class='navbar-text navbar-right col-lg-5 col-md-5 col-sm-5 col-xs-5 login'>
-                <%= render 'devise/menu/login_items' %>
-              </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12 navbar-right'>
+
+                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 nav-links'>
+                  <div class='reg-item'><%= render 'devise/menu/registration_items' %></div>
+
+                  <div class='log-item'><%= render 'devise/menu/login_items' %></div>
+                </div>
           </div>
           </div>
         </div>
@@ -40,8 +40,10 @@
     <% end %>
     <%= yield %>
     <div class="navbar navbar-default navbar-fixed-bottom footer">
-      <div class="container">
-        <p class="copyright">©2016 eventTrackr</p>
+      <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <div class="container">
+          <p class="copyright">©2016 eventTrackr</p>
+        </div>
       </div>
     <div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

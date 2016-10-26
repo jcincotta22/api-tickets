@@ -4,29 +4,17 @@ body {
   padding-top: 10.5em;
 }
 
-nav {
-  background-color: $stone;
-  height: 9.5em;
+p.intro {
+  font-size: 18px;
 }
 
-.edit-profile {
-  width: 140px;
+@media only screen and (max-width : 480px) {
+  /* only size 'xs' and below */
+  p.intro {
+    font-size: 12px;
+  }
 }
 
-.login {
-  width: 45px;
-}
-
-.login-devise {
-
-}
-
-.title {
-  color: $ghost;
-  font-size: 40px;
-  margin-bottom: 0;
-  font-family: 'Shrikhand', cursive;
-}
 
 .user-info {
   float: right;
@@ -150,7 +138,7 @@ h5.search-heading {
 
 .jumbotron {
   background-color: $ghost;
-
+  padding-top: 6.5em;
 }
 
 .panel-info > .panel-heading {

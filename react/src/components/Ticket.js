@@ -535,7 +535,7 @@ class Ticket extends Component {
       <div className='search-history-div'><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a></div>{clickedSearchHistoriesDatas}</div>
     }else{
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <p>Search for your favorite artist above. Enter a date range for the event.<br/>Entering a zip code will retrieve recommended events near you!</p>
+      <p className='intro'>Search for your favorite artist above. Enter a date range for the event.<br/>Entering a zip code will retrieve recommended events near you!</p>
       <img src='http://www.whitneypeakhotel.com/images/scrollilax/frame7_i2.png?' className='main-img'/>
       </div>
     }
