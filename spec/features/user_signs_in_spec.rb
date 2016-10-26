@@ -5,7 +5,7 @@ feature 'user sign in' do
     user = FactoryGirl.create(:user)
     visit root_path
     click_link 'Login'
-    fill_in 'Email', with: user.email
+    fill_in 'log-in-user-email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Login'
     expect(page).to have_content('Welcome Back!')
@@ -15,7 +15,7 @@ feature 'user sign in' do
   scenario 'a nonexistent email and password is supplied' do
     visit root_path
     click_link 'Login'
-    fill_in 'Email', with: 'nobody@example.com'
+    fill_in 'log-in-user-email', with: 'nobody@example.com'
     fill_in 'Password', with: 'password'
     click_button 'Login'
     expect(page).to have_content('Invalid Email or password.')
@@ -28,7 +28,7 @@ feature 'user sign in' do
     user = FactoryGirl.create(:user)
     visit root_path
     click_link 'Login'
-    fill_in 'Email', with: user.email
+    fill_in 'log-in-user-email', with: user.email
     fill_in 'Password', with: 'incorrectPassword'
     click_button 'Login'
     expect(page).to have_content('Invalid Email or password.')
@@ -40,7 +40,7 @@ feature 'user sign in' do
   scenario 'an already authenticated user cannot re-sign in' do
     user = FactoryGirl.create(:user)
     visit new_user_session_path
-    fill_in 'Email', with: user.email
+    fill_in 'log-in-user-email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Login'
 
