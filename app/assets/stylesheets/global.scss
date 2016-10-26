@@ -1,12 +1,215 @@
 
+body {
+  color: $stone;
+  padding-top: 7.5em;
+}
 
 nav {
-  background-color: $teal;
+  background-color: $stone;
+  height: 9.5em;
+}
+
+.hint {
+  margin-left: 10px;
+}
+
+.sign-up {
+  margin-left: 200px;
+  margin-bottom: 15px;
+}
+#user_password_confirmation {
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+#user_password {
+  margin-left: 90px;
+  height: 40px;
+
+}
+
+#user_email {
+  margin-left: 119px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+#user_last_name {
+  margin-left: 85px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+#user_first_name {
+  margin-left: 84px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+.user_button {
+  margin-left: 167px;
+  height: 40px;
+
+}
+
+.log-in-user-button {
+  margin-left: 157px;
+  margin-top: 15px;
+
+}
+
+.signup-password {
+  margin-left: 144px;
+}
+
+
+.log-in-user-password {
+    height: 40px;
+    margin-left: 35px;
+    margin-bottom: 15px;
+}
+
+#log-in-user-email {
+  margin-left: 105px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+
+.edit-profile {
+  width: 140px;
+}
+
+.login {
+  width: 45px;
+}
+
+input[type="date"]::before {
+	color: #A9A9A9;
+	content: attr(placeholder);
+  font-size: 20px;
+}
+input[type="date"] {
+	color: #ffffff;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: #A9A9A9;
+  font-size: 20px;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+	content: "" !important;
+}
+
+.title {
+  color: $ghost;
+  font-size: 40px;
+  margin-bottom: 0;
+  font-family: 'Shrikhand', cursive;
+}
+
+.user-info {
+  float: right;
+  text-align: right;
+  font-family: 'Shrikhand', cursive;
+}
+
+.user-link {
+  font-size: 16px;
+  font-family: 'Shrikhand', cursive;
+}
+
+.saved-data > li {
+  font-family: 'Noto Serif', serif;
+}
+
+.click-data > li {
+  font-family: 'Noto Serif', serif;
+}
+
+
+li {
+  list-style: none;
+}
+
+.form-div {
+  text-align: center;
+}
+
+.clicked {
+  width: 100%
+}
+
+.data:hover {
+  color: $coral;
+  background-color: $green;
+  cursor:pointer;
+}
+
+.col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
+  float: right;
+}
+
+input {
+ height: 50px;
+ width: 180px;
+}
+
+.search-history-div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.link {
+  font-size: 20px;
+  font-family: 'Shrikhand', cursive;
+}
+
+.submit-button {
+  width: 120px;
+}
+
+.form-input {
+  font-size: 20px;
+}
+
+.btn {
+  background-color: $purple;
+}
+
+.btn:hover {
+  background-color: $green;
+}
+
+h2 {
+  font-family: 'Noto Serif', serif;
+}
+
+.data {
+  border-width:3px;
+  border-bottom-style:ridge;
+  border-color: $light-grey;
+}
+
+ul.data, li.saved-data {
+  font-family: 'Noto Serif', serif;
+}
+
+h5.search-heading {
+  font-size: 17px;
+}
+
+.saved-data {
+  border-width:3px;
+  border-bottom-style:ridge;
+  border-color: $light-grey;
 }
 
 .results {
  max-height: 20em;
  overflow: scroll;
+ overflow-x: hidden;
 }
 
 .heading-img {
@@ -14,8 +217,14 @@ nav {
 }
 
 .clicked-image {
- width: 38em;
+ width: 90%;
+ border-radius: 10px;
 
+}
+
+.message-container {
+  height: 6em;
+  padding-right: 8%;
 }
 
 .container {
@@ -23,10 +232,37 @@ nav {
 }
 
 form {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-container {
-  margin-bottom: 3em;
+  margin-bottom: 6em;
+  margin-top: 0;
+}
+
+.jumbotron {
+  background-color: $ghost;
+
+}
+
+.panel-info > .panel-heading {
+  background-color: $green;
+}
+
+.messages {
+  color:#555;
+  border-radius:10px;
+  font-family: Tahoma, Geneva, Arial, sans-serif;
+  font-size:11px;
+  padding:10px 10px 10px 36px;
+  margin:10px;
+  font-weight:bold;
+  text-transform:uppercase;
+  background:#ffecec no-repeat 10px 50%;
+  border:1px solid #f5aca6;
+  width: 20em;
+  float: right;
+  box-shadow: 10px 10px 5px grey;
+  margin-top: 20px;
 }
