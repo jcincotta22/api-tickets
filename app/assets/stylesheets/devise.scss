@@ -2,11 +2,44 @@
   margin-left: 10px;
 }
 
+.edit-title {
+  margin-top: 5em;
+}
+
+.edit-password-conf {
+  margin-left: 1px;
+}
+
+.edit-current-password {
+  margin-left: 26px;
+}
+
+.edit-password {
+  margin-bottom: 15px;
+}
+
+div.input.password.optional.user_password.field_with_hint {
+  margin-bottom: 15px;
+}
+
+.edit-email {
+  margin-left: 104px;
+}
+
+.edit-button {
+  margin-left: 156px;
+}
+
 .sign-up {
   margin-left: 0px;
   margin-bottom: 15px;
 }
 #user_password_confirmation {
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+#user_current_password {
   margin-bottom: 15px;
   height: 40px;
 }
