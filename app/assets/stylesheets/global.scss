@@ -15,16 +15,39 @@ p.intro {
   }
 }
 
+a {
+  font-family: 'Noto Serif', serif;
+  font-weight: bold;
+}
+
+.btn {
+  font-family: 'Noto Serif', serif;
+}
+
+.title-link:link {
+  text-decoration: none;
+}
+
+.title-link:visited {
+  text-decoration: none;
+}
+
+.title-link:active {
+  text-decoration: none;
+}
+
+.text {
+  font-family: 'Noto Serif', serif;
+}
+
 
 .user-info {
   float: right;
   text-align: right;
-  font-family: 'Shrikhand', cursive;
 }
 
 .user-link {
   font-size: 16px;
-  font-family: 'Shrikhand', cursive;
 }
 
 .saved-data > li {
@@ -70,7 +93,6 @@ input {
 
 .link {
   font-size: 20px;
-  font-family: 'Shrikhand', cursive;
 }
 
 .btn {

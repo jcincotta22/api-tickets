@@ -535,7 +535,7 @@ class Ticket extends Component {
       <div className='search-history-div'><a href="#" onClick={this.handleDeleteSearch} className='link'>Clear History</a></div>{clickedSearchHistoriesDatas}</div>
     }else{
       clickedOutput = <div className="clicked col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <p className='intro'>Search for your favorite artist above. Enter a date range for the event.<br/>Entering a zip code will retrieve recommended events near you!</p>
+      <p className='intro'>Search for your favorite artist above.<br/>Enter a date range for the event.<br/>Entering a zip code will retrieve recommended events near you!</p>
       <img src='http://www.whitneypeakhotel.com/images/scrollilax/frame7_i2.png?' className='main-img'/>
       </div>
     }
@@ -581,7 +581,7 @@ class Ticket extends Component {
                 </div>
               </div>
               <div className="panel panel-info">
-                <div className="panel-heading"><h4>Recommended By Us</h4></div>
+                <div className="panel-heading"><h4 className='text'>Recommended By Us</h4></div>
                 <div id='recommended' className='results'>
                   {recommendedDatas}
                 </div>
@@ -597,7 +597,7 @@ class Ticket extends Component {
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
               <div className='search-history-div'><a href="#" onClick={this.handleClickSearch} className='link'>Search History</a></div>
               <div className="panel panel-info">
-                <div className="panel-heading"><h4>Saved Event Bucket</h4></div>
+                <div className="panel-heading"><h4 className='text'>Saved Event Bucket</h4></div>
                 <div className="panel-info">{savedEventsDatas}</div>
               </div>
             </div>
