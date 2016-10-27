@@ -343,7 +343,7 @@ class Ticket extends Component {
         startDate={clickedSearchHistoriesData.date}
         endDate={clickedSearchHistoriesData.end_date}
         zip={clickedSearchHistoriesData.zip}
-        createdAt={clickedSearchHistoriesData.created_at.slice(0,10)}
+        createdAt={clickedSearchHistoriesData.created_at}
         />
       );
     });
