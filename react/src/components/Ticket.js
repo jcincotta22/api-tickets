@@ -252,7 +252,6 @@ class Ticket extends Component {
     });
   }
 
-
   handleClickTicketMaster(event) {
     $.ajax({
       url: '/api/events',
