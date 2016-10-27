@@ -18,160 +18,188 @@ p.intro {
     font-size: 12px;
   }
 }
-/* line 19, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 18, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+a {
+  font-family: 'Noto Serif', serif;
+  font-weight: bold;
+}
+
+/* line 23, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.btn {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 27, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.title-link:link {
+  text-decoration: none;
+}
+
+/* line 31, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.title-link:visited {
+  text-decoration: none;
+}
+
+/* line 35, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.title-link:active {
+  text-decoration: none;
+}
+
+/* line 39, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+.text {
+  font-family: 'Noto Serif', serif;
+}
+
+/* line 44, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .user-info {
   float: right;
   text-align: right;
-  font-family: 'Shrikhand', cursive;
 }
 
-/* line 25, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 49, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .user-link {
   font-size: 16px;
-  font-family: 'Shrikhand', cursive;
 }
 
-/* line 30, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 53, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .saved-data > li {
   font-family: 'Noto Serif', serif;
 }
 
-/* line 34, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 57, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .click-data > li {
   font-family: 'Noto Serif', serif;
 }
 
-/* line 39, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 62, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 li {
   list-style: none;
 }
 
-/* line 43, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 66, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .form-div {
   text-align: center;
 }
 
-/* line 47, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 70, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .clicked {
   width: 100%;
 }
 
-/* line 51, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 74, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .data:hover {
   color: #ff6978;
   background-color: #b1ede8;
   cursor: pointer;
 }
 
-/* line 57, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 80, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .col-lg-3 .col-md-3 .col-sm-6 .col-xs-12 {
   float: right;
 }
 
-/* line 61, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 84, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 input {
   height: 50px;
   width: 180px;
 }
 
-/* line 66, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 89, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .search-history-div {
   text-align: center;
   margin-bottom: 10px;
 }
 
-/* line 71, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 94, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .link {
   font-size: 20px;
-  font-family: 'Shrikhand', cursive;
 }
 
-/* line 76, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 98, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .btn {
   background-color: #4c2a85;
 }
 
-/* line 80, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 102, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .btn:hover {
   background-color: #b1ede8;
 }
 
-/* line 84, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 106, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 h2 {
   font-family: 'Noto Serif', serif;
 }
 
-/* line 88, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 110, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .data {
   border-width: 3px;
   border-bottom-style: ridge;
   border-color: #d3d3d3;
 }
 
-/* line 94, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 116, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 ul.data, li.saved-data {
   font-family: 'Noto Serif', serif;
 }
 
-/* line 98, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 120, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 h5.search-heading {
   font-size: 17px;
 }
 
-/* line 102, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 124, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .saved-data {
   border-width: 3px;
   border-bottom-style: ridge;
   border-color: #d3d3d3;
 }
 
-/* line 108, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 130, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .results {
   max-height: 20em;
   overflow: scroll;
   overflow-x: hidden;
 }
 
-/* line 114, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 136, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .heading-img {
   max-height: 50px;
 }
 
-/* line 118, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 140, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .clicked-image {
   width: 90%;
   border-radius: 10px;
 }
 
-/* line 124, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 146, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .message-container {
   height: 6em;
   padding-right: 8%;
 }
 
-/* line 129, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 151, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .container {
   width: 95%;
 }
 
-/* line 134, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 156, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .form-container {
   margin-bottom: 6em;
   margin-top: 0;
 }
 
-/* line 139, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 161, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .jumbotron {
   background-color: #fafaff;
   padding-top: 6.5em;
 }
 
-/* line 144, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 166, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .panel-info > .panel-heading {
   background-color: #b1ede8;
 }
 
-/* line 148, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 170, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .messages {
   color: #555;
   border-radius: 10px;
@@ -189,7 +217,7 @@ h5.search-heading {
   margin-top: 20px;
 }
 
-/* line 165, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
+/* line 187, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/global.scss */
 .main-img {
   width: 85%;
   filter: brightness(33%);
@@ -412,14 +440,14 @@ nav {
 .log-item {
   text-align: right;
   display: inline-block;
-  font-family: 'Shrikhand', cursive;
+  font-family: 'Noto Serif', serif;
 }
 
 /* line 13, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
 .reg-item {
   text-align: right;
   display: inline-block;
-  font-family: 'Shrikhand', cursive;
+  font-family: 'Noto Serif', serif;
   margin-right: 10px;
 }
 
@@ -447,30 +475,24 @@ nav {
   font-family: 'Shrikhand', cursive;
 }
 
-/* line 40, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
-.link {
-  font-size: 20px;
-  font-family: 'Shrikhand', cursive;
-}
-
 @media only screen and (max-width: 690px) {
   /* only size 'xs' and below */
-  /* line 47, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 42, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   nav {
     height: 6em;
   }
 
-  /* line 50, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 45, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .navbar-fixed-top {
     text-align: left;
   }
 
-  /* line 54, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 49, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .title {
     font-size: 25px;
   }
 
-  /* line 58, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 53, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .nav-links {
     font-size: 12px;
     margin-top: 5px;
@@ -479,22 +501,22 @@ nav {
 }
 @media only screen and (max-width: 480px) {
   /* only size 'xs' and below */
-  /* line 67, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 62, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   nav {
     height: 6em;
   }
 
-  /* line 70, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 65, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .navbar-fixed-top {
     text-align: left;
   }
 
-  /* line 74, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 69, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .title {
     font-size: 25px;
   }
 
-  /* line 78, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
+  /* line 73, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
   .nav-links {
     font-size: 12px;
     margin-top: 5px;
