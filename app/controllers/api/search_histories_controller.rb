@@ -6,12 +6,11 @@ class Api::SearchHistoriesController < ApiController
     if user
       search_history = user.search_histories.order(created_at: :desc).limit(10)
       tickets = []
-
       search_history.each do |history|
         tickets << history.ticket
       end
 
-      if !search_history.nil?
+      if !search_history.empty?
         render json: { searchHistory: tickets, message: '' }, status: :ok
       else
         render json: { searchHistory: [], message: "You do not have a search history" }, status: :ok
