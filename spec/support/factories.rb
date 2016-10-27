@@ -28,9 +28,10 @@ end
 FactoryGirl.define do
   factory :saved_event do
     user
-    search_history
     site 'ticketmaster'
+    title 'fun with kanye'
     keyword "kanye"
     event_id "123456"
+    url 'www.kanye.com'
   end
 end

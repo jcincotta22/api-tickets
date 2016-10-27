@@ -285,6 +285,7 @@ class Ticket extends Component {
           dataType: 'json'
         })
         .done(data => {
+          debugger;
           this.setState({ recommended: data.recommendedEvents.recommendations });
         });
       });
@@ -342,7 +343,7 @@ class Ticket extends Component {
         startDate={clickedSearchHistoriesData.date}
         endDate={clickedSearchHistoriesData.end_date}
         zip={clickedSearchHistoriesData.zip}
-        createdAt={clickedSearchHistoriesData.created_at}
+        createdAt={clickedSearchHistoriesData.created_at.slice(0,10)}
         />
       );
     });
