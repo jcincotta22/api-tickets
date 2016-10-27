@@ -32,5 +32,20 @@ describe Api::TicketsController, type: :controller, vcr: true do
         expect(title).to eq("Shawn Mendes: Ariana Grande with iHeartRadio Jingle Ball and Jingle Ball and Diplo and Tove Lo")
         expect(url).to eq("https://seatgeek.com/shawn-mendes-ariana-grande-with-iheartradio-jingle-ball-and-jingle-ball-and-diplo-and-tove-lo-tickets/boston-massachusetts-td-garden-2016-12-11-6-pm/concert/3541173")
     end
+
+      scenario 'makes a single event api call to ticketmaster and returns data' do
+        user = FactoryGirl.create(:user)
+        allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+        allow(controller).to receive(:current_user).and_return(user)
+        login_as(user, :scope => :user)
+        post :events, params: { ticket: { site: 'ticketmasterEvent', event_id: "vvG1zZKzRc-5_k"} }
+        expect(response.status).to eq(200)
+        expect(response.content_type).to eq "application/json"
+        res_body = JSON.parse(response.body)
+        name = res_body['ticketmasterEvent']['name']
+        url = res_body['ticketmasterEvent']['url']
+        expect(name).to eq("Adele")
+        expect(url).to eq('http://ticketmaster.com/event/0E004F8BED84B646')
+    end
   end
 end
