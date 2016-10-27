@@ -8,10 +8,10 @@
         <%= f.error_notification %>
         <%= f.input :first_name, label: 'First Name', required: true, autofocus: true %>
         <%= f.input :last_name, label: 'Last Name', required: true%>
-        <%= f.label :email %><%= f.email_field :email, required: true, autofocus: true %>
+        <%= f.label :email %><%= f.email_field :email, required: true, autofocus: true, class: 'forgot-email' %>
         <%= f.input :password, required: true, hint: ("(#{@minimum_password_length} characters minimum)" if @minimum_password_length) %></div>
         <%= f.input :password_confirmation, label: 'Password Confirmation', required: true %>
-        <%= f.button :submit, "Sign up", class: 'btn btn-info user_button' %>
+        <%= f.button :submit, "Sign up", class: 'btn btn-info user_button forgot-button' %>
       </div>
       <%= render "devise/shared/links" %>
       <a href='/'>Back</a>
