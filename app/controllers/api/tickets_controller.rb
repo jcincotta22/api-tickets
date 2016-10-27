@@ -9,12 +9,8 @@ class Api::TicketsController < ApiController
         ticket.save
         SearchHistory.create(user_id: user.id, ticket_id: ticket.id)
       end
-
       ticketmasterData = ticket.get_data_ticketmaster_events(ENV["TICKETMASTER_KEY"], ticket.keyword, ticket.date, ticket.end_date)
       render json: { ticketmasterData: ticketmasterData }, status: :ok
-    elsif ticket.site == 'seatgeek'
-      seatgeekData = ticket.get_data_seatgeek_events(ticket.keyword)
-      render json: { seatgeekData: seatgeekData }, status: :ok
     elsif ticket.site == 'ticketmasterEvent'
       ticket.event_id = params[:ticket][:event_id]
       ticketmasterEvent = ticket.get_data_ticketmaster_event(ENV["TICKETMASTER_KEY"], ticket.event_id)

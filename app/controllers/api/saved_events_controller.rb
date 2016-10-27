@@ -29,7 +29,6 @@ class Api::SavedEventsController < ApiController
         message = "User must be signed in to save this event"
         render json: { message: message }, status: :ok
       end
-
     elsif saved_event.site == 'bandsInTown'
       if user
         saved_event.user_id = user.id
@@ -40,7 +39,6 @@ class Api::SavedEventsController < ApiController
         message = "User must be signed in to save this event"
         render json: { message: message }, status: :ok
       end
-
     elsif saved_event.site == 'seatGeek'
       if user
         saved_event.user_id = user.id

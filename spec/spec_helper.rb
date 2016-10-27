@@ -21,7 +21,8 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.default_cassette_options = { record: :new_episodes }
   config.ignore_localhost = true
-  config.filter_sensitive_data('<HIDDEN API KEY>') { ENV['TICKETMASTER_KEY'] }
+  config.filter_sensitive_data('TICKETMASTER_KEY') { ENV['TICKETMASTER_KEY'] }
+  config.filter_sensitive_data('SEATGEEK_KEY') { ENV["SEATGEEK_KEY"] }
 end
 
 
