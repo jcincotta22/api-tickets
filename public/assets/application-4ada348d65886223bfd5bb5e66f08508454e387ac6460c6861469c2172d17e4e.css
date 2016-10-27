@@ -201,69 +201,110 @@ h5.search-heading {
 }
 
 /* line 5, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-title {
+  margin-top: 5em;
+}
+
+/* line 9, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-password-conf {
+  margin-left: 1px;
+}
+
+/* line 13, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-current-password {
+  margin-left: 26px;
+}
+
+/* line 17, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-password {
+  margin-bottom: 15px;
+}
+
+/* line 21, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+div.input.password.optional.user_password.field_with_hint {
+  margin-bottom: 15px;
+}
+
+/* line 25, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-email {
+  margin-left: 104px;
+}
+
+/* line 29, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+.edit-button {
+  margin-left: 156px;
+}
+
+/* line 33, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 .sign-up {
   margin-left: 0px;
   margin-bottom: 15px;
 }
 
-/* line 9, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 37, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #user_password_confirmation {
   margin-bottom: 15px;
   height: 40px;
 }
 
-/* line 14, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 42, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+#user_current_password {
+  margin-bottom: 15px;
+  height: 40px;
+}
+
+/* line 47, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #user_password {
   margin-left: 90px;
   height: 40px;
 }
 
-/* line 20, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 53, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #user_email {
   margin-left: 119px;
   margin-bottom: 15px;
   height: 40px;
 }
 
-/* line 26, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 59, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #user_last_name {
   margin-left: 85px;
   margin-bottom: 15px;
   height: 40px;
 }
 
-/* line 32, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 65, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #user_first_name {
   margin-left: 84px;
   margin-bottom: 15px;
   height: 40px;
 }
 
-/* line 38, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 71, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 .user_button {
   margin-left: 167px;
   height: 40px;
 }
 
-/* line 44, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 77, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 .log-in-user-button {
   margin-left: 157px;
   margin-top: 15px;
 }
 
-/* line 50, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 83, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 .signup-password {
   margin-left: 144px;
 }
 
-/* line 55, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 88, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 .log-in-user-password {
   height: 40px;
   margin-left: 35px;
   margin-bottom: 15px;
 }
 
-/* line 61, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
+/* line 94, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/devise.scss */
 #log-in-user-email {
   margin-left: 105px;
   margin-bottom: 15px;
