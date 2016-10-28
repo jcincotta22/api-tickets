@@ -11,9 +11,9 @@ class Api::SearchHistoriesController < ApiController
       end
 
       if !search_history.empty?
-        render json: { searchHistory: tickets, message: '' }, status: :ok
+        render json: { searchHistory: tickets }, status: :ok
       else
-        render json: { searchHistory: [], message: "You do not have a search history" }, status: :ok
+        render json: { searchHistory: [] }, status: :ok
       end
     else
       render json: { searchHistory: [], message: "You must sign in to view your search history" }, status: :ok

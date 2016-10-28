@@ -129,7 +129,10 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ searchHistory: data.searchHistory });
-      this.toastrValidSearchHistory(data.message);
+      debugger;
+      if(data.message !== undefined){
+        this.toastrValidSearchHistory(data.message);
+      }
       this.setState({ clickedEvent: 'searchHistory' })
     });
   }
