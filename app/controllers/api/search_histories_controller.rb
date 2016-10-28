@@ -1,23 +1,9 @@
 class Api::SearchHistoriesController < ApiController
   skip_before_action :verify_authenticity_token
-
+  include SearchHistoryHelper
   def index
     user = current_user
-    if user
-      search_history = user.search_histories.order(created_at: :desc).limit(10)
-      tickets = []
-      search_history.each do |history|
-        tickets << history.ticket
-      end
-
-      if !search_history.empty?
-        render json: { searchHistory: tickets }, status: :ok
-      else
-        render json: { searchHistory: [] }, status: :ok
-      end
-    else
-      render json: { searchHistory: [], message: "You must sign in to view your search history" }, status: :ok
-    end
+    get_search_history(user)
   end
 
   def delete_all
