@@ -10,7 +10,11 @@ import ClickedTicketMasterData from './ClickedTicketMasterData';
 import ClickedBandsInTownData from './ClickedBandsInTownData';
 import ClickedRecommendedData from './ClickedRecommendedData';
 import SavedEventsData from './SavedEventsData';
-import SearchHistory from './SearchHistory'
+import SearchHistory from './SearchHistory';
+import SearchBarRecommended from './SearchBarRecommended';
+import SearchBarSeatGeek from './SearchBarSeatGeek';
+import SearchBarBand from './SearchBarBand';
+import SearchBarTicketmaster from './SearchBarTicketmaster';
 
 class Ticket extends Component {
   constructor(props) {
@@ -31,6 +35,10 @@ class Ticket extends Component {
       endDate: '',
       zip: '',
       clickedEvent: '',
+      searchTerm: '',
+      searchTermRec: '',
+      searchTermSg: '',
+      searchTermBand: '',
       searchHistory: []
      };
      this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -55,6 +63,74 @@ class Ticket extends Component {
      this.toastrValidDelete = this.toastrValidDelete.bind(this);
      this.toastrValidSearchHistory = this.toastrValidSearchHistory.bind(this);
      this.toastrValidDeleteSearch = this.toastrValidDeleteSearch.bind(this);
+     this.handleSearchChange = this.handleSearchChange.bind(this);
+     this.handleSearchChangeRec = this.handleSearchChangeRec.bind(this);
+     this.handleSearchChangeBand = this.handleSearchChangeBand.bind(this);
+     this.handleSearchChangeSg = this.handleSearchChangeSg.bind(this);
+     this.renderResultsTm = this.renderResultsTm.bind(this);
+     this.renderResultsBand = this.renderResultsBand.bind(this);
+     this.renderResultsSg = this.renderResultsSg.bind(this);
+     this.renderResultsRec = this.renderResultsRec.bind(this);
+  }
+
+  renderResultsTm(data) {
+    let i;
+    let element = $('#ticketmaster')[0].children
+    let newData = new RegExp(data, "i");
+    for (i = 0; i <= element.length; i++) {
+      if(element[i]){
+        if (element[i].innerHTML.match(newData)) {
+            $($(element)[i]).show()
+        }else {
+          $($(element)[i]).hide()
+        }
+      }
+    }
+  }
+
+  renderResultsBand(data) {
+    let i;
+    let element = $('#bandsInTown')[0].children
+    let newData = new RegExp(data, "i");
+    for (i = 0; i <= element.length; i++) {
+      if(element[i]){
+        if (element[i].innerHTML.match(newData)) {
+            $($(element)[i]).show()
+        }else {
+          $($(element)[i]).hide()
+        }
+      }
+    }
+  }
+
+  renderResultsRec(data) {
+    let i;
+    let element = $('#recommended')[0].children
+    let newData = new RegExp(data, "i");
+    for (i = 0; i <= element.length; i++) {
+      if(element[i]){
+        if (element[i].innerHTML.match(newData)) {
+            $($(element)[i]).show()
+        }else {
+          $($(element)[i]).hide()
+        }
+      }
+    }
+  }
+
+  renderResultsSg(data) {
+    let i;
+    let element = $('#seatGeek')[0].children
+    let newData = new RegExp(data, "i");
+    for (i = 0; i <= element.length; i++) {
+      if(element[i]){
+        if (element[i].innerHTML.match(newData)) {
+            $($(element)[i]).show()
+        }else {
+          $($(element)[i]).hide()
+        }
+      }
+    }
   }
 
   toastrValidSearchHistory(message) {
@@ -331,6 +407,31 @@ class Ticket extends Component {
     this.setState({ zip: newZip });
   }
 
+  handleSearchChange(event) {
+    let newSearchTerm = event.target.value;
+    this.setState({ searchTerm: newSearchTerm })
+    this.renderResultsTm(newSearchTerm)
+  }
+
+  handleSearchChangeBand(event) {
+    let newSearchTerm = event.target.value;
+    this.setState({ searchTermBand: newSearchTerm })
+    this.renderResultsBand(newSearchTerm)
+  }
+
+  handleSearchChangeSg(event) {
+    let newSearchTerm = event.target.value;
+    this.setState({ searchTermSg: newSearchTerm })
+    this.renderResultsSg(newSearchTerm)
+  }
+
+  handleSearchChangeRec(event) {
+    let newSearchTerm = event.target.value;
+
+    this.setState({ searchTermRec: newSearchTerm })
+    this.renderResultsRec(newSearchTerm)
+  }
+
   render() {
 
     let clickedSearchHistoriesDatas = this.state.searchHistory.map(clickedSearchHistoriesData => {
@@ -560,27 +661,42 @@ class Ticket extends Component {
         </div>
         <div className='container'>
           <div className='row'>
-
             <div className='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
               <div className="panel panel-info">
+                <SearchBarSeatGeek
+                  handleSearchChangeSg={this.handleSearchChangeSg}
+                  searchTermSg={this.state.searchTermSg}
+                />
                 <div className="panel-heading"><img src="https://upload.wikimedia.org/wikipedia/en/1/1b/SeatGeek.png" className="heading-img"/></div>
                 <div id='seatGeek' className='results'>
                   {seatGeekDatas}
                 </div>
               </div>
               <div className="panel panel-info">
+                <SearchBarBand
+                  handleSearchChangeBand={this.handleSearchChangeBand}
+                  searchTermBand={this.state.searchTermBand}
+                />
                 <div className="panel-heading"><img src="http://bespokemusicgroup.com/img/tools/bandsintown.png" className="heading-img"/></div>
                 <div id='bandsInTown' className='results'>
                   {bandsInTownDatas}
                 </div>
               </div>
               <div className="panel panel-info">
+                <SearchBarTicketmaster
+                  handleSearchChange={this.handleSearchChange}
+                  searchTerm={this.state.searchTerm}
+                />
                 <div className="panel-heading"><img src="http://b2b.ticketmaster.nl/sites/default/files/downloads/tmlogo_grey.png" className="heading-img"/></div>
                 <div id='ticketmaster' className='results'>
                   {ticketdatas}
                 </div>
               </div>
               <div className="panel panel-info">
+                <SearchBarRecommended
+                  handleSearchChangeRec={this.handleSearchChangeRec}
+                  searchTermRec={this.state.searchTermRec}
+                />
                 <div className="panel-heading"><h4 className='text'>Recommended By Us</h4></div>
                 <div id='recommended' className='results'>
                   {recommendedDatas}
