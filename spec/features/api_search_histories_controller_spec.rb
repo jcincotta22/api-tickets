@@ -32,8 +32,6 @@ describe Api::SearchHistoriesController, type: :controller do
       expect(response.content_type).to eq "application/json"
       res_body = JSON.parse(response.body)
       expect(res_body['searchHistory'].length).to eq(0)
-      expect(res_body['message']).to eq("You do not have a search history")
-      expect(res_body['message']).not_to be(nil)
     end
 
     scenario 'non authenticated user clicks on search history link' do
@@ -61,7 +59,7 @@ describe Api::SearchHistoriesController, type: :controller do
       expect { SearchHistory.find(search_history.first.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       expect { SearchHistory.find(search_history.last.id) }.to raise_exception(ActiveRecord::RecordNotFound)
     end
-
+    
     scenario 'user tries to clear a non existent search history' do
       user = FactoryGirl.create(:user)
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)

@@ -122,16 +122,16 @@
         1,
         null,
         1,
+        4,
+        4,
         2,
         2,
-        1,
-        1,
-        1,
+        2,
         null,
         0,
         null,
         null,
-        1,
+        2,
         null,
         null,
         null,
@@ -260,14 +260,8 @@
         0,
         0,
         0
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/models/recommended_search.rb": [
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1477615299
+    "timestamp": 1477621244
   }
 }

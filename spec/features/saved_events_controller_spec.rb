@@ -97,5 +97,24 @@ describe Api::SavedEventsController, type: :controller do
       expect(res_body['savedEvents'][1]['user_id']).to eq(saved_events.last.user.id)
       expect(res_body['savedEvents'].empty?).not_to be(true)
     end
+    scenario 'Gets all SavedEvent if user is signed in' do
+      user = FactoryGirl.create(:user)
+      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
+      login_as(user, scope: :user)
+      get :index
+      expect(response.content_type).to eq "application/json"
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['savedEvents'].empty?).to eq(true)
+    end
+
+    scenario 'is not able to look at saved events if not signedi n' do
+      get :index
+      expect(response.content_type).to eq "application/json"
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['savedEvents'].empty?).to eq(true)
+    end
   end
 end
