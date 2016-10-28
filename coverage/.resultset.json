@@ -110,7 +110,6 @@
         3,
         null,
         null,
-        null,
         1,
         null,
         1,
@@ -275,25 +274,6 @@
         1,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null
       ],
       "/Users/Jscincotta/challenges/api-tickets/app/channels/application_cable/channel.rb": [
@@ -319,6 +299,6 @@
         0
       ]
     },
-    "timestamp": 1477658233
+    "timestamp": 1477659326
   }
 }
