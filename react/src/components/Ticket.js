@@ -129,7 +129,6 @@ class Ticket extends Component {
     })
     .done(data => {
       this.setState({ searchHistory: data.searchHistory });
-      debugger;
       if(data.message !== undefined){
         this.toastrValidSearchHistory(data.message);
       }
@@ -287,7 +286,6 @@ class Ticket extends Component {
           dataType: 'json'
         })
         .done(data => {
-          debugger;
           this.setState({ recommended: data.recommendedEvents.recommendations });
         });
       });

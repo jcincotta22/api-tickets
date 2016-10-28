@@ -31,11 +31,11 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Thu, 27 Oct 2016 20:30:28 GMT
+      - Fri, 28 Oct 2016 12:22:50 GMT
       Rate-Limit:
       - '5000'
       Rate-Limit-Available:
-      - '4978'
+      - '4931'
       Rate-Limit-Over:
       - '0'
       Rate-Limit-Reset:
@@ -43,12 +43,12 @@ http_interactions:
       Server:
       - Apache-Coyote/1.1
       Set-Cookie:
-      - CMPS=IswNCQOWtHODj+9LDhNS85+2buZH3Pa5lXwzMjVyHtUh8ZjqAg2wU6gx7MQe0s98X2yZbbiS408=;
+      - CMPS=GTwUPeF7Whc7bRpt7CXsCffkZnptq2LBXqFPZ8+kgz1ZS4/v9bozTltieaJbOQV0FIhOjOa6OGA=;
         path=/
       Vary:
       - Accept-Encoding
       X-Application-Context:
-      - application:local,default,jphx1:8080
+      - application:local,default,jash1:8080
       Content-Length:
       - '8190'
       Connection:
@@ -239,5 +239,5 @@ http_interactions:
         b3AifX1dLCJfbGlua3MiOnsic2VsZiI6eyJocmVmIjoiL2Rpc2NvdmVyeS92
         Mi9hdHRyYWN0aW9ucy9LOHZaOTE3R2t1Nz9sb2NhbGU9ZW4tdXMifX19XX19
     http_version: 
-  recorded_at: Thu, 27 Oct 2016 20:30:28 GMT
+  recorded_at: Fri, 28 Oct 2016 12:22:50 GMT
 recorded_with: VCR 3.0.1

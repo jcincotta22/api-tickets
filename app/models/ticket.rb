@@ -22,4 +22,5 @@ class Ticket < ActiveRecord::Base
     response = Net::HTTP.get_response(uri)
     JSON.parse(response.body)
   end
+
 end
