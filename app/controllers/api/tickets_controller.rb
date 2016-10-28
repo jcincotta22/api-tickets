@@ -7,7 +7,6 @@ class Api::TicketsController < ApiController
     get_ticket_data(user, ticket)
   end
 
-
   private
 
   def ticket_params
