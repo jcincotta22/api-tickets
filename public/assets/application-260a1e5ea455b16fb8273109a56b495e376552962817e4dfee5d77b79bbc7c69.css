@@ -436,6 +436,12 @@ form {
   margin-right: auto;
 }
 
+/* line 35, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/form.scss */
+.search-bar {
+  width: 100%;
+  height: 30px;
+}
+
 /* line 2, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/navbar.scss */
 nav {
   background-color: #30343f;
