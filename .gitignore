@@ -17,3 +17,6 @@
 .byebug_history
 .env
 /coveralls
+/node_modules
+/app/assets/javascript/bundle.js
+/react/coverage
