@@ -19,7 +19,6 @@ class Ticket extends Component {
       ticket: [],
       seatGeek: [],
       bandsInTown: [],
-      bandsInTownEvent: [],
       recommended: [],
       seatGeekEvents: [],
       ticketMasterEvent: [],
@@ -162,7 +161,7 @@ class Ticket extends Component {
       type: "POST",
       url: '/api/saved_events',
       data: { saved_event: { event_id: event.id, site: 'ticketmaster', title: event.name, url: event.url } },
-      dataType: 'json',
+      dataType: 'json'
     })
     .done(data => {
       this.toastrValidSave(data.message);

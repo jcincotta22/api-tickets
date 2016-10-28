@@ -3,6 +3,15 @@ languages:
   JavaScript: true
   PHP: true
   Python: true
+engines:
+  # ... CONFIG CONTENT ...
+  duplication:
+    enabled: true
+    # ... CONFIG CONTENT ...
+    checks:
+      Similar code:
+        enabled: false
+# ... CONFIG CONTENT ...
 exclude_paths:
 - "Gemfile.lock"
 - "react/webpack.config.js"
@@ -12,4 +21,5 @@ exclude_paths:
 - "app/assets/javascripts/cable.js"
 - "db/schema.rb"
 - "spec"
-- assets/javascripts/bundle.js
+- "assets/javascripts/bundle.js"
+- "app/assets/javascripts/application.js"
