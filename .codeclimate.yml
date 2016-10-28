@@ -3,15 +3,6 @@ languages:
   JavaScript: true
   PHP: true
   Python: true
-engines:
-  # ... CONFIG CONTENT ...
-  duplication:
-    enabled: true
-    # ... CONFIG CONTENT ...
-    checks:
-      Similar code:
-        enabled: false
-# ... CONFIG CONTENT ...
 exclude_paths:
 - "Gemfile.lock"
 - "react/webpack.config.js"
