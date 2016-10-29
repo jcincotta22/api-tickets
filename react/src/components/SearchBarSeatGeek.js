@@ -6,7 +6,7 @@ const SearchBarSeatGeek = props => {
     <input
       className='search-bar'
       type="text"
-      placeholder="Keyword Search"
+      placeholder="Filter Results"
       value={props.searchTermSg}
       onChange={props.handleSearchChangeSg}
       />

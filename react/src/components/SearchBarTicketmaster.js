@@ -6,7 +6,7 @@ const SearchBarTicketmaster = props => {
     <input
       className='search-bar'
       type="text"
-      placeholder="Keyword Search"
+      placeholder="Filter Results"
       value={props.searchTerm}
       onChange={props.handleSearchChange}
       />

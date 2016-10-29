@@ -6,7 +6,7 @@ const SearchBarBand = props => {
     <input
       className='search-bar'
       type="text"
-      placeholder="Keyword Search"
+      placeholder="Filter Results"
       value={props.searchTermBand}
       onChange={props.handleSearchChangeBand}
       />
