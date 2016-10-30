@@ -6,6 +6,13 @@
 
 An app where users search for events and receive search results from multiple websites selling the event. Developed with a full React.js front end, with a light Rails backend. API used are: seatgeek, Ticketmaster, and bandsintown. Some of the features include saved event searches and recommended events for users. Integrated Bootstrap, and Devise for user authentication.
 
+This project utilizes the following libraries and frameworks:
+  * React.js
+  * javascript
+  * AJAX
+  * Ruby on rails
+  * Bootstrap
+
 ## Setting up eventTrackr
 
 1. Clone: https://github.com/jcincotta22/api-tickets
