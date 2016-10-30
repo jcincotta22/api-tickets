@@ -22,7 +22,7 @@ This project utilizes the following libraries and frameworks:
 3. You will need to update your .env file with your Ticketmaster and SeatGeek API Key. It should look like this:
   *  `TICKETMASTER_KEY=<YOUR TICKETMASTER API KEY>`
   *  `SEATGEEK_KEY=<YOUR SEATGEEK API KEY>`
-4. run the following commands in your command line:
+4. Run the following commands in your command line in the following order:
   * rake db:create
   * rake db:migrate
   * npm install
@@ -35,4 +35,4 @@ eventTrackr Screen Cast: https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=you
 
 Search for Events
 
-![Search For Event](/Search-Event.gif) 
+![Search For Event](/Search-Event.gif)
