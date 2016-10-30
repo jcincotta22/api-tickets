@@ -28,5 +28,5 @@ This project utilizes the following libraries and frameworks:
 9. Visit: https://localhost:3000
 
 ## Site Demo
-
+[![Little red ridning hood](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 [eventTrackr](https://www.youtube.com/embed/gBvKlfafxEQ)
