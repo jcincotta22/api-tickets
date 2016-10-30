@@ -24,5 +24,5 @@ This project utilizes the following libraries and frameworks:
 5. rake db:migrate
 6. npm install
 7. npm start
-8. rails s
+8. rails s 
 9. Visit: https://localhost:3000
