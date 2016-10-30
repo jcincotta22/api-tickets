@@ -31,3 +31,5 @@ This project utilizes the following libraries and frameworks:
 
 ## Site Demo
 ![eventTrackr](https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=youtu.be.gif)
+
+![Search For Event](/Search-Event.gif)
