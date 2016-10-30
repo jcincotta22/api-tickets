@@ -8,7 +8,7 @@ An app where users search for events and receive search results from multiple we
 
 This project utilizes the following libraries and frameworks:
   * React.js
-  * javascript
+  * JavaScript
   * AJAX
   * Ruby on rails
   * Bootstrap
