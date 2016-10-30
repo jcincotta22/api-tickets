@@ -13,6 +13,6 @@
   *  `SEATGEEK_KEY=<YOUR SEATGEEK API KEY>`
 4. rake db:create
 5. rake db:migrate
-6. npm install
+6. npm install 
 7. npm start
 8. rails s
