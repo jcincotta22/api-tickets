@@ -4,6 +4,8 @@
 
 # eventTrackr
 
+Demo Site: http://eventtrackr.herokuapp.com/
+
 An app where users search for events and receive search results from multiple websites selling the event. Developed with a full React.js front end, with a light Rails backend. API used are: seatgeek, Ticketmaster, and bandsintown. Some of the features include saved event searches and recommended events for users. Integrated Bootstrap, and Devise for user authentication.
 
 This project utilizes the following libraries and frameworks:
@@ -28,5 +30,4 @@ This project utilizes the following libraries and frameworks:
 9. Visit: https://localhost:3000
 
 ## Site Demo
-[![Little red ridning hood](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
-[eventTrackr](https://www.youtube.com/embed/gBvKlfafxEQ)
+![eventTrackr](https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=youtu.be.gif)
