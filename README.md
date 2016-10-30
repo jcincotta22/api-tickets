@@ -9,10 +9,10 @@
 1. Clone: https://github.com/jcincotta22/api-tickets
 2. You will need to get a Ticketmaster, and SeatGeek API key from their respective developer websites.
 3. You will need to update your .env file with your Ticketmaster and SeatGeek API Key.  It should look like this.
-  *  TICKETMASTER_KEY=`<YOUR TICKETMASTER API KEY>`
-  *  SEATGEEK_KEY=`<YOUR SEATGEEK API KEY>`
+  *  `TICKETMASTER_KEY=<YOUR TICKETMASTER API KEY>`
+  *  `SEATGEEK_KEY=<YOUR SEATGEEK API KEY>`
 4. rake db:create
 5. rake db:migrate
-6. npm install
+6. npm install 
 7. npm start
-8. rails s 
+8. rails s
