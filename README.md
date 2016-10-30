@@ -29,4 +29,4 @@ This project utilizes the following libraries and frameworks:
 
 ## Site Demo
 
-[eventTrackr](https://www.youtube.com/embed/gBvKlfafxEQ) 
+[eventTrackr](https://www.youtube.com/embed/gBvKlfafxEQ)
