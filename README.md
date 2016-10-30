@@ -32,4 +32,5 @@ This project utilizes the following libraries and frameworks:
 ## Site Demo
 eventTrackr Screen Cast: https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=youtu.be
 
+Search for Events
 ![Search For Event](/Search-Event.gif)
