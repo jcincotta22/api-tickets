@@ -30,6 +30,6 @@ This project utilizes the following libraries and frameworks:
 9. Visit: https://localhost:3000
 
 ## Site Demo
-![eventTrackr](https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=youtu.be.gif)
+![eventTrackr](https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=youtu.be)
 
 ![Search For Event](/Search-Event.gif)
