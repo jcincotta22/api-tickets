@@ -29,4 +29,4 @@ This project utilizes the following libraries and frameworks:
 
 ## Site Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gBvKlfafxEQ" frameborder="0" allowfullscreen></iframe>
+[![eventTrackr]](https://www.youtube.com/embed/gBvKlfafxEQ)
