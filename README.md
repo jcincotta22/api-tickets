@@ -15,4 +15,4 @@
 5. rake db:migrate
 6. npm install
 7. npm start
-8. rails s
+8. rails s 
