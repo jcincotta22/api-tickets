@@ -55,6 +55,27 @@ describe Api::SavedEventsController, type: :controller do
       saved_event = SavedEvent.last
       expect(saved_event.user_id).to eq(user.id)
     end
+    scenario 'creates a new SavedEvent when user is not signed in' do
+      post :create, params: { saved_event: { date: '2016-10-31', site: 'seatGeek', keyword: 'Adele', title: 'Adele', url: 'www.tickets.com' } }
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['message']).not_to be("Event was saved to your Event Bucket")
+      expect(res_body['message']).to eq("User must be signed in to save this event")
+    end
+    scenario 'creates a new SavedEvent when user is not signed in' do
+      post :create, params: { saved_event: { date: '2016-10-31', site: 'ticketmaster', keyword: 'Adele', title: 'Adele', url: 'www.tickets.com' } }
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['message']).not_to be("Event was saved to your Event Bucket")
+      expect(res_body['message']).to eq("User must be signed in to save this event")
+    end
+    scenario 'creates a new SavedEvent when user is not signed in' do
+      post :create, params: { saved_event: { date: '2016-10-31', site: 'bandsInTown', keyword: 'Adele', title: 'Adele', url: 'www.tickets.com' } }
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['message']).not_to be("Event was saved to your Event Bucket")
+      expect(res_body['message']).to eq("User must be signed in to save this event")
+    end
   end
 
   feature "delete saved event" do
@@ -108,8 +129,17 @@ describe Api::SavedEventsController, type: :controller do
       res_body = JSON.parse(response.body)
       expect(res_body['savedEvents'].empty?).to eq(true)
     end
+    scenario 'Gets saved events with no saved events while signed in' do
+      user = FactoryGirl.create(:user)
+      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
+      login_as(user, scope: :user)
+      get :index
+      res_body = JSON.parse(response.body)
+      expect(res_body['savedEvents'].length).to eq(0)
+    end
 
-    scenario 'is not able to look at saved events if not signedi n' do
+    scenario 'is not able to look at saved events if not signed in' do
       get :index
       expect(response.content_type).to eq "application/json"
       expect(response.status).to eq(200)
