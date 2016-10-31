@@ -23,6 +23,7 @@ This project utilizes the following libraries and frameworks:
   *  `TICKETMASTER_KEY=<YOUR TICKETMASTER API KEY>`
   *  `SEATGEEK_KEY=<YOUR SEATGEEK API KEY>`
 4. Run the following commands in your command line in the following order:
+  * bundle
   * rake db:create
   * rake db:migrate
   * npm install
