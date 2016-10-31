@@ -35,7 +35,7 @@ eventTrackr Screen Cast: https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=you
 
 Search for Events
 
-![Search For Event](/Search-Event.gif)
+![Search For Event](/User-Searches-Events.gif)
 
 Save Events to Your Saved Bucket
 
