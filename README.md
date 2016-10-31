@@ -35,7 +35,7 @@ eventTrackr Screen Cast: https://www.youtube.com/watch?v=gBvKlfafxEQ&feature=you
 
 Search for Events
 
-![Search For Event](/Readme-gifs/Searches-Events.gif)
+![Save Events](/Readme-gifs/Searches-Events.gif)
 
 Save Events to Your Saved Bucket
 
@@ -43,4 +43,4 @@ Save Events to Your Saved Bucket
 
 Filter Events
 
-![Save Events](/Readme-gifs/Filters-Events.gif)
+![Filter Events](/Readme-gifs/Filters-Events.gif)
