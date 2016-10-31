@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Api::SearchHistoriesController, type: :controller do
+  include SearchHistoryHelper
   feature "User can view their search_history" do
     scenario 'clicks on search history link and sees search history' do
       user = FactoryGirl.create(:user)
@@ -59,7 +60,7 @@ describe Api::SearchHistoriesController, type: :controller do
       expect { SearchHistory.find(search_history.first.id) }.to raise_exception(ActiveRecord::RecordNotFound)
       expect { SearchHistory.find(search_history.last.id) }.to raise_exception(ActiveRecord::RecordNotFound)
     end
-    
+
     scenario 'user tries to clear a non existent search history' do
       user = FactoryGirl.create(:user)
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
