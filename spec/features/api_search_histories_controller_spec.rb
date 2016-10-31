@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Api::SearchHistoriesController, type: :controller do
-  include SearchHistoryHelper
   feature "User can view their search_history" do
     scenario 'clicks on search history link and sees search history' do
       user = FactoryGirl.create(:user)
