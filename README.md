@@ -39,4 +39,4 @@ Search for Events
 
 Save Events to Your Saved Bucket
 
-![Save Events](/Saved-Events.gif)
+![Save Events](/User-Saves-Event.gif)
