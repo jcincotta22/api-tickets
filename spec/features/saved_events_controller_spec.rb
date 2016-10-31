@@ -25,7 +25,6 @@ describe Api::SavedEventsController, type: :controller do
       expect(res_body['message']).to eq("User must be signed in to save this event")
     end
 
-
     scenario 'creates a new SavedEvent from ticketmaster if user is signed in' do
       user = FactoryGirl.create(:user)
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
