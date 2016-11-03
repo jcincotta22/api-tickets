@@ -67,60 +67,11 @@ class Ticket extends Component {
      this.handleSearchChangeRec = this.handleSearchChangeRec.bind(this);
      this.handleSearchChangeBand = this.handleSearchChangeBand.bind(this);
      this.handleSearchChangeSg = this.handleSearchChangeSg.bind(this);
-     this.renderResultsTm = this.renderResultsTm.bind(this);
-     this.renderResultsBand = this.renderResultsBand.bind(this);
-     this.renderResultsSg = this.renderResultsSg.bind(this);
-     this.renderResultsRec = this.renderResultsRec.bind(this);
+     this.renderResults = this.renderResults.bind(this);
   }
-
-  renderResultsTm(data) {
+  renderResults(data, id) {
     let i;
-    let element = $('#ticketmaster')[0].children
-    let newData = new RegExp(data, "i");
-    for (i = 0; i <= element.length; i++) {
-      if(element[i]){
-        if (element[i].innerHTML.match(newData)) {
-            $($(element)[i]).show()
-        }else {
-          $($(element)[i]).hide()
-        }
-      }
-    }
-  }
-
-  renderResultsBand(data) {
-    let i;
-    let element = $('#bandsInTown')[0].children
-    let newData = new RegExp(data, "i");
-    for (i = 0; i <= element.length; i++) {
-      if(element[i]){
-        if (element[i].innerHTML.match(newData)) {
-            $($(element)[i]).show()
-        }else {
-          $($(element)[i]).hide()
-        }
-      }
-    }
-  }
-
-  renderResultsRec(data) {
-    let i;
-    let element = $('#recommended')[0].children
-    let newData = new RegExp(data, "i");
-    for (i = 0; i <= element.length; i++) {
-      if(element[i]){
-        if (element[i].innerHTML.match(newData)) {
-            $($(element)[i]).show()
-        }else {
-          $($(element)[i]).hide()
-        }
-      }
-    }
-  }
-
-  renderResultsSg(data) {
-    let i;
-    let element = $('#seatGeek')[0].children
+    let element = $(id)[0].children
     let newData = new RegExp(data, "i");
     for (i = 0; i <= element.length; i++) {
       if(element[i]){
@@ -410,26 +361,26 @@ class Ticket extends Component {
   handleSearchChange(event) {
     let newSearchTerm = event.target.value;
     this.setState({ searchTerm: newSearchTerm })
-    this.renderResultsTm(newSearchTerm)
+    this.renderResults(newSearchTerm, '#ticketmaster')
   }
 
   handleSearchChangeBand(event) {
     let newSearchTerm = event.target.value;
     this.setState({ searchTermBand: newSearchTerm })
-    this.renderResultsBand(newSearchTerm)
+    this.renderResults(newSearchTerm, '#bandsInTown')
   }
 
   handleSearchChangeSg(event) {
     let newSearchTerm = event.target.value;
     this.setState({ searchTermSg: newSearchTerm })
-    this.renderResultsSg(newSearchTerm)
+    this.renderResults(newSearchTerm, '#seatGeek')
   }
 
   handleSearchChangeRec(event) {
     let newSearchTerm = event.target.value;
 
     this.setState({ searchTermRec: newSearchTerm })
-    this.renderResultsRec(newSearchTerm)
+    this.renderResults(newSearchTerm, '#recommended')
   }
 
   render() {
