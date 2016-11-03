@@ -21,4 +21,4 @@ const ClickedGeekData = props => {
   );
 };
 
-  export default ClickedGeekData;
+export default ClickedGeekData;

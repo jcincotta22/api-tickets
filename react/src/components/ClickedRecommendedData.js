@@ -21,4 +21,4 @@ const ClickedRecommendedData = props => {
   );
 };
 
-  export default ClickedRecommendedData;
+export default ClickedRecommendedData;
