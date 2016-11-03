@@ -347,7 +347,7 @@ div.input.password.optional.user_password.field_with_hint {
 
 /* line 1, /Users/Jscincotta/challenges/api-tickets/app/assets/stylesheets/footer.scss */
 .footer {
-  height: 6em;
+  height: 2em;
   background-color: #30343f;
   text-align: center;
 }
@@ -356,7 +356,7 @@ div.input.password.optional.user_password.field_with_hint {
 p.copyright {
   font-size: 18px;
   color: #fafaff;
-  margin-top: 25px;
+  margin-top: 13px;
 }
 
 @media only screen and (max-width: 690px) {
