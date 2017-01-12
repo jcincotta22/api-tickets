@@ -7,7 +7,6 @@ feature "Index page" do
     visit root_path
     expect(page).to have_content("eventTrackr")
     expect(page).to have_content("Search History")
-    expect(page).to have_content("©2016 eventTrackr")
     expect(page).to have_content("Saved Event Bucket")
     expect(page).to have_content("Search for your favorite artist above. Enter a date range for the event.
       Entering a zip code will retrieve recommended events near you!")

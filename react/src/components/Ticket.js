@@ -310,14 +310,16 @@ class Ticket extends Component {
       })
       .done(data => {
           this.setState({ seatGeek: data.seatGeekData.events });
-        $.ajax({
-          url: '/api/events',
-          data: { ticket: {performer_id: data.seatGeekData.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
-          dataType: 'json'
-        })
-        .done(data => {
-          this.setState({ recommended: data.recommendedEvents.recommendations });
-        });
+        if (data.seatGeekData.events[0] != undefined){
+          $.ajax({
+            url: '/api/events',
+            data: { ticket: {performer_id: data.seatGeekData.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
+            dataType: 'json'
+          })
+          .done(data => {
+            this.setState({ recommended: data.recommendedEvents.recommendations });
+          });
+        }
       });
 
       $.ajax({
