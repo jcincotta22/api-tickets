@@ -14,6 +14,12 @@ module EventHelper
     elsif ticket.site == 'recommended'
       recommendedEvents = ticket.get_data_recommondation(ENV["SEATGEEK_KEY"], ticket.performer_id, ticket.zip)
       render json: { recommendedEvents: recommendedEvents }, status: :ok
+    elsif ticket.site == 'seatGeek'
+      seatGeekData = ticket.get_data_seat_geek(ENV["SEATGEEK_KEY"], ticket.date, ticket.end_date, ticket.keyword)
+      render json: { seatGeekData: seatGeekData }, status: :ok
+    elsif ticket.site == 'clickedSG'
+      seatGeekData = ticket.get_data_clicked_seat_geek(ENV["SEATGEEK_KEY"], ticket.event_id)
+      render json: { seatGeekData: seatGeekData }, status: :ok
     else
       render json: { errors: ticket.errors }, status: :unprocessable_entity
     end

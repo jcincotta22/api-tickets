@@ -241,11 +241,12 @@ class Ticket extends Component {
 
   handleClickGeek(event) {
     $.ajax({
-      url: `https://api.seatgeek.com/2/events/${event}`,
+      url: '/api/events',
+      data: { ticket: {event_id: event, site: 'clickedSG'} },
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ seatGeekEvents: [data] });
+      this.setState({ seatGeekEvents: [data.seatGeekData] });
       this.setState({ clickedEvent: 'seatGeek' })
       $('html, body').animate({
         scrollTop: $("#clickGeek").offset().top - 200}, 1000);
@@ -254,11 +255,12 @@ class Ticket extends Component {
 
   handleClickRecommended(event) {
     $.ajax({
-      url: `https://api.seatgeek.com/2/events/${event}`,
+      url: '/api/events',
+      data: { ticket: {event_id: event, site: 'clickedSG'} },
       dataType: 'json'
     })
     .done(data => {
-      this.setState({ recommendedEvent: [data] });
+      this.setState({ recommendedEvent: [data.seatGeekData] });
       this.setState({ clickedEvent: 'recommended' })
       $('html, body').animate({
         scrollTop: $("#clickRec").offset().top - 200
@@ -302,14 +304,15 @@ class Ticket extends Component {
     formValidity = this.formValidation();
     if (formValidity === true) {
       $.ajax({
-        url: `https://api.seatgeek.com/2/events?q=${this.state.search}&datetime_utc.gte=${this.state.date}&datetime_utc.lte=${this.state.endDate}`,
+        url: '/api/events',
+        data: { ticket: {keyword: this.state.search, site: 'seatGeek', date: this.state.date, end_date: this.state.endDate } },
         dataType: 'json'
       })
       .done(data => {
-          this.setState({ seatGeek: data.events });
+          this.setState({ seatGeek: data.seatGeekData.events });
         $.ajax({
           url: '/api/events',
-          data: { ticket: {performer_id: data.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
+          data: { ticket: {performer_id: data.seatGeekData.events[0].performers[0].id, site: 'recommended', zip: this.state.zip } },
           dataType: 'json'
         })
         .done(data => {
