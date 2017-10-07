@@ -20,11 +20,6 @@
         null,
         null
       ],
-      "/Users/Jscincotta/challenges/api-tickets/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
       "/Users/Jscincotta/challenges/api-tickets/app/controllers/api/search_histories_controller.rb": [
         1,
         1,
@@ -286,30 +281,8 @@
         null,
         null,
         null
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/channels/application_cable/channel.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/Jscincotta/challenges/api-tickets/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1484230736
+    "timestamp": 1507340807
   }
 }

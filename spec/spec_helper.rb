@@ -6,6 +6,14 @@ require "webmock/rspec"
 
 Capybara.javascript_driver = :webkit
 Coveralls.wear!('rails')
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter 'app/jobs'
+  add_filter 'app/mailers'
+  add_filter 'app/uploaders'
+  add_filter 'app/models/application_record.rb'
+  add_filter 'app/channels'
+end
 
 def sign_in(email, password)
   visit unauthenticated_root_path
